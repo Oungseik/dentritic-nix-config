@@ -18,10 +18,11 @@
       boot.loader.efi.canTouchEfiVariables = true;
       boot.tmp.cleanOnBoot = true;
 
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
+      environment.systemPackages = with pkgs; [
+        curl
+        git
+        wget
+      ];
 
       hardware.bluetooth = {
         enable = true;
