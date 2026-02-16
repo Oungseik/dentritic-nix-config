@@ -2,10 +2,10 @@
 {
 
   flake.homeConfigurations.oung = inputs.home-manager.lib.homeManagerConfiguration {
-    modules = [ self.homeManagerModules.oung ];
+    modules = [ self.homeModules.oung ];
   };
 
-  flake.homeManagerModules.oung =
+  flake.homeModules.oung =
     { pkgs, lib, ... }:
     {
       home = {

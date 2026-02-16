@@ -1,5 +1,0 @@
-{ ... }:
-{
-  flake.homeManagerModules.browsersModule = { pkgs, ... }: { };
-
-}
