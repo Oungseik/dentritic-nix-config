@@ -3,12 +3,12 @@
 
   flake.nixosConfigurations."msi-modern15-A5M" = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModule.msi-modern15-A5M
+      self.nixosModules.msi-modern15-A5M
       self.nixosModules.gamingModule
     ];
   };
 
-  flake.nixosModule."msi-modern15-A5M" =
+  flake.nixosModules."msi-modern15-A5M" =
     { pkgs, lib, ... }:
     {
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
