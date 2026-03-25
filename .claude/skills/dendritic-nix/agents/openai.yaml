@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dendritic Nix Config"
+  short_description: "Design and migrate dendritic Nix flakes"
+  default_prompt: "Use $dendritic-nix-config to review, migrate, or refactor this Nix flake into a strict dendritic module tree."
