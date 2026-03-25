@@ -18,6 +18,7 @@
     }:
     {
       system.stateVersion = "26.05";
+      networking.hostName = "msi-modern15-A5M";
 
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
