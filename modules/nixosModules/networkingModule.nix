@@ -5,8 +5,7 @@
     {
 
       networking = {
-        hostName = "nixos"; # Define your hostname.
-        networkmanager.enable = true; # Enable networking
+        networkmanager.enable = true;
         networkmanager.dns = "none";
         # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
         nameservers = [

@@ -1,8 +1,19 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
 
   flake.homeConfigurations.oung = inputs.home-manager.lib.homeManagerConfiguration {
-    modules = [ self.homeModules.oung ];
+    pkgs = import inputs.nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
+    modules = [
+      self.homeModules.oung
+      self.homeModules.browsers
+    ];
   };
 
   flake.homeModules.oung =
