@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}:
+{ inputs, self, ... }:
 {
 
   flake.homeConfigurations.oung = inputs.home-manager.lib.homeManagerConfiguration {
