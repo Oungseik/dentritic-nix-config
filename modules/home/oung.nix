@@ -11,6 +11,7 @@
       self.homeModules.browsers
       self.homeModules.editors
       self.homeModules.terminals
+      self.homeModules.tmux
     ];
   };
 

@@ -64,6 +64,20 @@
           disable_ligatures = "never";
         };
       };
+
+      programs.starship = {
+        enable = true;
+        settings = {
+          add_newline = true;
+          line_break.disabled = false;
+
+          cmd_duration.disabled = true;
+
+          directory = {
+            truncation_length = 3;
+          };
+        };
+      };
     };
   };
 }
