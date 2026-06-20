@@ -17,7 +17,7 @@
       ...
     }:
     {
-      system.stateVersion = "26.05";
+      system.stateVersion = "26.11";
       networking.hostName = "msi-modern15-A5M";
 
       boot.loader.systemd-boot.enable = true;

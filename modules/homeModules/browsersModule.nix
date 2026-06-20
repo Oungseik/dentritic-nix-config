@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   flake.homeModules = {
     browsers =

@@ -9,6 +9,8 @@
     modules = [
       self.homeModules.oung
       self.homeModules.browsers
+      self.homeModules.editors
+      self.homeModules.terminals
     ];
   };
 
@@ -24,7 +26,7 @@
         EDITOR = "nvim";
       };
 
-      home.stateVersion = "26.05";
+      home.stateVersion = "26.11";
       programs.home-manager.enable = true;
     };
 }
