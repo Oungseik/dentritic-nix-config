@@ -1,17 +1,13 @@
 { ... }:
 {
-  flake.homeModules = {
-    browsers =
-      { pkgs, ... }:
-      {
-        home.packages = with pkgs; [
-          firefox
-          google-chrome
-        ];
+  flake.homeModules.browsers = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      firefox
+      google-chrome
+    ];
 
-        programs.firefox = {
-          enable = true;
-        };
-      };
+    programs.firefox = {
+      enable = true;
+    };
   };
 }
