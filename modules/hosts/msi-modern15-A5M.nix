@@ -31,6 +31,17 @@
         wget
       ];
 
+      users.users.oung = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
+
+      services = {
+        fstrim.enable = true;
+        fwupd.enable = true;
+        power-profiles-daemon.enable = true;
+      };
+
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = true;

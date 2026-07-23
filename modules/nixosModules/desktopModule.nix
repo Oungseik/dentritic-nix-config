@@ -1,19 +1,23 @@
 { ... }: {
   flake.nixosModules.desktopModule = { pkgs, ... }: {
 
-    services = {
-      xserver.enable = true;
-      xserver.xkb = {
-        layout = "us";
-        variant = "";
-      };
+    # services = {
+    #   xserver.enable = true; # need for mouse support of SDDM during login
+    #   xserver.xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #   };
+    # };
 
+    services = {
       displayManager.sddm = {
         enable = true;
         enableHidpi = true;
         theme = "catppuccin-mocha-mauve"; # Theme name corresponds to the overridden package's theme name
+        wayland.enable = true;
       };
 
+      blueman.enable = true;
       gvfs.enable = true;
       udisks2.enable = true;
       upower.enable = true;
@@ -42,34 +46,10 @@
         accent = "mauve";
       })
 
-      home-manager
       polkit_gnome
 
       qt5.qtquickcontrols2
       qt5.qtgraphicaleffects
-
-      (
-        let
-          base = pkgs.appimageTools.defaultFhsEnvArgs;
-        in
-        pkgs.buildFHSEnv (
-          base
-          // {
-            name = "fhs";
-            targetPkgs =
-              pkgs:
-              (base.targetPkgs pkgs)
-              ++ (with pkgs; [
-                pkg-config
-                ncurses
-                # Feel free to add more packages here if needed.
-              ]);
-            profile = "export FHS=1";
-            runScript = "zsh";
-            extraOutputsToInstall = [ "dev" ];
-          }
-        )
-      )
     ];
   };
 }
