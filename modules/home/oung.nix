@@ -23,8 +23,10 @@
         homeDirectory = "/home/oung";
       };
 
+      home.packages = with pkgs; [ neovim ];
+
       home.sessionVariables = {
-        EDITOR = "nvim";
+        EDITOR = lib.mkDefault "nvim";
       };
 
       home.stateVersion = "26.11";

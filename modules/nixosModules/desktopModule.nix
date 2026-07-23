@@ -46,6 +46,7 @@
         accent = "mauve";
       })
 
+      home-manager
       polkit_gnome
 
       qt5.qtquickcontrols2
