@@ -11,6 +11,7 @@
       self.homeModules.browsers
       self.homeModules.neovim
       self.homeModules.terminals
+      self.homeModules.theme
       self.homeModules.tmux
     ];
   };
