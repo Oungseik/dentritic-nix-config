@@ -21,6 +21,20 @@
       system.stateVersion = "26.11";
       networking.hostName = "msi-modern15-A5M";
 
+      nix = {
+        gc = {
+          automatic = true;
+          dates = "weekly";
+          options = "--delete-older-than 1w";
+        };
+        settings.auto-optimise-store = true;
+        settings.experimental-features = [
+          "pipe-operators"
+          "nix-command"
+          "flakes"
+        ];
+      };
+
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       boot.tmp.cleanOnBoot = true;
@@ -29,11 +43,18 @@
         curl
         git
         wget
+        nushell
       ];
 
       users.users.oung = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        description = "Oung Seik Nyan";
+        shell = pkgs.nushell;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "docker"
+        ];
       };
 
       services = {
