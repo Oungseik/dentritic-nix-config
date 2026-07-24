@@ -9,6 +9,7 @@
     modules = [
       self.homeModules.oung
       self.homeModules.browsers
+      self.homeModules.cliUtils
       self.homeModules.neovim
       self.homeModules.terminals
       self.homeModules.theme
