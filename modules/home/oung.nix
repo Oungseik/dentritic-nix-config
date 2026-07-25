@@ -10,6 +10,7 @@
       self.homeModules.oung
       self.homeModules.browsers
       self.homeModules.cliUtils
+      self.homeModules.eReader
       self.homeModules.neovim
       self.homeModules.terminals
       self.homeModules.theme
