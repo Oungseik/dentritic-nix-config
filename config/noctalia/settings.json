@@ -192,6 +192,9 @@
                     "showPowerProfiles": true
                 },
                 {
+                    "id": "plugin:usb-drive-manager"
+                },
+                {
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Volume",
