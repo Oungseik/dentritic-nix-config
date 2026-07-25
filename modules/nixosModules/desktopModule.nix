@@ -1,6 +1,8 @@
 { ... }: {
   flake.nixosModules.desktopModule = { pkgs, ... }: {
 
+    nixpkgs.config.allowUnfree = true;
+
     # services = {
     #   xserver.enable = true; # need for mouse support of SDDM during login
     #   xserver.xkb = {

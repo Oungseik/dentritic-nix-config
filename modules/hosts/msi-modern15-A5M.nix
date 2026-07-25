@@ -6,6 +6,8 @@
       self.nixosModules.msi-modern15-A5M
       self.nixosModules.desktopModule
       self.nixosModules.gamingModule
+      self.nixosModules.networkingModule
+      self.nixosModules.vpnModule
     ];
   };
 
@@ -20,6 +22,7 @@
     {
       system.stateVersion = "26.11";
       networking.hostName = "msi-modern15-A5M";
+      time.timeZone = "Asia/Yangon";
 
       nix = {
         gc = {
@@ -41,6 +44,8 @@
 
       environment.systemPackages = with pkgs; [
         curl
+        clang
+        gcc
         git
         wget
         nushell
