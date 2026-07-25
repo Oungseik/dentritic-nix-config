@@ -12,6 +12,7 @@
       self.homeModules.cliUtils
       self.homeModules.eReader
       self.homeModules.neovim
+      self.homeModules.noctalia
       self.homeModules.terminals
       self.homeModules.theme
       self.homeModules.tmux
