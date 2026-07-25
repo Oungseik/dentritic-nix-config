@@ -23,6 +23,9 @@
       upower.enable = true;
     };
 
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.login.enableGnomeKeyring = true;
+
     security.polkit.enable = true;
     security.rtkit.enable = true;
     services.pulseaudio.enable = false;
@@ -38,6 +41,11 @@
         enableAskPassword = false;
         askPassword = "systemd-ask-password";
       };
+
+      hyprland.enable = true;
+      niri.enable = true;
+      gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+      seahorse.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
