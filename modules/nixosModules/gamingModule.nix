@@ -2,7 +2,7 @@
 # [NixOS hardware](https://github.com/NixOS/nixos-hardware) hardware for prebuilt machines
 { ... }:
 {
-  flake.nixosModules.gamingModule =
+  flake.nixosModules.gaming =
     { pkgs, ... }:
     {
 

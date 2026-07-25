@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.vpnModule = { ... }: {
+  flake.nixosModules.vpn = { ... }: {
     programs = {
       throne = {
         enable = true;
