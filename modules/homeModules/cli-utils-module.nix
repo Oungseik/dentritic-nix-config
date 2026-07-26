@@ -47,6 +47,7 @@
         line_break.disabled = false;
         cmd_duration.disabled = true;
         directory.truncation_length = 5;
+        gcloud.disabled = true;
       };
     };
 

@@ -27,7 +27,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.
 - `theme.nix` uses the nixpkgs `kora-icon-theme` package with the `Kora` theme.
 - `zsh-module.nix` keeps Emacs editing, prefix history navigation, Bash-style word boundaries, shared deduplicated history, and case-insensitive colorized completion with a highlighted menu selection.
-- `cli-utils-module.nix` provides `fd` for Pi's `@` file autocomplete.
+- `cli-utils-module.nix` provides `fd` for Pi's `@` file autocomplete and hides Google Cloud account context from the Starship prompt.
 
 ## Work Guidance
 
