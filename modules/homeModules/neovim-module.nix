@@ -5,9 +5,20 @@
       home.packages = with pkgs; [
         neovim
         neovide
+        ripgrep
         tree-sitter
 
+        hurl
+        sleek
+
         lua-language-server
+        markdown-oxide
+        nixd
+        nixfmt
+        stylua
+        tombi
+        vale
+        yaml-language-server
 
         nerd-fonts.jetbrains-mono
         nerd-fonts.zed-mono

@@ -32,6 +32,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Put a desktop tool in `homeModules.desktop` only when it is compositor-independent and intended across desktop profiles.
 - Add each new compositor as its own feature and reuse the shared desktop module instead of copying common tools.
 - Keep packages, session variables, and stable configuration together when they form one feature; split out only configuration that changes frequently.
+- Keep SQLite and PostgreSQL project-specific; user-level editor modules may provide client-side SQL tooling such as `sleek`.
 
 ## Verification
 
