@@ -33,6 +33,7 @@
 
       environment.systemPackages = with pkgs; [
         pcsx2
+        ppsspp
         # mangohud # overlay monitoring program
         # lutris
         # heoric

@@ -1,7 +1,7 @@
 { ... }: {
   flake.homeModules.cliUtils = { pkgs, ... }: {
     programs.atuin = {
-      enableNushellIntegration = true;
+      enable = true;
       enableZshIntegration = true;
 
       settings = {
@@ -19,12 +19,13 @@
     };
 
     programs.btop = {
+      enable = true;
       settings.vim_keys = true;
     };
 
     programs.eza = {
+      enable = true;
       enableBashIntegration = true;
-      enableNushellIntegration = true;
       enableZshIntegration = true;
       icons = "auto";
     };
@@ -34,6 +35,7 @@
     };
 
     programs.git = {
+      enable = true;
       settings = {
         init.defaultBranch = "main";
         format.pretty = "[%C(yellow)%h%C(reset)] %C(blue)%ad%C(reset) | %s%d [%an]";
@@ -44,6 +46,7 @@
     };
 
     programs.starship = {
+      enable = true;
       settings = {
         add_newline = true;
         line_break.disabled = false;
@@ -52,13 +55,18 @@
       };
     };
 
+    programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     programs.yazi =
       let
         plugins-repo = pkgs.fetchFromGitHub {
           owner = "yazi-rs";
           repo = "plugins";
           rev = "bbac5e75b22a2893ef7cdd2bd6814b15f2abb91e";
-          hash = "ha256-lio4pvrqK575q7M+GtRr/5EdA4h2J/7gIvXK8c5rq1U=";
+          hash = "sha256-lio4pvrqK575q7M+GtRr/5EdA4h2J/7gIvXK8c5rq1U=";
         };
         starship = pkgs.fetchFromGitHub {
           owner = "Rolv-Apneseth";
@@ -68,7 +76,7 @@
         };
       in
       {
-        enableNushellIntegration = true;
+        enable = true;
         enableZshIntegration = true;
         settings = {
           mgr.show_hidden = false;

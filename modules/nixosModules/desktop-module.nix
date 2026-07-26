@@ -3,20 +3,12 @@
 
     nixpkgs.config.allowUnfree = true;
 
-    # services = {
-    #   xserver.enable = true; # need for mouse support of SDDM during login
-    #   xserver.xkb = {
-    #     layout = "us";
-    #     variant = "";
-    #   };
-    # };
-
     services = {
+      xserver.enable = true; # need for mouse support of SDDM during login
       displayManager.sddm = {
         enable = true;
         enableHidpi = true;
         theme = "catppuccin-mocha-mauve"; # Theme name corresponds to the overridden package's theme name
-        wayland.enable = true;
       };
 
       blueman.enable = true;
