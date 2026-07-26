@@ -16,6 +16,7 @@
       self.homeModules.hyprlock
       self.homeModules.neovim
       self.homeModules.noctalia
+      self.homeModules.screenRecording
       self.homeModules.terminals
       self.homeModules.theme
       self.homeModules.tmux

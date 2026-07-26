@@ -22,6 +22,7 @@
         grim
         slurp
         wl-clipboard
+        wl-clip-persist
       ];
 
       wayland.windowManager.hyprland = {
