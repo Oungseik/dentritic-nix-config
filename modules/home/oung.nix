@@ -23,6 +23,7 @@
 
       self.homeModules.javascriptDevelopmentEnvironment
       self.homeModules.rustDevelopmentEnvironment
+      # self.homeModules.goDevelopmentEnvironment
       # self.homeModules.phpDevelopmentEnvironment
     ];
   };
