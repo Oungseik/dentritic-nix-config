@@ -22,6 +22,7 @@
       self.homeModules.zsh
 
       self.homeModules.javascriptDevelopmentEnvironment
+      self.homeModules.rustDevelopmentEnvironment
       # self.homeModules.phpDevelopmentEnvironment
     ];
   };
