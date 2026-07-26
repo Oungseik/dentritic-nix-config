@@ -11,6 +11,7 @@
       self.homeModules.browsers
       self.homeModules.cliUtils
       self.homeModules.eReader
+      self.homeModules.guiDevTools
       self.homeModules.hyprland
       self.homeModules.hyprlock
       self.homeModules.neovim
@@ -18,6 +19,7 @@
       self.homeModules.terminals
       self.homeModules.theme
       self.homeModules.tmux
+      self.homeModules.zsh
 
       self.homeModules.javascriptDevelopmentEnvironment
       # self.homeModules.phpDevelopmentEnvironment

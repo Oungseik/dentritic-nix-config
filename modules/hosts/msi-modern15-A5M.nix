@@ -48,19 +48,20 @@
         gcc
         git
         wget
-        nushell
       ];
 
       users.users.oung = {
         isNormalUser = true;
         description = "Oung Seik Nyan";
-        shell = pkgs.nushell;
+        shell = pkgs.zsh;
         extraGroups = [
           "networkmanager"
           "wheel"
           "docker"
         ];
       };
+
+      programs.zsh.enable = true;
 
       services = {
         fstrim.enable = true;

@@ -1,10 +1,6 @@
 { ... }: {
   flake.homeModules.neovim =
-    { config, pkgs, ... }:
-    let
-      home = config.home.homeDirectory;
-      nvimPath = "${home}/nix-config/modules/homeModules/idesModule/nvim";
-    in
+    { pkgs, ... }:
     {
       home.packages = with pkgs; [
         git
@@ -18,8 +14,6 @@
         nerd-fonts.jetbrains-mono
         nerd-fonts.zed-mono
       ];
-
-      xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink nvimPath;
 
       programs.neovide.settings = {
         theme = "auto";
