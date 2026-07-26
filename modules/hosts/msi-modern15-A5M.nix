@@ -5,6 +5,8 @@
     modules = [
       self.nixosModules.msi-modern15-A5M
       self.nixosModules.desktop
+      self.nixosModules.hyprland
+      self.nixosModules.niri
       self.nixosModules.gaming
       self.nixosModules.networking
       self.nixosModules.vpn

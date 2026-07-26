@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.homeModules.hyprland =
-    { pkgs, lib, ... }:
+    { lib, ... }:
     let
       lua = lib.generators.mkLuaInline;
       modKey = key: lua ''mod .. " + ${key}"'';
@@ -13,21 +13,6 @@
       };
     in
     {
-      home.packages = with pkgs; [
-        brightnessctl
-        alacritty
-        noctalia-shell
-        kitty
-        jq
-        yazi
-        grim
-        slurp
-        wl-clipboard
-        wl-clip-persist
-      ];
-
-      services.polkit-gnome.enable = true;
-
       wayland.windowManager.hyprland = {
         enable = true;
         configType = "lua";

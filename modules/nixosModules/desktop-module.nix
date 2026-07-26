@@ -38,8 +38,6 @@
         askPassword = "systemd-ask-password";
       };
 
-      hyprland.enable = true;
-      niri.enable = true;
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
       seahorse.enable = true;
     };
