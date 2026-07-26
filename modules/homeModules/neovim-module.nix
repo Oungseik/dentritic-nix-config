@@ -7,8 +7,13 @@
     in
     {
       home.packages = with pkgs; [
+        git
+        lazygit
         neovim
         neovide
+        tree-sitter
+
+        lua-language-server
 
         nerd-fonts.jetbrains-mono
         nerd-fonts.zed-mono

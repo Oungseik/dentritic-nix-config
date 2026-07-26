@@ -29,6 +29,10 @@
       icons = "auto";
     };
 
+    programs.fastfetch = {
+      enable = true;
+    };
+
     programs.git = {
       settings = {
         init.defaultBranch = "main";
