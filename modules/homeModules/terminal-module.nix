@@ -31,7 +31,7 @@
     programs.kitty = {
       enable = true;
       font.name = "ZedMono Nerd Font";
-      font.size = 12;
+      font.size = 14;
 
       themeFile = "kanagawa";
 
