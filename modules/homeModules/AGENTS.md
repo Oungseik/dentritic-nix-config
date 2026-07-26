@@ -7,6 +7,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 ## Ownership
 
 - Each top-level Nix file owns one named Home Manager feature.
+- `communication-module.nix` owns team and company communication clients.
 - `desktop-module.nix` owns user tools and services shared across compositors.
 - `hyprland-module.nix` owns the Hyprland compositor feature; a future `niri-module.nix` will own an independent Niri feature.
 - `developmentEnvironments/` is delegated to its child DOX.

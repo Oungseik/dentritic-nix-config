@@ -10,6 +10,7 @@
       self.homeModules.oung
       self.homeModules.browsers
       self.homeModules.cliUtils
+      self.homeModules.communication
       self.homeModules.desktop
       self.homeModules.eReader
       self.homeModules.guiDevTools
