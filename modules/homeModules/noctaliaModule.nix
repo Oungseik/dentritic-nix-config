@@ -10,5 +10,9 @@
       ];
 
       xdg.configFile.noctalia.source = config.lib.file.mkOutOfStoreSymlink configPath;
+
+      programs.btop = {
+        settings.color_theme = "noctalia";
+      };
     };
 }
