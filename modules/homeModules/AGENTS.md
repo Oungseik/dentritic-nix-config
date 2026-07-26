@@ -21,7 +21,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep compositor modules strictly compositor-specific. Profiles may compose Hyprland, Niri, both, or future compositor features with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
-- Stable application configuration remains declarative in its module; `hyprland-module.nix` is the current stable-config example.
+- Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
 - The owning module still manages packages, the out-of-store link, and stable integration settings; mutable configuration content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
 - `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.
