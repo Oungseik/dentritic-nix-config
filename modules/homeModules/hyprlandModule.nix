@@ -254,7 +254,7 @@
             workspace = "special:note";
             gaps_in = 0;
             gaps_out = 0;
-            on_created_empty = "cd $HOME/Notes && neovide";
+            on_created_empty = "$EDITOR $HOME/Notes";
           };
         };
       };
