@@ -2,8 +2,12 @@
   flake.homeModules.cliUtils = { pkgs, ... }: {
     home.packages = [
       pkgs.fd
+      pkgs.gnupg
       pkgs.just
       pkgs.nix-prefetch-git
+      pkgs.pinentry-curses
+      pkgs.unzip
+      pkgs.zip
     ];
 
     programs.atuin = {
@@ -38,6 +42,15 @@
 
     programs.fastfetch = {
       enable = true;
+    };
+
+    programs.password-store = {
+      enable = true;
+      package = pkgs.pass.withExtensions (extensions: [
+        extensions.pass-audit
+        extensions.pass-genphrase
+        extensions.pass-otp
+      ]);
     };
 
     programs.starship = {
