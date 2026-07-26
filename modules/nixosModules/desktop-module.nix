@@ -4,14 +4,6 @@
     nixpkgs.config.allowUnfree = true;
 
     services = {
-      xserver.enable = true; # need for mouse support of SDDM during login
-      displayManager.sddm = {
-        enable = true;
-        enableHidpi = true;
-        extraPackages = [ pkgs.qt6.qtsvg ];
-        theme = "catppuccin-mocha-mauve"; # Theme name corresponds to the overridden package's theme name
-      };
-
       blueman.enable = true;
       gvfs.enable = true;
       udisks2.enable = true;
@@ -42,13 +34,6 @@
       seahorse.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [
-      (catppuccin-sddm.override {
-        flavor = "mocha";
-        accent = "mauve";
-      })
-
-      home-manager
-    ];
+    environment.systemPackages = [ pkgs.home-manager ];
   };
 }

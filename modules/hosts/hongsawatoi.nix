@@ -5,6 +5,7 @@
     modules = [
       self.nixosModules.hongsawatoi
       self.nixosModules.desktop
+      self.nixosModules.gdm
       self.nixosModules.hyprland
       self.nixosModules.niri
       self.nixosModules.gaming
