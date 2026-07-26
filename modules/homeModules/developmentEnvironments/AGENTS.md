@@ -6,16 +6,13 @@ Provide independently selectable Home Manager bundles for platform-specific tool
 
 ## Ownership
 
-- `javascript-module.nix` owns Node.js, Bun, pnpm, frontend tooling, and the JavaScript debug adapter.
-- `rust-module.nix` owns Rustup, GDB, and stable toolchain activation.
-- `go-module.nix` and `php-module.nix` are prepared but intentionally disabled.
+- Each platform module owns its language toolchain and related debugging tools.
 
 ## Local Contracts
 
 - Enable a platform by composing its module in `../../home/oung.nix`; disable it there and rebuild Home Manager when that work ends.
-- Environment modules install removable platform tooling, not project source or runtime state. Project setups such as a local WordPress tree remain mutable outside the Nix store.
-- JavaScript and Rust are currently enabled; Go and PHP remain disabled until active work needs them.
-- Add Python, Android, or other platform modules only for a real project, using one independently selectable bundle per platform.
+- Environment modules install removable platform tooling, not project source, dependencies, or runtime state.
+- Add a platform module only for a real project, using one independently selectable bundle per platform.
 - JavaScript global package directories and Rustup toolchains are intentionally user-writable.
 - Rust activation must remain safe during Home Manager dry runs and idempotent on repeated activation.
 - Debug adapter source paths must come from packages installed by the same module.

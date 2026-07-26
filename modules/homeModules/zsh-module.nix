@@ -37,7 +37,7 @@
       shellAliases = {
         ls = "eza";
         la = "eza -la";
-        v = "nvim";
+        vi = "nvim";
         nix = "nix --experimental-features 'nix-command flakes pipe-operators'";
         home-manager = "home-manager --experimental-features 'nix-command flakes pipe-operators'";
       };

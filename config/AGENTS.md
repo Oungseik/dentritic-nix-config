@@ -11,7 +11,7 @@ Keep frequently changed application configuration outside the Nix store so edits
 
 ## Local Contracts
 
-- Use this directory for configuration expected to change frequently, such as iterated Neovim Lua files.
+- Use this directory only for configuration expected to change frequently.
 - Link each program through its Home Manager module with `config.lib.file.mkOutOfStoreSymlink`; the module still owns packages, the link, and stable integration settings.
 - Keep stable configuration in its Home Manager module. Move it here only when frequent edits make rebuilds an actual burden.
 - Out-of-store links are intentionally mutable and path-dependent; do not describe their contents as Nix-store reproducible.

@@ -9,7 +9,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - `flake-parts.nix` defines shared flake-parts systems and the `flake.homeModules` option.
 - `home/` composes Home Manager profiles and owns per-user base settings.
 - `hosts/` composes NixOS systems and owns hardware, filesystems, users, and state versions.
-- `nixosModules/` owns reusable system features, including separate shared-desktop, display-manager, Hyprland, and Niri modules.
+- `nixosModules/` owns reusable system features.
 - `packages/` owns custom package outputs.
 - `homeModules/` is delegated to its child DOX.
 
@@ -26,11 +26,9 @@ Implement flake outputs as composable feature modules discovered recursively by 
 ## Work Guidance
 
 - Put runtime dependencies in the same scope as their consumer: `home.packages` for user features and `environment.systemPackages` for system features.
-- Keep the `gruvbox-plus` custom package output available even though `homeModules.theme` selects Kora icons.
 - Keep `nixosModules.desktop` focused on shared system services and `homeModules.desktop` focused on shared user tools and services; both desktop bases must remain compositor- and display-manager-independent.
-- Compose graphical hosts with one display-manager module, currently `nixosModules.gdm` or `nixosModules.sddm`, and whichever compositor features the profile needs.
+- Compose graphical hosts with one display-manager module and whichever compositor features the profile needs.
 - Keep compositor-specific behavior in separate feature modules so adding or replacing a compositor does not duplicate or disturb shared desktop behavior.
-- Keep the root `flake.nix` thin; add outputs here instead.
 
 ## Verification
 
