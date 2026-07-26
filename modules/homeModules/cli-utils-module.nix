@@ -1,6 +1,10 @@
 { ... }: {
   flake.homeModules.cliUtils = { pkgs, ... }: {
-    home.packages = [ pkgs.nix-prefetch-git pkgs.just ];
+    home.packages = [
+      pkgs.fd
+      pkgs.just
+      pkgs.nix-prefetch-git
+    ];
 
     programs.atuin = {
       enable = true;
