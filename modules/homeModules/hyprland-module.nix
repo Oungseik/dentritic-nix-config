@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.homeModules.hyprland = { ... }: {
+  flake.homeModules.hyprland = { config, ... }: {
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "hyprlang";
@@ -138,7 +138,7 @@
           "$mod, mouse:273, resizewindow"
         ];
 
-        workspace = "special:note, gapsin:0, gapsout:0, on-created-empty:$EDITOR $HOME/Notes";
+        workspace = "special:note, gapsin:0, gapsout:0, on-created-empty:${config.home.sessionVariables.EDITOR} ${config.home.homeDirectory}/Notes";
       };
     };
   };
