@@ -11,6 +11,7 @@
       self.homeModules.browsers
       self.homeModules.cliUtils
       self.homeModules.eReader
+      self.homeModules.hyprland
       self.homeModules.neovim
       self.homeModules.noctalia
       self.homeModules.terminals

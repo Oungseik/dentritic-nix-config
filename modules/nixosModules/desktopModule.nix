@@ -56,6 +56,7 @@
         accent = "mauve";
       })
 
+      brightnessctl
       home-manager
       polkit_gnome
 
