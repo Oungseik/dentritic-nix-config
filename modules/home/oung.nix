@@ -12,6 +12,7 @@
       self.homeModules.cliUtils
       self.homeModules.eReader
       self.homeModules.guiDevTools
+      self.homeModules.git
       self.homeModules.hyprland
       self.homeModules.hyprlock
       self.homeModules.neovim

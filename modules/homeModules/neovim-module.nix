@@ -3,8 +3,6 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        git
-        lazygit
         neovim
         neovide
         tree-sitter

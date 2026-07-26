@@ -1,5 +1,7 @@
 { ... }: {
   flake.homeModules.cliUtils = { pkgs, ... }: {
+    home.packages = [ pkgs.nix-prefetch-git ];
+
     programs.atuin = {
       enable = true;
       enableZshIntegration = true;
@@ -32,17 +34,6 @@
 
     programs.fastfetch = {
       enable = true;
-    };
-
-    programs.git = {
-      enable = true;
-      settings = {
-        init.defaultBranch = "main";
-        format.pretty = "[%C(yellow)%h%C(reset)] %C(blue)%ad%C(reset) | %s%d [%an]";
-        log.date = "short";
-        user.name = "Min Aung Thu Win";
-        user.email = "mhemaungthuwin@gmail.com";
-      };
     };
 
     programs.starship = {
