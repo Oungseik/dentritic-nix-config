@@ -14,6 +14,7 @@
     in
     {
       home.packages = with pkgs; [
+        brightnessctl
         alacritty
         noctalia-shell
         kitty
@@ -24,6 +25,8 @@
         wl-clipboard
         wl-clip-persist
       ];
+
+      services.polkit-gnome.enable = true;
 
       wayland.windowManager.hyprland = {
         enable = true;

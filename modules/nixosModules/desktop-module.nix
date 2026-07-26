@@ -8,6 +8,7 @@
       displayManager.sddm = {
         enable = true;
         enableHidpi = true;
+        extraPackages = [ pkgs.qt6.qtsvg ];
         theme = "catppuccin-mocha-mauve"; # Theme name corresponds to the overridden package's theme name
       };
 
@@ -49,12 +50,7 @@
         accent = "mauve";
       })
 
-      brightnessctl
       home-manager
-      polkit_gnome
-
-      qt5.qtquickcontrols2
-      qt5.qtgraphicaleffects
     ];
   };
 }
