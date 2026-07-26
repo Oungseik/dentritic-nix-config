@@ -18,6 +18,9 @@
       self.homeModules.terminals
       self.homeModules.theme
       self.homeModules.tmux
+
+      self.homeModules.javascriptDevelopmentEnvironment
+      # self.homeModules.phpDevelopmentEnvironment
     ];
   };
 
