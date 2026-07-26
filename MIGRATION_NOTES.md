@@ -68,8 +68,6 @@ Discord and Slack are enabled through the communication module. `brightnessctl`,
 - television
 - exercism
 - tun2socks
-- lsof
-- dust
 - p7zip
 
 ### Development

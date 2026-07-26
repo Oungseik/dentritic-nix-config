@@ -1,9 +1,11 @@
 { ... }: {
   flake.homeModules.cliUtils = { pkgs, ... }: {
     home.packages = [
+      pkgs.dust
       pkgs.fd
       pkgs.gnupg
       pkgs.just
+      pkgs.lsof
       pkgs.nix-prefetch-git
       pkgs.pinentry-curses
       pkgs.unzip
