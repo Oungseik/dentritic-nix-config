@@ -1,5 +1,8 @@
 { ... }: {
-  flake.nixosModules.vpn = { ... }: {
+  flake.nixosModules.vpn = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      sshuttle
+    ];
     programs = {
       throne = {
         enable = true;
