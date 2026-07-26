@@ -21,7 +21,6 @@
         yazi
         grim
         slurp
-        hyprlock
         wl-clipboard
       ];
 
@@ -185,10 +184,10 @@
             (bind "F10" "exec" "brightnessctl set +5%")
 
             (bind "PRINT" "exec"
-              ''IMG=$HOME/Pictures/Screenshots/$(date +'%s_grim.png') && grim -c -o "$(hyprctl activeworkspace -j | jq -r '.monitor')" $IMG && wl-copy < $IMG''
+              ''mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -o "$(hyprctl activeworkspace -j | jq -r '.monitor')" "$IMG" && wl-copy < "$IMG"''
             )
             (bind (modKey "PRINT") "exec"
-              ''IMG=$HOME/Pictures/Screenshots/$(date +'%s_grim.png') && grim -c -g "$(slurp)" $IMG && wl-copy < $IMG''
+              ''mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -g "$(slurp)" "$IMG" && wl-copy < "$IMG"''
             )
 
             (bind (modKey "J") "layoutmsg" "cyclenext")

@@ -12,6 +12,7 @@
       self.homeModules.cliUtils
       self.homeModules.eReader
       self.homeModules.hyprland
+      self.homeModules.hyprlock
       self.homeModules.neovim
       self.homeModules.noctalia
       self.homeModules.terminals
