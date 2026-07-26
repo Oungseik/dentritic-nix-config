@@ -26,7 +26,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
 - `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.
 - `theme.nix` uses the nixpkgs `kora-icon-theme` package with the `Kora` theme.
-- `zsh-module.nix` keeps Emacs editing, prefix history navigation, Bash-style word boundaries, shared deduplicated history, and case-insensitive colorized completion.
+- `zsh-module.nix` keeps Emacs editing, prefix history navigation, Bash-style word boundaries, shared deduplicated history, and case-insensitive colorized completion with a highlighted menu selection.
 
 ## Work Guidance
 

@@ -95,10 +95,6 @@ Default section order:
 - `just check-nixos` evaluates the flake without building.
 - `just check oung` dry-runs the Home Manager activation build.
 
-## User Preferences
-
-- Create focused commits automatically after completing and verifying each coherent change.
-
 ## Child DOX Index
 
 - [`modules/AGENTS.md`](modules/AGENTS.md) — dendritic flake outputs, host and user composition, system modules, Home Manager modules, and packages.

@@ -23,7 +23,8 @@
         bindkey '^[[1;5D' backward-word
 
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-        zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+        zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" 'ma=7'
+        zstyle ':completion:*' menu select
 
         autoload -U select-word-style
         select-word-style bash
