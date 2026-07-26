@@ -76,7 +76,7 @@ Default section order:
 
 ## Project Contract
 
-- This is a personal dendritic Nix flake for the `msi-modern15-A5M` NixOS host and the `oung` Home Manager profile.
+- This is a personal dendritic Nix flake for the `hongsawatoi` NixOS host (an MSI Modern 15 A5M) and the `oung` Home Manager profile.
 - Deployment is intentionally two-phase: switch NixOS first, then switch the standalone Home Manager profile.
 - Home Manager-only changes must remain switchable without rebuilding or switching NixOS.
 - `flake.nix` stays a thin `flake-parts`/`import-tree` entry point; implementation belongs under `modules/`.

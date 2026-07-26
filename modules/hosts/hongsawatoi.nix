@@ -1,9 +1,9 @@
 { inputs, self, ... }:
 {
 
-  flake.nixosConfigurations."msi-modern15-A5M" = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.hongsawatoi = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.msi-modern15-A5M
+      self.nixosModules.hongsawatoi
       self.nixosModules.desktop
       self.nixosModules.hyprland
       self.nixosModules.niri
@@ -13,7 +13,7 @@
     ];
   };
 
-  flake.nixosModules."msi-modern15-A5M" =
+  flake.nixosModules.hongsawatoi =
     {
       config,
       pkgs,
@@ -23,7 +23,7 @@
     }:
     {
       system.stateVersion = "26.11";
-      networking.hostName = "msi-modern15-A5M";
+      networking.hostName = "hongsawatoi";
       time.timeZone = "Asia/Yangon";
 
       nix = {
