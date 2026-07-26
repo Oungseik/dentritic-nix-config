@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ ... }: {
   flake.homeModules.theme = { config, pkgs, ... }: {
     gtk = {
       enable = true;
@@ -13,8 +13,8 @@
       };
 
       iconTheme = {
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.gruvbox-plus;
-        name = "Gruvbox-Plus-Dark";
+        package = pkgs.kora-icon-theme;
+        name = "Kora";
       };
 
       font = {

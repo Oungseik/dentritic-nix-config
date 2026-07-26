@@ -25,7 +25,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - The owning module still manages packages, the out-of-store link, and stable integration settings; mutable configuration content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
 - `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.
-- `theme.nix` consumes the `gruvbox-plus` package output from `modules/packages/`.
+- `theme.nix` uses the nixpkgs `kora-icon-theme` package with the `Kora` theme.
 
 ## Work Guidance
 
