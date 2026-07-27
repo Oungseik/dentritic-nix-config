@@ -75,7 +75,7 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 7,
+        "widgetSpacing": 8,
         "widgets": {
             "center": [
                 {
