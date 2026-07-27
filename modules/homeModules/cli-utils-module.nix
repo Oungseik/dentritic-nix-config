@@ -50,6 +50,7 @@
       enable = true;
       settings = {
         add_newline = true;
+        scan_timeout = 0;
         line_break.disabled = false;
         cmd_duration.disabled = true;
         directory.truncation_length = 5;
