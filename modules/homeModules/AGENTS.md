@@ -10,6 +10,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `communication-module.nix` owns team and company communication clients.
 - `desktop-module.nix` owns user tools and services shared across compositors.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
+- `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
 - `developmentEnvironments/` is delegated to its child DOX.
 - Enablement and ordering remain owned by `../home/oung.nix`.
 
