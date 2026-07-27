@@ -11,6 +11,7 @@ binds {
     Mod+T hotkey-overlay-title="Open terminal: alacritty" { spawn "alacritty"; }
     Mod+P hotkey-overlay-title="Toggle launcher" { spawn "sh" "-c" "noctalia-shell ipc call launcher toggle"; }
     Mod+E hotkey-overlay-title="Open file manager: yazi" { spawn "sh" "-c" "kitty -e yazi"; }
+    Mod+N hotkey-overlay-title="Open notes" { spawn "sh" "-c" "cd \"$HOME/Notes\" && exec \"$EDITOR\" ."; }
     Super+Alt+L hotkey-overlay-title="Lock screen" { spawn "hyprlock"; }
 
     // Hardware controls

@@ -29,6 +29,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep the GNOME portal in the Home Manager portal set so Niri screen sharing remains available when Hyprland is composed in the same profile.
 - Hide Google Meet's screen-sharing status popup in both Niri and Hyprland while retaining a 3px compositor indicator.
 - Hyprland starts XDG autostart applications through its Home Manager systemd integration so login services such as GNOME Keyring complete startup.
+- Hyprland's `Mod+N` note scratchpad starts `$EDITOR` with `~/Notes` as its working directory.
 - The owning module still manages packages, the out-of-store link, and stable integration settings; mutable configuration content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
 - `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.

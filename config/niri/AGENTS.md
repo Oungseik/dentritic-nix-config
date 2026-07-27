@@ -13,6 +13,7 @@ Keep hand-maintained Niri configuration editable through the live out-of-store X
 ## Local Contracts
 
 - `config.kdl` includes `keybindings.kdl` and `window_rules.kdl`.
+- `Mod+N` opens `$EDITOR` in `~/Notes` as a regular window.
 - Group keybindings by purpose: applications, hardware controls, window management, workspaces, screenshots, and session controls.
 
 ## Work Guidance
