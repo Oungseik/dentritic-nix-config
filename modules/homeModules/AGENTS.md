@@ -24,6 +24,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
+- Tmux resolves `default-shell` from the current user's passwd entry so dev shells cannot replace it through `$SHELL`.
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
 - Niri's `config/niri/keybindings.kdl` is the source of truth for window, workspace, and monitor navigation; Hyprland mirrors each supported semantic equivalent.

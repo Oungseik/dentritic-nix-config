@@ -39,6 +39,8 @@
       ];
 
       extraConfig = ''
+        run-shell '${pkgs.tmux}/bin/tmux set-option -g default-shell "$(${pkgs.getent}/bin/getent passwd "$(${pkgs.coreutils}/bin/id -u)" | ${pkgs.coreutils}/bin/cut -d: -f7)"'
+
         set -ag terminal-overrides ",alacritty:RGB"
         set -ga terminal-overrides ",xterm-256color*:Tc"
         set -sa terminal-features ",xterm-256color:extkeys"
