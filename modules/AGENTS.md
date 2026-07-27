@@ -22,6 +22,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Keep `flake.nixosConfigurations` and `flake.homeConfigurations` independent; do not embed Home Manager into the NixOS configuration.
 - Keep machine and system settings in `hosts/` or `nixosModules/`; keep user programs and settings in `home/` or `homeModules/` so they can switch without rebuilding NixOS.
 - Change `system.stateVersion` or `home.stateVersion` only as part of an explicit migration.
+- The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables.
 
 ## Work Guidance
 

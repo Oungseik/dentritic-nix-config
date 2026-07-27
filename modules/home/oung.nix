@@ -43,6 +43,7 @@
       };
 
       home.packages = with pkgs; [ neovim ];
+      home.sessionPath = [ "$HOME/.local/bin" ];
 
       home.sessionVariables = {
         EDITOR = lib.mkDefault "nvim";

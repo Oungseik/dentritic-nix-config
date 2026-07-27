@@ -1,5 +1,5 @@
 { ... }: {
-  flake.homeModules.zsh = { ... }: {
+  flake.homeModules.zsh = { config, lib, ... }: {
     programs.zsh = {
       enable = true;
       autocd = true;
@@ -16,6 +16,9 @@
       };
 
       initContent = ''
+        # Graphical sessions can retain Home Manager's source guard after PATH is reset.
+        path=(${lib.concatStringsSep " " config.home.sessionPath} $path)
+
         bindkey -e
         bindkey '^P' history-beginning-search-backward
         bindkey '^N' history-beginning-search-forward
