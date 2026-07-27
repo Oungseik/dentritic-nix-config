@@ -46,15 +46,6 @@
       enable = true;
     };
 
-    programs.password-store = {
-      enable = true;
-      package = pkgs.pass.withExtensions (extensions: [
-        extensions.pass-audit
-        extensions.pass-genphrase
-        extensions.pass-otp
-      ]);
-    };
-
     programs.starship = {
       enable = true;
       settings = {

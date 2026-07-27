@@ -8,6 +8,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 
 - Each top-level Nix file owns one named Home Manager feature.
 - `communication-module.nix` owns team and company communication clients.
+- `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration.
 - `desktop-module.nix` owns user tools and services shared across compositors.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
