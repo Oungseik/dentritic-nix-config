@@ -55,7 +55,7 @@
           mfact = 0.625;
         };
 
-        misc.force_default_wallpaper = 2;
+        misc.force_default_wallpaper = 0;
 
         bezier = "myBezier, 0.05, 0.8, 0.1, 1.0";
         animation = [
