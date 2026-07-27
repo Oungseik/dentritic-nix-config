@@ -11,6 +11,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration.
 - `desktop-module.nix` owns user tools and services shared across compositors.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
+- `niri-module.nix` owns the out-of-store Niri configuration link.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
 - `developmentEnvironments/` is delegated to its child DOX.
 - Enablement and ordering remain owned by `../home/oung.nix`.

@@ -1,0 +1,21 @@
+spawn-at-startup "noctalia-shell"
+include "window_rules.kdl"
+include "keybindings.kdl"
+screenshot-path "~/Pictures/Screenshots from %Y-%m-%d %H-%M-%S.png"
+animations {
+    workspace-switch { off; }
+    window-close { off; }
+}
+input {
+    keyboard {
+        xkb {
+            layout "us,mm"
+            options "grp:win_space_toggle,compose:ralt"
+        }
+        numlock
+    }
+    touchpad {
+        natural-scroll
+        tap
+    }
+}

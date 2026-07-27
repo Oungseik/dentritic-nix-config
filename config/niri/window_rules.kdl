@@ -1,0 +1,41 @@
+// Window rules and Layout
+workspace "1"
+workspace "2"
+workspace "3"
+
+window-rule {
+    match app-id=r#"google-chrome-stable$"#
+    default-column-width { proportion 1.0; }
+}
+
+window-rule {
+    geometry-corner-radius 4
+    clip-to-geometry true
+}
+
+layout {
+    gaps 4
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.4
+        proportion 0.6
+        proportion 1.0
+    }
+    default-column-width {
+        proportion 0.6
+    }
+    focus-ring {
+        width 3
+        active-color "#74c7ec"
+        inactive-color "#505050"
+        active-gradient from="#80c8ff" to="#bbddaa" angle=45
+    }
+    // You can also add a border. It's similar to the focus ring, but always visible.
+    border {
+        off
+        width 3
+        urgent-color "#9b0000"
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+    }
+}

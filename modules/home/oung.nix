@@ -18,6 +18,7 @@
       self.homeModules.hyprland
       self.homeModules.hyprlock
       self.homeModules.neovim
+      self.homeModules.niri
       self.homeModules.noctalia
       self.homeModules.passwordManagers
       self.homeModules.screenRecording
