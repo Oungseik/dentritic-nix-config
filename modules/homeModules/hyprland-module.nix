@@ -71,6 +71,10 @@
 
         gesture = "3, horizontal, workspace";
 
+        windowrule = [
+          ''match:title ^meet\.google\.com is sharing your screen\.$, opacity 0.0 override 0.0 override, no_focus on, border_size 3''
+        ];
+
         bind = [
           "$mod, RETURN, exec, kitty"
           "$mod, T, exec, alacritty"

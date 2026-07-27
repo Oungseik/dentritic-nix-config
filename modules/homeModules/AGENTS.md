@@ -11,7 +11,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration.
 - `desktop-module.nix` owns user tools and services shared across compositors.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
-- `niri-module.nix` owns the out-of-store Niri configuration link.
+- `niri-module.nix` owns the out-of-store Niri configuration link and GNOME screencast portal availability.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
 - `developmentEnvironments/` is delegated to its child DOX.
 - Enablement and ordering remain owned by `../home/oung.nix`.
@@ -26,6 +26,8 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
 - Niri's `config/niri/keybindings.kdl` is the source of truth for window, workspace, and monitor navigation; Hyprland mirrors each supported semantic equivalent.
+- Keep the GNOME portal in the Home Manager portal set so Niri screen sharing remains available when Hyprland is composed in the same profile.
+- Hide Google Meet's screen-sharing status popup in both Niri and Hyprland while retaining a 3px compositor indicator.
 - Hyprland starts XDG autostart applications through its Home Manager systemd integration so login services such as GNOME Keyring complete startup.
 - The owning module still manages packages, the out-of-store link, and stable integration settings; mutable configuration content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.

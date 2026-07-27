@@ -4,8 +4,26 @@ workspace "2"
 workspace "3"
 
 window-rule {
-    match app-id=r#"google-chrome-stable$"#
+    match app-id=r#"^(kitty|google-chrome(-stable)?)$"#
     default-column-width { proportion 1.0; }
+}
+
+// Chrome print dialog.
+window-rule {
+    match app-id=r#"^google-chrome(-stable)?$"# title="^Print$"
+    open-floating true
+    default-column-width { proportion 0.7; }
+}
+
+// Keep a minimal visible indicator without showing Meet's status popup.
+window-rule {
+    match app-id="^$" title=r#"^meet\.google\.com is sharing your screen\.$"#
+    open-focused false
+    opacity 0.0
+    focus-ring {
+        on
+        width 3
+    }
 }
 
 window-rule {
