@@ -7,7 +7,7 @@ Keep hand-maintained Niri configuration editable through the live out-of-store X
 ## Ownership
 
 - `config.kdl` owns startup, input, animation, and include settings.
-- `keybindings.kdl` owns keyboard and hardware bindings.
+- `keybindings.kdl` owns keyboard and hardware bindings and is the source of truth for compositor navigation bindings.
 - `window_rules.kdl` owns workspaces, window rules, and layout.
 
 ## Local Contracts
@@ -19,6 +19,7 @@ Keep hand-maintained Niri configuration editable through the live out-of-store X
 
 - Keep bindings in the closest related group and use concise hotkey-overlay titles for user-facing actions.
 - Prefer Vim-style directional bindings (`H/J/K/L` and `U/I`) over duplicate arrow or paging-key aliases.
+- After changing window, workspace, or monitor navigation, mirror every Hyprland-supported semantic equivalent in `../../modules/homeModules/hyprland-module.nix`.
 
 ## Verification
 

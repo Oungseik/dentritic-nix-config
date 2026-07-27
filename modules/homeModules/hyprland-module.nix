@@ -22,6 +22,8 @@
           sensitivity = 0;
         };
 
+        binds.scroll_event_delay = 150;
+
         general = {
           gaps_in = 4;
           gaps_out = 4;
@@ -84,15 +86,36 @@
           '', PRINT, exec, mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -o "$(hyprctl activeworkspace -j | jq -r '.monitor')" "$IMG" && wl-copy < "$IMG"''
           ''$mod, PRINT, exec, mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -g "$(slurp)" "$IMG" && wl-copy < "$IMG"''
 
-          "$mod, J, layoutmsg, cyclenext"
-          "$mod, K, layoutmsg, cycleprev"
-          "$mod, TAB, layoutmsg, cyclenext"
-          "$mod SHIFT, TAB, layoutmsg, cycleprev"
+          "$mod, H, movefocus, l"
+          "$mod, L, movefocus, r"
 
-          "$mod, LEFT, movefocus, l"
-          "$mod, RIGHT, movefocus, r"
-          "$mod, UP, movefocus, u"
-          "$mod, DOWN, movefocus, d"
+          "$mod SHIFT, H, movewindow, l"
+          "$mod SHIFT, L, movewindow, r"
+
+          "$mod CTRL, H, focusmonitor, l"
+          "$mod CTRL, L, focusmonitor, r"
+
+          "$mod CTRL SHIFT, H, movewindow, mon:l"
+          "$mod CTRL SHIFT, L, movewindow, mon:r"
+
+          "$mod, U, workspace, r+1"
+          "$mod, I, workspace, r-1"
+          "$mod CTRL, U, movetoworkspace, r+1"
+          "$mod CTRL, I, movetoworkspace, r-1"
+          "$mod, TAB, workspace, previous_per_monitor"
+
+          "$mod, mouse_down, workspace, r+1"
+          "$mod, mouse_up, workspace, r-1"
+          "$mod CTRL, mouse_down, movetoworkspace, r+1"
+          "$mod CTRL, mouse_up, movetoworkspace, r-1"
+          "$mod, mouse_right, movefocus, r"
+          "$mod, mouse_left, movefocus, l"
+          "$mod CTRL, mouse_right, movewindow, r"
+          "$mod CTRL, mouse_left, movewindow, l"
+          "$mod SHIFT, mouse_down, movefocus, r"
+          "$mod SHIFT, mouse_up, movefocus, l"
+          "$mod CTRL SHIFT, mouse_down, movewindow, r"
+          "$mod CTRL SHIFT, mouse_up, movewindow, l"
 
           "$mod, 1, workspace, 1"
           "$mod, 2, workspace, 2"
@@ -114,8 +137,6 @@
           "$mod SHIFT, 8, movetoworkspace, 8"
           "$mod SHIFT, 9, movetoworkspace, 9"
 
-          "$mod SHIFT, J, layoutmsg, swapwithmaster master"
-
           "$mod, S, togglespecialworkspace, magic"
           "$mod SHIFT, S, movetoworkspace, special:magic"
           "$mod, A, togglespecialworkspace, terminal"
@@ -123,10 +144,6 @@
           "$mod, N, togglespecialworkspace, note"
           "$mod SHIFT, N, movetoworkspace, special:note"
 
-          "$mod CTRL, H, movecurrentworkspacetomonitor, 0"
-          "$mod CTRL, L, movecurrentworkspacetomonitor, 1"
-          "$mod SHIFT, H, focusmonitor, -1"
-          "$mod SHIFT, L, focusmonitor, +1"
         ];
 
         bindel = [
