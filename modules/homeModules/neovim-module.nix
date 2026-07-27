@@ -13,6 +13,7 @@
 
         lua-language-server
         markdown-oxide
+        kdlfmt
         nixd
         nixfmt
         stylua

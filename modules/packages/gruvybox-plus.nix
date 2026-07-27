@@ -10,9 +10,10 @@
       };
 
       dontUnpack = true;
+      dontFixup = true;
       installPhase = ''
         mkdir -p $out/share/icons
-        ${pkgs.unzip}/bin/unzip $src -d $out/share/icons
+        ${pkgs.unzip}/bin/unzip -q $src -d $out/share/icons
       '';
     };
   };

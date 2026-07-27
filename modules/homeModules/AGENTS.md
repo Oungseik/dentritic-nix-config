@@ -22,6 +22,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
+- Hyprland starts XDG autostart applications through its Home Manager systemd integration so login services such as GNOME Keyring complete startup.
 - The owning module still manages packages, the out-of-store link, and stable integration settings; mutable configuration content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
 - `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.
