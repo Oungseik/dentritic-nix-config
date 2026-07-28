@@ -1,8 +1,4 @@
 // Window rules and Layout
-workspace "1"
-workspace "2"
-workspace "3"
-
 workspace "codespace" {
     open-on-output "HDMI-A-1"
 }
