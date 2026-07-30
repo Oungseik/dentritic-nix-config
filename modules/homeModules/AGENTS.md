@@ -42,6 +42,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Extend an existing feature when ownership is clear; add a new module only for an independently selectable feature.
 - Preserve existing Hyprland bindings when they already behave like their Niri counterparts; change only missing, conflicting, or explicitly Hyprland-specific navigation.
 - In Hyprland, `Mod+H/L` cycles backward/forward through windows on the current workspace; other directional window and monitor bindings use only `H/L` because this profile treats Hyprland topology as horizontal and leaves `J/K` unbound.
+- In both compositors, `Mod+Tab` cycles through windows on the current workspace and `Mod+Shift+Tab` toggles the current and previous workspace.
 - Put a desktop tool in `homeModules.desktop` only when it is compositor-independent and intended across desktop profiles.
 - Add each new compositor as its own feature and reuse the shared desktop module instead of copying common tools.
 - Keep packages, session variables, and stable configuration together when they form one feature; split out only configuration that changes frequently.

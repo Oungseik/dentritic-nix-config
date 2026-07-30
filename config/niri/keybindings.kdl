@@ -2,6 +2,12 @@ hotkey-overlay {
     skip-at-startup
 }
 
+recent-windows {
+    binds {
+        Mod+Tab { next-window scope="workspace"; }
+    }
+}
+
 binds {
     // Help
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -99,7 +105,7 @@ binds {
     Mod+Shift+A { move-column-to-workspace "stash"; }
     Mod+Shift+S { move-column-to-workspace "stash"; }
 
-    Mod+Tab { focus-workspace-previous; }
+    Mod+Shift+Tab { focus-workspace-previous; }
 
     // Window layout
     Mod+BracketLeft { consume-or-expel-window-left; }

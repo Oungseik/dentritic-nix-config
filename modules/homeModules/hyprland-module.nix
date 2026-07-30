@@ -109,7 +109,8 @@
           "$mod, I, workspace, r-1"
           "$mod CTRL, U, movetoworkspace, r+1"
           "$mod CTRL, I, movetoworkspace, r-1"
-          "$mod, TAB, workspace, previous_per_monitor"
+          "$mod, TAB, cyclenext"
+          "$mod SHIFT, TAB, workspace, previous_per_monitor"
 
           "$mod, mouse_down, workspace, r+1"
           "$mod, mouse_up, workspace, r-1"

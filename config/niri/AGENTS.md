@@ -16,6 +16,7 @@ Keep hand-maintained Niri configuration editable through the live out-of-store X
 - `Mod+N` opens `$EDITOR` in `~/Notes` as a regular window.
 - `Mod+Ctrl+Shift+H/L` moves the current workspace to the monitor on the left or right, not the active window or column.
 - `Mod+Alt+H/L` moves the focused window to the monitor on the left or right.
+- `Mod+Tab` cycles through windows on the current workspace; `Mod+Shift+Tab` toggles the current and previous workspace.
 - Group keybindings by purpose: applications, hardware controls, window management, workspaces, screenshots, and session controls.
 
 ## Work Guidance
