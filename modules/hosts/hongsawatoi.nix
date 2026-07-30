@@ -10,6 +10,7 @@
       self.nixosModules.hyprland
       self.nixosModules.niri
       self.nixosModules.gaming
+      self.nixosModules.waydroid
       self.nixosModules.networking
       self.nixosModules.vpn
     ];

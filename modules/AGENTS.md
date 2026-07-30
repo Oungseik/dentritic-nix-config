@@ -9,7 +9,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - `flake-parts.nix` defines shared flake-parts systems and the `flake.homeModules` option.
 - `home/` composes Home Manager profiles and owns per-user base settings.
 - `hosts/` composes NixOS systems and owns hardware, filesystems, users, and state versions.
-- `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility.
+- `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, and its Waydroid feature enables containerized Android apps with nftables networking for current kernels.
 - `packages/` owns custom package outputs.
 - `homeModules/` is delegated to its child DOX.
 
