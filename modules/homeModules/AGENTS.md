@@ -28,7 +28,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Tmux resolves `default-shell` from the current user's passwd entry so dev shells cannot replace it through `$SHELL`.
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
-- Niri's `config/niri/keybindings.kdl` is the source of truth for window, workspace, and monitor navigation; Hyprland mirrors each supported semantic equivalent.
+- Niri's `config/niri/keybindings.kdl` is the default source of truth for window, workspace, and monitor navigation; Hyprland mirrors supported semantic equivalents except for explicit Hyprland-specific bindings documented here.
 - Keep the GNOME portal in the Home Manager portal set so Niri screen sharing remains available when Hyprland is composed in the same profile.
 - Hide Google Meet's screen-sharing status popup in both Niri and Hyprland while retaining a 3px compositor indicator.
 - Hyprland starts XDG autostart applications through its Home Manager systemd integration so login services such as GNOME Keyring complete startup.
@@ -40,8 +40,8 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 ## Work Guidance
 
 - Extend an existing feature when ownership is clear; add a new module only for an independently selectable feature.
-- Preserve existing Hyprland bindings when they already behave like their Niri counterparts; change only missing or conflicting navigation.
-- Mirror directional Niri navigation in Hyprland only on `H/L`; this profile treats Hyprland window and monitor topology as horizontal and leaves `J/K` unbound.
+- Preserve existing Hyprland bindings when they already behave like their Niri counterparts; change only missing, conflicting, or explicitly Hyprland-specific navigation.
+- In Hyprland, `Mod+H/L` cycles backward/forward through windows on the current workspace; other directional window and monitor bindings use only `H/L` because this profile treats Hyprland topology as horizontal and leaves `J/K` unbound.
 - Put a desktop tool in `homeModules.desktop` only when it is compositor-independent and intended across desktop profiles.
 - Add each new compositor as its own feature and reuse the shared desktop module instead of copying common tools.
 - Keep packages, session variables, and stable configuration together when they form one feature; split out only configuration that changes frequently.

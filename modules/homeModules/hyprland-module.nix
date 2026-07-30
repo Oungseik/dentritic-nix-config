@@ -90,8 +90,8 @@
           '', PRINT, exec, mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -o "$(hyprctl activeworkspace -j | jq -r '.monitor')" "$IMG" && wl-copy < "$IMG"''
           ''$mod, PRINT, exec, mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -g "$(slurp)" "$IMG" && wl-copy < "$IMG"''
 
-          "$mod, H, movefocus, l"
-          "$mod, L, movefocus, r"
+          "$mod, H, cyclenext, prev"
+          "$mod, L, cyclenext"
 
           "$mod SHIFT, H, movewindow, l"
           "$mod SHIFT, L, movewindow, r"
@@ -99,8 +99,11 @@
           "$mod CTRL, H, focusmonitor, l"
           "$mod CTRL, L, focusmonitor, r"
 
-          "$mod CTRL SHIFT, H, movewindow, mon:l"
-          "$mod CTRL SHIFT, L, movewindow, mon:r"
+          "$mod ALT, H, movewindow, mon:l"
+          "$mod ALT, L, movewindow, mon:r"
+
+          "$mod CTRL SHIFT, H, movecurrentworkspacetomonitor, l"
+          "$mod CTRL SHIFT, L, movecurrentworkspacetomonitor, r"
 
           "$mod, U, workspace, r+1"
           "$mod, I, workspace, r-1"
