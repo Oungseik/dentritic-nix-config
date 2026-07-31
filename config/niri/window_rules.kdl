@@ -5,9 +5,6 @@ workspace "codespace" {
 workspace "browser" {
     open-on-output "HDMI-A-1"
 }
-workspace "secondary-browser" {
-    open-on-output "HDMI-A-1"
-}
 workspace "communication" {
     open-on-output "HDMI-A-1"
 }
@@ -33,10 +30,10 @@ window-rule {
 window-rule {
     match app-id="^$" title=r#"^meet\.google\.com is sharing your screen\.$"#
     open-focused false
-    opacity 0.0
+    default-floating-position x=-2000 y=2000 relative-to="top-left"
     focus-ring {
         on
-        width 3
+        width 0
     }
 }
 

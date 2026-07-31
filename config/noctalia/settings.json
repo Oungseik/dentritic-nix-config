@@ -204,7 +204,7 @@
                     "id": "plugin:usb-drive-manager"
                 },
                 {
-                    "displayMode": "onhover",
+                    "displayMode": "alwaysShow",
                     "iconColor": "none",
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol",
