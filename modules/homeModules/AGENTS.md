@@ -14,6 +14,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `niri-module.nix` owns the out-of-store Niri configuration link and GNOME screencast portal availability.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
+- `terminal-module.nix` owns Alacritty and Kitty and installs and selects the local ZedBrains Mono package.
 - `developmentEnvironments/` is delegated to its child DOX.
 - Enablement and ordering remain owned by `../home/oung.nix`.
 

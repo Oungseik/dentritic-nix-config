@@ -81,7 +81,7 @@ Default section order:
 - Home Manager-only changes must remain switchable without rebuilding or switching NixOS.
 - `flake.nix` stays a thin `flake-parts`/`import-tree` entry point; implementation belongs under `modules/`.
 - `flake.lock` is generated dependency state; update it through Nix rather than hand-editing it.
-- `assets/` contains root-owned static inputs. Preserve referenced paths and avoid rewriting binary assets unnecessarily.
+- `assets/` contains root-owned static inputs, including wallpapers and locally packaged font files. Preserve referenced paths and avoid rewriting binary assets unnecessarily.
 - Do not commit new credentials or secrets.
 
 ## Work Guidance

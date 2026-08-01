@@ -1,5 +1,8 @@
-{ ... }: {
-  flake.homeModules.terminals = { ... }: {
+{ self, ... }: {
+  flake.homeModules.terminals = { pkgs, ... }: {
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono ];
+    fonts.fontconfig.enable = true;
+
     programs.alacritty = {
       enable = true;
       theme = "kanagawa_wave";
@@ -7,7 +10,7 @@
         font = {
           size = 14;
           normal = {
-            family = "ZedMono Nerd Font";
+            family = "ZedBrainsMono Nerd Font";
             style = "Regular";
           };
         };
@@ -30,7 +33,7 @@
 
     programs.kitty = {
       enable = true;
-      font.name = "ZedMono Nerd Font";
+      font.name = "ZedBrainsMono Nerd Font";
       font.size = 14;
 
       themeFile = "kanagawa";
@@ -60,7 +63,7 @@
         sync_to_monitor = "yes";
         allow_remote_control = "yes";
         listen_on = "unix:@mykitty";
-        disable_ligatures = "always";
+        disable_ligatures = "never";
       };
     };
   };
