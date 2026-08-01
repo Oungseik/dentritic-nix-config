@@ -60,7 +60,7 @@
         sync_to_monitor = "yes";
         allow_remote_control = "yes";
         listen_on = "unix:@mykitty";
-        disable_ligatures = "never";
+        disable_ligatures = "always";
       };
     };
   };
