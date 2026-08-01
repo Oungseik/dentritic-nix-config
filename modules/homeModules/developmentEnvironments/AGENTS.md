@@ -14,6 +14,7 @@ Provide independently selectable Home Manager bundles for platform-specific tool
 - Environment modules install removable platform tooling, not project source, dependencies, or runtime state.
 - Add a platform module only for a real project, using one independently selectable bundle per platform.
 - JavaScript global package directories and Rustup toolchains are intentionally user-writable.
+- The JavaScript environment overrides nixpkgs Bun with the latest x86_64 Linux GitHub release; update its version and source hash together.
 - Rust activation must remain safe during Home Manager dry runs and idempotent on repeated activation.
 - Debug adapter source paths must come from packages installed by the same module.
 
