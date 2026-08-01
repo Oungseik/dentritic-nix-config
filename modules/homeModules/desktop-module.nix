@@ -7,9 +7,11 @@
       jq
       slurp
       wl-clipboard
-      wl-clip-persist
     ];
 
-    services.polkit-gnome.enable = true;
+    services = {
+      polkit-gnome.enable = true;
+      wl-clip-persist.enable = true;
+    };
   };
 }
