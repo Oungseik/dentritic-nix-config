@@ -9,7 +9,13 @@
 
       plugins = with pkgs.tmuxPlugins; [
         sensible
-        vim-tmux-navigator
+        {
+          plugin = vim-tmux-navigator;
+          extraConfig = ''
+            # Forward Ctrl-hjkl to pane-aware applications.
+            set -g @vim_navigator_pattern '(\S+/)?g?\.?(view|l?n?vim?x?|fzf|otlp-tui)(diff)?(-wrapped)?'
+          '';
+        }
         {
           plugin = tmux-nova;
           extraConfig = ''
