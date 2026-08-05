@@ -7,7 +7,7 @@
       self.nixosModules.desktop
       self.nixosModules.sddm
       # self.nixosModules.gdm
-      self.nixosModules.hyprland
+      # self.nixosModules.hyprland
       self.nixosModules.niri
       self.nixosModules.gaming
       self.nixosModules.waydroid

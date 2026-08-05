@@ -9,7 +9,20 @@
         configFile.niri.source = config.lib.file.mkOutOfStoreSymlink configPath;
         portal = {
           enable = true;
-          extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+          config.niri = {
+            default = [
+              "gnome"
+              "gtk"
+            ];
+            "org.freedesktop.impl.portal.Access" = "gtk";
+            "org.freedesktop.impl.portal.Notification" = "gtk";
+            "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+          };
+          extraPortals = with pkgs; [
+            gnome-keyring
+            xdg-desktop-portal-gnome
+            xdg-desktop-portal-gtk
+          ];
         };
       };
     };
