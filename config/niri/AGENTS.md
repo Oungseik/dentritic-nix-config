@@ -13,7 +13,7 @@ Keep hand-maintained Niri configuration editable through the live out-of-store X
 ## Local Contracts
 
 - `config.kdl` includes `keybindings.kdl` and `window_rules.kdl`.
-- `Mod+N` opens `$EDITOR` in `~/Notes` as a regular window.
+- `Mod+N` opens one dedicated Neovide instance in `~/Notes` on the `stash` workspace, or focuses that window when it already exists.
 - `Mod+Ctrl+Shift+H/L` moves the current workspace to the monitor on the left or right, not the active window or column.
 - `Mod+Alt+H/L` moves the focused window to the monitor on the left or right.
 - `Mod+Tab` cycles through windows on the current workspace; `Mod+Shift+Tab` toggles the current and previous workspace.

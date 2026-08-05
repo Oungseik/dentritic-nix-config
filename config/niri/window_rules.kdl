@@ -14,6 +14,12 @@ workspace "stash" {
 }
 
 window-rule {
+    match app-id=r#"^neovide-notes$"#
+    open-on-workspace "stash"
+    open-focused true
+}
+
+window-rule {
     match app-id=r#"^(kitty|google-chrome(-stable)?)$"#
     match app-id=r#"^(codex-desktop|com.anthropic.Claude|discord|slack)$"#
     default-column-width { proportion 1.0; }
