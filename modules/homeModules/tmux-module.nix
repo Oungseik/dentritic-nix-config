@@ -1,5 +1,7 @@
-{ ... }: {
+{ self, ... }: {
   flake.homeModules.tmux = { pkgs, ... }: {
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.airmux ];
+
     programs.tmux = {
       enable = true;
       baseIndex = 1;

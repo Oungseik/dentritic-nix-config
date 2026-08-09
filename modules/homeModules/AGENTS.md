@@ -15,6 +15,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `niri-module.nix` owns the out-of-store Niri configuration link and Niri's GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
 - `terminal-module.nix` owns Alacritty and Kitty and installs and selects the local ZedBrains Mono package.
+- `tmux-module.nix` owns Tmux configuration and installs the local Airmux session manager package.
 - `developmentEnvironments/` is delegated to its child DOX.
 - Enablement and ordering remain owned by `../home/oung.nix`.
 
