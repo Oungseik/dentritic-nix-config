@@ -1,5 +1,8 @@
 { ... }: {
   flake.homeModules.screenRecording = { pkgs, ... }: {
-    home.packages = with pkgs; [ kooha ];
+    home.packages = with pkgs; [
+      kooha
+      wf-recorder
+    ];
   };
 }
