@@ -5,13 +5,13 @@
     {
       packages.wrangler = pkgs.stdenv.mkDerivation (finalAttrs: {
         pname = "wrangler";
-        version = "4.120.0";
+        version = "4.121.0";
 
         src = pkgs.fetchFromGitHub {
           owner = "cloudflare";
           repo = "workers-sdk";
           rev = "wrangler@${finalAttrs.version}";
-          hash = "sha256-gb/+mYZRW8RnMFYRTnrktiYVw6TyYZO47lzoCj4Qq4w=";
+          hash = "sha256-AVJZNEe7Kbz9clVaCmxemtk1zjgoMEMlwYmesV0Gp1w=";
         };
 
         pnpmDeps = pkgs.fetchPnpmDeps {
@@ -22,7 +22,7 @@
             ;
           pnpm = pkgs.pnpm_10;
           fetcherVersion = 3;
-          hash = "sha256-eC6mCJ69cwG2xD9ru9drrhCHiza33QY05V2inMxUKtU=";
+          hash = "sha256-hY1CS/vXf7q5f4OhBuyEc1py+AXu2WNbSbmws1DLF2s=";
         };
 
         buildInputs = [
