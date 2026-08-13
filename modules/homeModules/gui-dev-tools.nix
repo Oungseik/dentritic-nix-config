@@ -13,7 +13,7 @@
 
       programs.codexDesktopLinux = {
         enable = true;
-        cliPackage = pkgs.codex;
+        package = pkgs.codex;
       };
     };
 }
