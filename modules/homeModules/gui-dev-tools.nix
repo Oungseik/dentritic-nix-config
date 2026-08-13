@@ -7,13 +7,12 @@
 
       home.packages = with pkgs; [
         self.packages.${stdenv.hostPlatform.system}.claude-desktop
+        codex
         vscode-fhs
         code-cursor-fhs
       ];
 
-      programs.codexDesktopLinux = {
-        enable = true;
-        package = pkgs.codex;
-      };
+      home.sessionVariables.CODEX_CLI_PATH = "${pkgs.codex}/bin/codex";
+      programs.codexDesktopLinux.enable = true;
     };
 }
