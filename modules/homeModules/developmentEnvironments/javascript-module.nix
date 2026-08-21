@@ -24,10 +24,10 @@
       home.packages = with pkgs; [
         nodejs
         (bun.overrideAttrs (_: rec {
-          version = "1.3.14";
+          version = "1.4.0";
           src = fetchurl {
             url = "https://github.com/oven-sh/bun/releases/download/bun-v${version}/bun-linux-x64.zip";
-            hash = "sha256-lR7iruhV8IWVruxiJSJqKY0/6oOj3NZGXAnLzN9+hI8=";
+            hash = "sha256-LQP7X7g6yLVnrKCigbLOGhoZ1Ij1bClo2Iw/Jekv5FI=";
           };
         }))
         deno
