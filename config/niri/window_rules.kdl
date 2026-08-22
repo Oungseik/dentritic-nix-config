@@ -49,7 +49,7 @@ window-rule {
 }
 
 layout {
-    gaps 4
+    gaps 8
     center-focused-column "never"
     preset-column-widths {
         proportion 0.4
@@ -63,7 +63,7 @@ layout {
         width 3
         active-color "#74c7ec"
         inactive-color "#505050"
-        active-gradient from="#80c8ff" to="#bbddaa" angle=45
+        active-gradient from="#80c8ff" to="#c7ff7f" angle=45
     }
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
