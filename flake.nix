@@ -8,6 +8,10 @@
     codex-desktop-linux = {
       url = "github:ilysenko/codex-desktop-linux";
     };
+    opencode = {
+      url = "github:anomalyco/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
