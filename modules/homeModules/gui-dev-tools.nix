@@ -8,9 +8,7 @@
       home.packages = with pkgs; [
         self.packages.${stdenv.hostPlatform.system}.claude-desktop
         self.packages.${stdenv.hostPlatform.system}.zcode
-        self.packages.${stdenv.hostPlatform.system}.opencode-desktop
         codex
-        opencode
         vscode-fhs
         code-cursor-fhs
       ];
