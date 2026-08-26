@@ -10,7 +10,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `communication-module.nix` owns team and company communication clients.
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration.
 - `desktop-module.nix` owns user tools and services shared across compositors, including Wayland clipboard persistence.
-- `gui-dev-tools.nix` owns graphical coding clients, including the local Claude Desktop and ZCode packages, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and OpenCode CLI and Desktop from the `opencode` input.
+- `gui-dev-tools.nix` owns graphical coding clients, including the local Claude Desktop, ZCode, and OpenCode Desktop packages, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and the nixpkgs OpenCode CLI.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `niri-module.nix` owns the out-of-store Niri configuration link and Niri's GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.

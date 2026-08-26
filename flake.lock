@@ -137,34 +137,13 @@
         "type": "github"
       }
     },
-    "opencode": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1787760889,
-        "narHash": "sha256-wpG5gi9UIB+6+NdsTgLTFBS7bQo/cQLvuObbC8EEqMI=",
-        "owner": "anomalyco",
-        "repo": "opencode",
-        "rev": "c5ef753d2869982183f64bf1ec6c92b7c4149c59",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anomalyco",
-        "repo": "opencode",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "codex-desktop-linux": "codex-desktop-linux",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
-        "nixpkgs": "nixpkgs_2",
-        "opencode": "opencode"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {
