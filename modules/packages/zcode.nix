@@ -12,7 +12,7 @@
       packages = lib.optionalAttrs (system == "x86_64-linux") {
         zcode =
           let
-            version = "3.8.1";
+            version = "3.9.2";
           in
           pkgs.stdenvNoCC.mkDerivation {
             pname = "zcode";
@@ -20,7 +20,7 @@
 
             src = pkgs.fetchurl {
               url = "https://cdn-zcode.z.ai/zcode/electron/releases/${version}/linux-x64/ZCode-${version}-linux-x64.deb";
-              hash = "sha256-WHGHdinrVvYIJRqV76kr+MKuBkXj1nrg3LXAISHkVXU=";
+              hash = "sha256-2z9CEaJ4r7sRkrY2MaC/b5c98xgeIV/h+YoypB0nXWw=";
             };
 
             nativeBuildInputs = with pkgs; [
