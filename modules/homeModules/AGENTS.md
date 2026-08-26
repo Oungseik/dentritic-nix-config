@@ -12,6 +12,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `desktop-module.nix` owns user tools and services shared across compositors, including Wayland clipboard persistence.
 - `gui-dev-tools.nix` owns graphical coding clients, including the local Claude Desktop, ZCode, and Codex Desktop packages, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and VS Code and Cursor.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
+- `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns the out-of-store Niri configuration link and Niri's GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
 - `terminal-module.nix` owns Alacritty and Kitty and installs and selects the local ZedBrains Mono package.

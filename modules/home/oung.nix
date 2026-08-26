@@ -17,6 +17,7 @@
       self.homeModules.git
       # self.homeModules.hyprland
       self.homeModules.hyprlock
+      self.homeModules.music
       self.homeModules.neovim
       self.homeModules.niri
       self.homeModules.noctalia
