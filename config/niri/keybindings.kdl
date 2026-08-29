@@ -18,6 +18,7 @@ binds {
     Mod+P hotkey-overlay-title="Toggle launcher" { spawn "sh" "-c" "noctalia-shell ipc call launcher toggle"; }
     Mod+E hotkey-overlay-title="Open file manager: yazi" { spawn "sh" "-c" "kitty -e yazi"; }
     Mod+N hotkey-overlay-title="Open notes" { spawn "sh" "-c" r#"id=$(niri msg --json windows | jq -r 'first(.[] | select(.app_id == "neovide-notes") | .id) // empty'); if [ -n "$id" ]; then exec niri msg action focus-window --id "$id"; else cd "$HOME/Notes" && exec neovide --wayland_app_id neovide-notes .; fi"#; }
+    Mod+Shift+M hotkey-overlay-title="Toggle music player: rmpc" { spawn "sh" "-c" r#"id=$(niri msg --json windows | jq -r 'first(.[] | select(.app_id == "rmpc") | .id) // empty'); if [ -n "$id" ]; then exec niri msg action focus-window --id "$id"; else exec kitty --class rmpc -e rmpc; fi"#; }
 
     // Hardware controls
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
