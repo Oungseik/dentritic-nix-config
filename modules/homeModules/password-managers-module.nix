@@ -13,5 +13,29 @@
           extensions.pass-otp
         ]);
       };
+
+      programs.television.channels.pass = {
+        metadata = {
+          name = "pass";
+          description = "Search password-store entries; enter copies the password, ctrl-o the OTP code";
+          requirements = [ "pass" ];
+        };
+        source.command = ''cd "''${PASSWORD_STORE_DIR:-$HOME/.password-store}" && find . -name '*.gpg' -printf '%P\n' | sed 's/\.gpg$//' | sort'';
+        # No preview: `pass show` would decrypt and launch pinentry-curses over tv's TTY, breaking the channel.
+        keybindings = {
+          enter = "actions:copy-password";
+          ctrl-o = "actions:copy-otp";
+        };
+        actions = {
+          copy-password = {
+            command = "pass show -c '{}'";
+            mode = "execute";
+          };
+          copy-otp = {
+            command = "pass otp -c '{}'";
+            mode = "execute";
+          };
+        };
+      };
     };
 }

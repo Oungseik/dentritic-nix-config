@@ -8,7 +8,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 
 - Each top-level Nix file owns one named Home Manager feature.
 - `communication-module.nix` owns team and company communication clients.
-- `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration.
+- `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
 - `desktop-module.nix` owns user tools and services shared across compositors, including Wayland clipboard persistence.
 - `gui-dev-tools.nix` owns graphical coding clients, including the local Claude Desktop, ZCode, and Codex Desktop packages, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and VS Code and Cursor.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
@@ -16,6 +16,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `niri-module.nix` owns the out-of-store Niri configuration link and Niri's GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
 - `terminal-module.nix` owns Alacritty and Kitty and installs and selects the local ZedBrains Mono package.
+- `television-module.nix` owns the Television fuzzy finder; it ships no shell integration because Atuin owns shell history and search.
 - `tmux-module.nix` owns Tmux configuration and installs the local Airmux session manager package.
 - `developmentEnvironments/` is delegated to its child DOX.
 - Enablement and ordering remain owned by `../home/oung.nix`.

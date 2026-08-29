@@ -23,6 +23,7 @@
       self.homeModules.noctalia
       self.homeModules.passwordManagers
       self.homeModules.screenRecording
+      self.homeModules.television
       self.homeModules.terminals
       self.homeModules.theme
       self.homeModules.tmux
