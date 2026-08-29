@@ -4,7 +4,6 @@
     home.packages = with pkgs; [
       brightnessctl
       grim
-      jq
       slurp
       wl-clipboard
     ];

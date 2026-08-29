@@ -12,6 +12,7 @@
       self.homeModules.cliUtils
       self.homeModules.communication
       self.homeModules.desktop
+      self.homeModules.shellScripts
       self.homeModules.eReader
       self.homeModules.guiDevTools
       self.homeModules.git
