@@ -336,15 +336,15 @@
                 match._props."app-id" = "^rmpc$";
                 "open-floating" = true;
                 "default-column-width".proportion = 0.6;
-                "default-window-height".proportion = 0.6;
+                "default-window-height".proportion = 0.8;
               };
             }
             {
               "window-rule" = {
                 match._props."app-id" = "^tv-pass$";
                 "open-floating" = true;
-                "default-column-width".proportion = 0.4;
-                "default-window-height".proportion = 0.6;
+                "default-column-width".proportion = 0.6;
+                "default-window-height".proportion = 0.8;
               };
             }
             {
