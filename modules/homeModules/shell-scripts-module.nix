@@ -34,11 +34,30 @@
           exec kitty --class rmpc -e rmpc
         '';
       };
+
+      qrRead = pkgs.writeShellApplication {
+        name = "qr-read";
+        runtimeInputs = with pkgs; [
+          grim
+          slurp
+          wl-clipboard
+          zbar
+        ];
+        text = ''
+          region=$(slurp) || exit 0
+
+          content=$(grim -g "$region" - | zbarimg -q --raw -) || exit 1
+
+          printf '%s\n' "$content"
+          printf '%s' "$content" | wl-copy
+        '';
+      };
     in
     {
       home.packages = [
         launchNotes
         launchRmpc
+        qrRead
       ];
     };
 }

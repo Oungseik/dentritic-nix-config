@@ -10,7 +10,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `communication-module.nix` owns team and company communication clients.
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
 - `desktop-module.nix` owns user tools and services shared across compositors, including Wayland clipboard persistence.
-- `shell-scripts-module.nix` owns generated Niri launcher scripts and their runtime dependencies.
+- `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients, including the local Claude Desktop, ZCode, and Codex Desktop packages, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and VS Code and Cursor.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
@@ -38,6 +38,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `shellScripts` supplies launcher dependencies through each `writeShellApplication`; do not add those dependencies to `desktop-module.nix` solely for a launcher.
 - `launch-notes` opens or focuses one dedicated Neovide instance in `~/Notes`; Niri's `Mod+N` binds it and places it on `stash`.
 - `launch-rmpc` opens or focuses one rmpc Kitty window; Niri's `Mod+Shift+M` binds it and floats it at 60% width and height.
+- `qr-read` selects a screen region with `slurp`, pipes a `grim` capture into `zbarimg`, prints every decoded code to stdout, and copies them to the clipboard; without a QR code it exits nonzero and leaves the clipboard untouched.
 - Niri's `Mod+Shift+Insert` opens Television's `pass` channel in a dedicated Kitty window floating at 40% width and 60% height.
 - `Mod+Ctrl+Shift+H/L` moves the current workspace between horizontal monitors; `Mod+Alt+H/L` moves the focused window.
 - Keep the GNOME portal in the Home Manager portal set so Niri screen sharing remains available when Hyprland is composed in the same profile.
