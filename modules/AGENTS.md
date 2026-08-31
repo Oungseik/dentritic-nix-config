@@ -9,7 +9,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - `flake-parts.nix` defines shared flake-parts systems and the `flake.homeModules` option.
 - `home/` composes Home Manager profiles and owns per-user base settings.
 - `hosts/` composes NixOS systems and owns hardware, filesystems, users, and state versions.
-- `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, and its Waydroid feature enables containerized Android apps with nftables networking for current kernels.
+- `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, its Waydroid feature enables containerized Android apps with nftables networking for current kernels, and its gaming feature requires the `nix-cachyos-kernel` input to add a `game-time` boot specialization using the CachyOS BORE ThinLTO x86-64-v3 kernel while leaving the default kernel unchanged.
 - `packages/` owns custom package outputs, including Airmux, Wrangler, ZCode, the OpenCode Desktop deb package, and the locally bundled four-face ZedBrains Mono font family.
 - `homeModules/` is delegated to its child DOX.
 
