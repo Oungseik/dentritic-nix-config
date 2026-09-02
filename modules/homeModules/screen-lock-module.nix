@@ -1,9 +1,37 @@
 { ... }: {
-  flake.homeModules.hyprlock = { pkgs, ... }: {
+  flake.homeModules.screenLock = { pkgs, ... }: {
     home.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       playerctl
     ];
+
+    services.hypridle = {
+      enable = true;
+
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+          before_sleep_cmd = "pidof hyprlock || hyprlock";
+          after_sleep_cmd = "niri msg action power-on-monitors";
+        };
+
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "pidof hyprlock || hyprlock";
+          }
+          {
+            timeout = 600;
+            on-timeout = "niri msg action power-off-monitors";
+            on-resume = "niri msg action power-on-monitors";
+          }
+          {
+            timeout = 3600;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
 
     programs.hyprlock = {
       enable = true;

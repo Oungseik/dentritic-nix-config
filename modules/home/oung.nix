@@ -17,7 +17,7 @@
       self.homeModules.guiDevTools
       self.homeModules.git
       # self.homeModules.hyprland
-      self.homeModules.hyprlock
+      self.homeModules.screenLock
       # self.homeModules.music
       self.homeModules.neovim
       self.homeModules.niri
