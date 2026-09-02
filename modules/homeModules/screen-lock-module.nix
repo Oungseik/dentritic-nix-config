@@ -17,11 +17,11 @@
 
         listener = [
           {
-            timeout = 300;
+            timeout = 600;
             on-timeout = "pidof hyprlock || hyprlock";
           }
           {
-            timeout = 600;
+            timeout = 900;
             on-timeout = "niri msg output eDP-1 off";
             on-resume = "niri msg output eDP-1 on";
           }
