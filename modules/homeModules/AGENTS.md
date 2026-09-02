@@ -47,7 +47,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Hyprland's `Mod+N` note scratchpad starts `$EDITOR` with `~/Notes` as its working directory.
 - Modules that expose mutable configuration still manage their packages, out-of-store links, and stable integration settings; their mutable content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
-- `hyprlock-module.nix` consumes the tracked lock-screen asset; preserve the relative source relationship.
+- `hyprlock-module.nix` asks Noctalia for the current `eDP-1` wallpaper and blurs that image, keeping open windows out of the lock screen; Noctalia applies one wallpaper to all monitors.
 
 ## Work Guidance
 
