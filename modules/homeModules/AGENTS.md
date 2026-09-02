@@ -47,7 +47,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Hyprland's `Mod+N` note scratchpad starts `$EDITOR` with `~/Notes` as its working directory.
 - Modules that expose mutable configuration still manage their packages, out-of-store links, and stable integration settings; their mutable content is owned by `config/`.
 - `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
-- `screen-lock-module.nix` owns the screen-lock stack: hyprlock lock UI (blurring Noctalia's current `eDP-1` wallpaper so open windows stay out of the lock screen) and the hypridle daemon (5 min lock, 10 min monitor power-off, 60 min suspend, lock before sleep); hypridle runs through `services.hypridle`, whose unit binds to `graphical-session.target` — SDDM's `niri-session` already activates that target, so compositors must not launch hypridle via `spawn-at-startup`.
+- `screen-lock-module.nix` owns the screen-lock stack: hyprlock lock UI (blurring Noctalia's current `eDP-1` wallpaper so open windows stay out of the lock screen) and the hypridle daemon (5 min lock, 10 min `eDP-1` laptop-display power-off while external displays stay on, 60 min suspend, lock before sleep); hypridle runs through `services.hypridle`, whose unit binds to `graphical-session.target` — SDDM's `niri-session` already activates that target, so compositors must not launch hypridle via `spawn-at-startup`.
 
 ## Work Guidance
 
