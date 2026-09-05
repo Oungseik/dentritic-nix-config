@@ -27,12 +27,13 @@
           ctrl-o = "actions:copy-otp";
         };
         actions = {
+          # sleep is super necessary here, unless the password won't be in clipboard
           copy-password = {
-            command = "pass show -c '{}'";
+            command = "pass show -c '{}' && sleep 1;";
             mode = "execute";
           };
           copy-otp = {
-            command = "pass otp -c '{}'";
+            command = "pass otp -c '{}' && sleep 1";
             mode = "execute";
           };
         };
