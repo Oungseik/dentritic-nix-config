@@ -3,12 +3,14 @@
     home.packages = with pkgs; [
       dust
       fd
+      file
       gnupg
       just
       lsof
       gnumake
       nix-prefetch-git
       pinentry-curses
+      sqlite
       unzip
       zip
     ];
