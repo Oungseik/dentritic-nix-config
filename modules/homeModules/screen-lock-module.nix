@@ -25,10 +25,6 @@
             on-timeout = "niri msg output eDP-1 off";
             on-resume = "niri msg output eDP-1 on";
           }
-          {
-            timeout = 3600;
-            on-timeout = "systemctl suspend";
-          }
         ];
       };
     };
