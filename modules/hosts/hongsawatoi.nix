@@ -92,6 +92,12 @@
         ];
       };
 
+      # ---- BEGIN hardware-configuration.nix ----
+      # Stock generated `hardware-configuration.nix` from `nixos-generate-config`,
+      # inlined instead of kept as a separate file; runs to the end of this module.
+      # When creating a new host, paste the freshly generated contents over this
+      # block (keep hostName, stateVersion, and any hand-added mounts above).
+
       imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
       boot.initrd.availableKernelModules = [
