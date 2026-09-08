@@ -21,6 +21,7 @@
 
       settings = {
         auto_sync = true;
+        enter_accept = true;
         sync_frequency = "15m";
         history_filter = [
           "^z"
