@@ -12,7 +12,7 @@
       packages = lib.optionalAttrs (system == "x86_64-linux") {
         claude-desktop =
           let
-            version = "1.24012.9";
+            version = "1.49585.0";
 
             runtimeLibraries = with pkgs; [
               libGL
@@ -32,7 +32,7 @@
 
               src = pkgs.fetchurl {
                 url = "https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${version}_amd64.deb";
-                hash = "sha256-MC5tII3YyOnlIGfaoo7zsRcaFhNYb9DhC+3GQiJbbuE=";
+                hash = "sha256-4LTOYxOUOmnpvWF0mik7/KJBtN+zf4jfZBG0tp7GekA=";
               };
 
               nativeBuildInputs = with pkgs; [

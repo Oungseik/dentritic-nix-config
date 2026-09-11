@@ -12,7 +12,7 @@
       packages = lib.optionalAttrs (system == "x86_64-linux") {
         opencode-desktop =
           let
-            version = "1.18.23";
+            version = "1.18.30";
           in
           pkgs.stdenvNoCC.mkDerivation {
             pname = "opencode-desktop";
@@ -20,7 +20,7 @@
 
             src = pkgs.fetchurl {
               url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-desktop-linux-amd64.deb";
-              hash = "sha256-T7B5VtRrEbAoCAPvrmngUP6bwz1yVBwwzxoaP9qrzEY=";
+              hash = "sha256-ZYxgyjtREAslrIUUnTW24Yk59YGM6XWlL9OMV8atEe4=";
             };
 
             nativeBuildInputs = with pkgs; [
