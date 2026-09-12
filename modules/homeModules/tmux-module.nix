@@ -12,6 +12,14 @@
       plugins = with pkgs.tmuxPlugins; [
         sensible
         {
+          plugin = resurrect;
+          extraConfig = ''
+            # Snapshot state per tmux server, keyed by the server's socket name.
+            run-shell '${pkgs.tmux}/bin/tmux set-option -g @resurrect-dir "$HOME/.local/state/tmux/resurrect/#{b:socket_path}"'
+            set -g @resurrect-processes ':all:'
+          '';
+        }
+        {
           plugin = vim-tmux-navigator;
           extraConfig = ''
             # Forward Ctrl-hjkl to pane-aware applications.

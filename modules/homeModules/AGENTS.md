@@ -31,6 +31,8 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
 - Tmux resolves `default-shell` from the current user's passwd entry so dev shells cannot replace it through `$SHELL`.
+- Tmux snapshots are per server: `tmux-resurrect` writes under `~/.local/state/tmux/resurrect/<socket>` and restores all pane processes with `@resurrect-processes ':all:'`; pane contents are not captured.
+- Tmux save and restore stay manual on the plugin's `prefix C-s` / `prefix C-r` bindings, and snapshot retention deliberately stays at the plugin default (age-based cleanup, never below five files).
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
 - Niri's `wayland.windowManager.niri.settings.binds` is the default source of truth for window, workspace, and monitor navigation; Hyprland mirrors supported semantic equivalents except for explicit Hyprland-specific bindings documented here.
