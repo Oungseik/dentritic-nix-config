@@ -1,8 +1,9 @@
-{ ... }: {
+{ self, ... }: {
   flake.homeModules.eReader = { pkgs, ... }: {
     home.packages = with pkgs; [
       evince
       zathura
+      self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono
     ];
 
     programs.zathura = {
@@ -11,45 +12,51 @@
         "[normal] <C-=>" = "zoom in";
         "[normal] <C-->" = "zoom out";
       };
+      # Kanagawa "Lotus" (light) palette; literals taken from the upstream
+      # palette in rebelot/kanagawa.nvim (`lua/kanagawa/colors.lua`).
       options = {
-        default-fg = "rgba(220,215,186,1)";
-        default-bg = "rgba(31,31,40,1)";
+        # girara UI font (statusbar, inputbar, completion); page text scales with zoom.
+        font = "ZedBrainsMono Nerd Font 14";
 
-        completion-bg = "rgba(54,54,70,1)";
-        completion-fg = "rgba(220,215,186,1)";
-        completion-highlight-bg = "rgba(45,79,103,1)";
-        completion-highlight-fg = "rgba(220,215,186,1)";
-        completion-group-bg = "rgba(54,54,70,1)";
-        completion-group-fg = "rgba(126,156,216,1)";
+        default-fg = "#545464"; # lotusInk1
+        default-bg = "#f2ecbc"; # lotusWhite3
 
-        statusbar-fg = "rgba(200,192,147,1)";
-        statusbar-bg = "rgba(54,54,70,1)";
+        completion-bg = "#c7d7e0"; # lotusBlue1
+        completion-fg = "#43436c"; # lotusInk2
+        completion-highlight-bg = "#9fb5c9"; # lotusBlue3
+        completion-highlight-fg = "#43436c"; # lotusInk2
+        completion-group-bg = "#c7d7e0"; # lotusBlue1
+        completion-group-fg = "#4d699b"; # lotusBlue4
 
-        notification-bg = "rgba(54,54,70,1)";
-        notification-fg = "rgba(220,215,186,1)";
-        notification-error-bg = "rgba(54,54,70,1)";
-        notification-error-fg = "rgba(228,104,118,1)";
-        notification-warning-bg = "rgba(54,54,70,1)";
-        notification-warning-fg = "rgba(230,195,132,1)";
+        statusbar-fg = "#43436c"; # lotusInk2
+        statusbar-bg = "#e7dba0"; # lotusWhite4
 
-        inputbar-fg = "rgba(220,215,186,1)";
-        inputbar-bg = "rgba(54,54,70,1)";
+        notification-bg = "#e7dba0"; # lotusWhite4
+        notification-fg = "#545464"; # lotusInk1
+        notification-error-bg = "#e7dba0"; # lotusWhite4
+        notification-error-fg = "#e82424"; # lotusRed3
+        notification-warning-bg = "#e7dba0"; # lotusWhite4
+        notification-warning-fg = "#e98a00"; # lotusOrange2
+
+        inputbar-fg = "#545464"; # lotusInk1
+        inputbar-bg = "#e7dba0"; # lotusWhite4
 
         recolor = true;
-        recolor-lightcolor = "rgba(31,31,40,1)";
-        recolor-darkcolor = "rgba(220,215,186,1)";
+        recolor-lightcolor = "#f2ecbc"; # lotusWhite3, pages read as warm paper
+        recolor-darkcolor = "#545464"; # lotusInk1
+        recolor-keephue = true; # keep image hues, remap luminance only
 
-        index-fg = "rgba(220,215,186,1)";
-        index-bg = "rgba(31,31,40,1)";
-        index-active-fg = "rgba(220,215,186,1)";
-        index-active-bg = "rgba(45,79,103,1)";
+        index-fg = "#545464"; # lotusInk1
+        index-bg = "#f2ecbc"; # lotusWhite3
+        index-active-fg = "#545464"; # lotusInk1
+        index-active-bg = "#b5cbd2"; # lotusBlue2
 
-        render-loading-bg = "rgba(31,31,40,1)";
-        render-loading-fg = "rgba(220,215,186,1)";
+        render-loading-bg = "#f2ecbc"; # lotusWhite3
+        render-loading-fg = "#545464"; # lotusInk1
 
-        highlight-color = "rgba(34,50,73,1)";
-        highlight-fg = "rgba(220,215,186,1)";
-        highlight-active-color = "rgba(45,79,103,1)";
+        highlight-color = "#c9cbd1"; # lotusViolet3
+        highlight-fg = "#545464"; # lotusInk1
+        highlight-active-color = "#b5cbd2"; # lotusBlue2
       };
       extraConfig = ''
         set selection-clipboard clipboard
