@@ -7,11 +7,13 @@ Provide independently selectable Home Manager bundles for platform-specific tool
 ## Ownership
 
 - Each platform module owns its language toolchain and related debugging tools.
+- `python-module.nix` owns the Python interpreter and its nixpkgs-provided libraries used to write and run ad-hoc scripts.
 
 ## Local Contracts
 
 - Enable a platform by composing its module in `../../home/oung.nix`; disable it there and rebuild Home Manager when that work ends.
 - Environment modules install removable platform tooling, not project source, dependencies, or runtime state.
+- Python libraries come from nixpkgs through `python3.withPackages` in `python-module.nix`; never install with pip, so removing the module leaves no packages behind.
 - Add a platform module only for a real project, using one independently selectable bundle per platform.
 - JavaScript global package directories and Rustup toolchains are intentionally user-writable.
 - The JavaScript environment overrides nixpkgs Bun with the latest x86_64 Linux GitHub release; update its version and source hash together.

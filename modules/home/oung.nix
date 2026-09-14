@@ -31,6 +31,7 @@
       self.homeModules.zsh
 
       self.homeModules.javascriptDevelopmentEnvironment
+      self.homeModules.pythonDevelopmentEnvironment
       self.homeModules.rustDevelopmentEnvironment
       # self.homeModules.goDevelopmentEnvironment
       # self.homeModules.phpDevelopmentEnvironment
