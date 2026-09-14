@@ -20,11 +20,6 @@
             timeout = 600;
             on-timeout = "pidof hyprlock || hyprlock";
           }
-          {
-            timeout = 900;
-            on-timeout = "niri msg output eDP-1 off";
-            on-resume = "niri msg output eDP-1 on";
-          }
         ];
       };
     };
