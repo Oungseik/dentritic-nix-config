@@ -10,7 +10,6 @@
         portalPackage = null;
 
         settings = {
-          "spawn-at-startup" = [ "noctalia-shell" ];
           "screenshot-path" = "~/Pictures/Screenshots from %Y-%m-%d %H-%M-%S.png";
           "prefer-no-csd" = { };
 
@@ -300,6 +299,9 @@
           };
 
           _children = [
+            { "spawn-at-startup"._args = [ "noctalia-shell" ]; }
+            { "spawn-at-startup"._args = [ "discord" ]; }
+            { "spawn-at-startup"._args = [ "slack" ]; }
             {
               workspace = {
                 _args = [ "codespace" ];
@@ -322,6 +324,14 @@
               workspace = {
                 _args = [ "stash" ];
                 "open-on-output" = "HDMI-A-1";
+              };
+            }
+            {
+              "window-rule" = {
+                match._props = {
+                  "app-id" = "^(discord|slack)$";
+                };
+                "open-on-workspace" = "communication";
               };
             }
             {

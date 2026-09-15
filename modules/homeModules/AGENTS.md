@@ -41,6 +41,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `shellScripts` supplies launcher dependencies through each `writeShellApplication`; do not add those dependencies to `desktop-module.nix` solely for a launcher.
 - `launch-notes` opens or focuses one dedicated Neovide instance in `~/Notes`; Niri's `Mod+N` binds it and places it on `stash`.
 - `launch-rmpc` opens or focuses one rmpc Kitty window; Niri's `Mod+Shift+M` binds it and floats it at 60% width and 80% height.
+- Niri spawns Discord and Slack at startup; its window rule opens every new window with app-id `discord` or `slack` on the `communication` workspace, including later launches.
 - `qr-read` selects a screen region with `slurp`, pipes a `grim` capture into `zbarimg`, prints every decoded code to stdout, and copies them to the clipboard; without a QR code it exits nonzero and leaves the clipboard untouched.
 - Niri's `Mod+Shift+Insert` opens Television's `pass` channel in a dedicated Kitty window floating at 40% width and 80% height.
 - `Mod+Ctrl+Shift+H/L` moves the current workspace between horizontal monitors; `Mod+Alt+H/L` moves the focused window.
