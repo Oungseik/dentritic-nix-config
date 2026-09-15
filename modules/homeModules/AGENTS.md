@@ -16,7 +16,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
-- `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default.
+- `theme.nix` owns shared GTK/Qt styling and the 24px Bibata Modern Ice pointer default; Qt 5/6 general fonts inherit GTK's font family and size.
 - `terminal-module.nix` owns Alacritty and Kitty and installs and selects the local ZedBrains Mono package.
 - `television-module.nix` owns the Television fuzzy finder; it ships no shell integration because Atuin owns shell history and search.
 - `tmux-module.nix` owns Tmux configuration and installs the local Airmux session manager package.

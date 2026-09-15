@@ -33,6 +33,8 @@
       platformTheme.name = "qtct";
       qt5ctSettings.Appearance.icon_theme = config.gtk.iconTheme.name;
       qt6ctSettings.Appearance.icon_theme = config.gtk.iconTheme.name;
+      qt5ctSettings.Fonts.general = ''"${config.gtk.font.name},${toString config.gtk.font.size}"'';
+      qt6ctSettings.Fonts.general = config.qt.qt5ctSettings.Fonts.general;
 
       style.name = "adwaita-dark";
       style.package = pkgs.adwaita-qt;
