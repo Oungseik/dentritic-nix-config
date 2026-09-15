@@ -24,7 +24,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Change `system.stateVersion` or `home.stateVersion` only as part of an explicit migration.
 - The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables.
 - `packages.hiddify` repackages the pinned x86-64 Debian release without running maintainer scripts or granting TUN privileges. Keep the Flutter bundle together, expose its library directory for runtime loading, and patch the bundled CLI's relative core dependency. Upstream's noncommercial license restrictions require unfree metadata.
-- `nixosModules.vpn` installs the custom Hiddify package alongside sshuttle and enables Throne with TUN mode; it does not grant Hiddify additional privileges.
+- `nixosModules.vpn` installs the custom Hiddify package alongside sshuttle and enables Throne with TUN mode; it does not grant Hiddify additional privileges. Throne is pinned to 1.2.4 with `overrideAttrs`, including its core vendor hash; `nixosModules/throne-nixos.patch` adapts the NixOS privilege patch to the split main-window sources while retaining the other nixpkgs patches.
 
 ## Work Guidance
 
