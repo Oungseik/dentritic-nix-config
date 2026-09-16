@@ -1,7 +1,6 @@
 { self, ... }: {
   flake.homeModules.terminals = { pkgs, ... }: {
     home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono ];
-    fonts.fontconfig.enable = true;
 
     programs.alacritty = {
       enable = true;

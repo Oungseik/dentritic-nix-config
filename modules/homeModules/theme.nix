@@ -1,5 +1,12 @@
 { self, ... }: {
   flake.homeModules.theme = { config, pkgs, ... }: {
+    home.packages = [ pkgs.roboto ];
+
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts.sansSerif = [ "Roboto" ];
+    };
+
     home.pointerCursor = {
       enable = true;
       package = pkgs.bibata-cursors;
