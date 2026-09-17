@@ -16,8 +16,10 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
-- `theme.nix` owns shared GTK/Qt styling, per-user fontconfig (enabled, with `Roboto` as the default sans-serif and `pkgs.roboto` installed), and the 24px Bibata Modern Ice pointer default; Qt 5/6 general fonts inherit GTK's font family and size.
-- `terminal-module.nix` owns Alacritty and Kitty and installs and selects the local ZedBrains Mono package.
+- `theme.nix` owns shared GTK/Qt styling, per-user fontconfig, and the 24px Bibata Modern Ice pointer default; it installs Roboto and the Noto Sans Thai/Myanmar subsets, keeps Roboto as the primary sans-serif with Thai fallback, and supplies Thai/Myanmar fallback for ZedBrainsMono requests. Qt 5/6 general fonts inherit GTK's font family and size.
+- `terminal-module.nix` owns Alacritty, Kitty, WezTerm, and Ghostty and installs the local ZedBrains Mono package. Kitty maps the Thai and Myanmar (including Extended-A/B) Unicode blocks to their Noto Sans families without a cell-height override; WezTerm and Ghostty explicitly include those fallbacks, while Alacritty uses shared Fontconfig. WezTerm and Ghostty share the Kanagawa palette and 14pt font and hide their tab bars because Tmux owns multiplexing.
+- Ghostty uses 90% background opacity, a non-blinking cursor, and no GTK titlebar; its `Ctrl+Shift+H/L/X/Z/G` bindings are unbound to pass through to terminal applications.
+- Keep programming ligatures enabled wherever supported: Kitty uses `disable_ligatures = "never"`; Ghostty and WezTerm retain their enabled defaults. Stock Alacritty does not support ligatures.
 - `television-module.nix` owns the Television fuzzy finder; it ships no shell integration because Atuin owns shell history and search.
 - `tmux-module.nix` owns Tmux configuration and installs the local Airmux session manager package.
 - `developmentEnvironments/` is delegated to its child DOX.
@@ -34,6 +36,8 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Tmux resolves `default-shell` from the current user's passwd entry so dev shells cannot replace it through `$SHELL`.
 - Tmux snapshots are per server: `tmux-resurrect` writes under `~/.local/state/tmux/resurrect/<socket>` and restores all pane processes with `@resurrect-processes ':all:'`; pane contents are not captured.
 - Tmux save and restore stay manual on the plugin's `prefix C-s` / `prefix C-r` bindings, and snapshot retention deliberately stays at the plugin default (age-based cleanup, never below five files).
+- Tmux owns pane navigation and keeps 50,000 lines of history; preserve Kitty's disabled `Ctrl+Shift+H/L/X/Z/G` bindings for the Tmux/Vim workflow.
+- Kitty keeps 10,000 scrollback lines, uses the default repaint delay, and leaves remote control disabled.
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
 - Niri's `wayland.windowManager.niri.settings.binds` is the default source of truth for window, workspace, and monitor navigation; Hyprland mirrors supported semantic equivalents except for explicit Hyprland-specific bindings documented here.

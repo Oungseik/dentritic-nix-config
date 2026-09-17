@@ -6,6 +6,7 @@
       enable = true;
       baseIndex = 1;
       clock24 = true;
+      historyLimit = 50000;
       keyMode = "vi";
       mouse = true;
 

@@ -1,6 +1,30 @@
 { self, ... }: {
-  flake.homeModules.terminals = { pkgs, ... }: {
+  flake.homeModules.terminals = { pkgs, lib, ... }: {
     home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono ];
+
+    programs.ghostty = {
+      # enable = true;
+      settings = {
+        theme = "Kanagawa Wave";
+        font-family = [
+          "ZedBrainsMono Nerd Font"
+          "Noto Sans Thai"
+          "Noto Sans Myanmar"
+        ];
+        font-size = 14;
+        background-opacity = 0.9;
+        cursor-style-blink = false;
+        gtk-titlebar = false;
+        window-show-tab-bar = "never";
+        keybind = [
+          "ctrl+shift+h=unbind"
+          "ctrl+shift+l=unbind"
+          "ctrl+shift+x=unbind"
+          "ctrl+shift+z=unbind"
+          "ctrl+shift+g=unbind"
+        ];
+      };
+    };
 
     programs.alacritty = {
       enable = true;
@@ -45,23 +69,35 @@
         "ctrl+shift+g" = "no_op";
       };
 
-      settings = {
-        "modify_font cell_height" = "110%";
+      extraConfig = ''
+        symbol_map U+0E00-U+0E7F Noto Sans Thai
+        symbol_map U+1000-U+109F,U+A9E0-U+A9FF,U+AA60-U+AA7F Noto Sans Myanmar
+      '';
 
-        cursor_beam_thinkness = 1;
+      settings = {
+        cursor_beam_thickness = 1;
         cursor_blink_interval = 0;
 
         enable_audio_bell = false;
         background_opacity = "0.9";
 
         editor = "nvim";
+        scrollback_lines = 10000;
 
-        repaint_delay = 20;
         input_delay = 3;
         sync_to_monitor = "yes";
-        allow_remote_control = "yes";
-        listen_on = "unix:@mykitty";
         disable_ligatures = "never";
+      };
+    };
+
+    programs.wezterm = {
+      # enable = true;
+
+      settings = {
+        color_scheme = "Kanagawa (Gogh)";
+        enable_tab_bar = false;
+        font = lib.generators.mkLuaInline ''wezterm.font_with_fallback({ "ZedBrainsMono Nerd Font", "Noto Sans Thai", "Noto Sans Myanmar" })'';
+        font_size = 14;
       };
     };
   };

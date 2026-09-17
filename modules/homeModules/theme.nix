@@ -1,10 +1,29 @@
 { self, ... }: {
   flake.homeModules.theme = { config, pkgs, ... }: {
-    home.packages = [ pkgs.roboto ];
+    home.packages = [
+      pkgs.roboto
+      (pkgs.noto-fonts.override { variants = [ "NotoSansThai" "NotoSansMyanmar" ]; })
+    ];
 
     fonts.fontconfig = {
       enable = true;
-      defaultFonts.sansSerif = [ "Roboto" ];
+      defaultFonts.sansSerif = [ "Roboto" "Noto Sans Thai" ];
+      configFile.terminal-fallback = {
+        enable = true;
+        text = ''
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+          <fontconfig>
+            <alias binding="strong">
+              <family>ZedBrainsMono Nerd Font</family>
+              <accept>
+                <family>Noto Sans Thai</family>
+                <family>Noto Sans Myanmar</family>
+              </accept>
+            </alias>
+          </fontconfig>
+        '';
+      };
     };
 
     home.pointerCursor = {
