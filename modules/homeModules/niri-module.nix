@@ -300,8 +300,6 @@
 
           _children = [
             { "spawn-at-startup"._args = [ "noctalia-shell" ]; }
-            { "spawn-at-startup"._args = [ "discord" ]; }
-            { "spawn-at-startup"._args = [ "slack" ]; }
             {
               workspace = {
                 _args = [ "codespace" ];
