@@ -16,7 +16,7 @@ Provide independently selectable Home Manager bundles for platform-specific tool
 - Python libraries come from nixpkgs through `python3.withPackages` in `python-module.nix`; never install with pip, so removing the module leaves no packages behind.
 - Add a platform module only for a real project, using one independently selectable bundle per platform.
 - JavaScript global package directories and Rustup toolchains are intentionally user-writable.
-- The JavaScript environment overrides nixpkgs Bun with the latest x86_64 Linux GitHub release; update its version and source hash together.
+- JavaScript runtimes and global package managers come from nixpkgs; do not pin them in the module.
 - Rust activation must remain safe during Home Manager dry runs and idempotent on repeated activation.
 - Debug adapter source paths must come from packages installed by the same module.
 

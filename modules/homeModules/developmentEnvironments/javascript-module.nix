@@ -23,13 +23,14 @@
 
       home.packages = with pkgs; [
         nodejs
-        (bun.overrideAttrs (_: rec {
-          version = "1.4.1";
-          src = fetchurl {
-            url = "https://github.com/oven-sh/bun/releases/download/bun-v${version}/bun-linux-x64.zip";
-            hash = "sha256-dMHDvufNmYUAyPlpzYlyNVrGoHIH6Uo57s4ZmbVv+r8=";
-          };
-        }))
+        # (bun.overrideAttrs (_: rec {
+        #   version = "1.4.1";
+        #   src = fetchurl {
+        #     url = "https://github.com/oven-sh/bun/releases/download/bun-v${version}/bun-linux-x64.zip";
+        #     hash = "sha256-dMHDvufNmYUAyPlpzYlyNVrGoHIH6Uo57s4ZmbVv+r8=";
+        #   };
+        # }))
+        bun
         deno
         pnpm
         turbo
