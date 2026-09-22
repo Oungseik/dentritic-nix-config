@@ -13,6 +13,11 @@
         # code-cursor-fhs
       ];
 
+      programs.zed-editor = {
+        enable = true;
+        userSettings.vim_mode = true;
+      };
+
       home.sessionVariables.CODEX_CLI_PATH = "${pkgs.codex}/bin/codex";
       programs.codexDesktopLinux.enable = true;
     };

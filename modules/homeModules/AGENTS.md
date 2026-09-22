@@ -12,7 +12,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `desktop-module.nix` owns user tools and services shared across compositors, including Wayland clipboard persistence.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
-- `gui-dev-tools.nix` owns graphical coding clients, including the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and VS Code and Cursor.
+- `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
 - `hyprland-module.nix` owns the Hyprland compositor feature.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
