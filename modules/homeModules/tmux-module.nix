@@ -9,6 +9,7 @@
       historyLimit = 50000;
       keyMode = "vi";
       mouse = true;
+      focusEvents = true;
 
       plugins = with pkgs.tmuxPlugins; [
         sensible
@@ -65,7 +66,6 @@
         set -g extended-keys on
         set -g extended-keys-format csi-u
 
-        set -g focus-events on
         set -s set-clipboard on
 
         bind -T copy-mode-vi v send -X begin-selection
