@@ -27,6 +27,7 @@
     {
       system.stateVersion = "26.11";
       networking.hostName = "hongsawatoi";
+      networking.firewall.interfaces.wlp1s0.allowedTCPPorts = [ 22 ];
       time.timeZone = "Asia/Yangon";
 
       nix = {
@@ -71,6 +72,13 @@
 
       services = {
         fstrim.enable = true;
+        openssh = {
+          enable = true;
+          openFirewall = false;
+          settings.PasswordAuthentication = true;
+          settings.KbdInteractiveAuthentication = false;
+          settings.PermitRootLogin = "no";
+        };
         fwupd.enable = true;
         power-profiles-daemon.enable = true;
       };

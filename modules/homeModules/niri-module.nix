@@ -268,7 +268,7 @@
               { proportion = 0.6; }
               { proportion = 1.0; }
             ];
-            "default-column-width".proportion = 0.6;
+            "default-column-width".proportion = 1.0;
             "focus-ring" = {
               width = 3;
               "active-color" = "#74c7ec";
@@ -353,15 +353,6 @@
                 "open-floating" = true;
                 "default-column-width".proportion = 0.6;
                 "default-window-height".proportion = 0.8;
-              };
-            }
-            {
-              "window-rule" = {
-                _children = [
-                  { match._props."app-id" = "^(kitty|google-chrome(-stable)?)$"; }
-                  { match._props."app-id" = "^(codex-desktop|com.anthropic.Claude|discord|slack)$"; }
-                ];
-                "default-column-width".proportion = 1.0;
               };
             }
             {

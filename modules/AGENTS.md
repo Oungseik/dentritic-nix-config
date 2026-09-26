@@ -22,6 +22,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Keep `flake.nixosConfigurations` and `flake.homeConfigurations` independent; do not embed Home Manager into the NixOS configuration.
 - Keep machine and system settings in `hosts/` or `nixosModules/`; keep user programs and settings in `home/` or `homeModules/` so they can switch without rebuilding NixOS.
 - Change `system.stateVersion` or `home.stateVersion` only as part of an explicit migration.
+- The `hongsawatoi` host enables SSH with password or key login for `oung`, denies root login, and exposes port 22 through the firewall only on its `wlp1s0` Wi-Fi interface. Keep optional tablet public keys in `~oung/.ssh/authorized_keys` outside the Nix store.
 - The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables.
 - `packages.hiddify` repackages the pinned x86-64 Debian release without running maintainer scripts or granting TUN privileges. Keep the Flutter bundle together, expose its library directory for runtime loading, and patch the bundled CLI's relative core dependency. Upstream's noncommercial license restrictions require unfree metadata.
 - `packages.outline-manager` wraps the x86-64 AppImage with its desktop launcher and icon. The upstream stable URL is mutable; update the package version and fixed hash together.

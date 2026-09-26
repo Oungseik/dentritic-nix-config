@@ -17,7 +17,7 @@
 
         listener = [
           {
-            timeout = 600;
+            timeout = 900;
             on-timeout = "pidof hyprlock || hyprlock";
           }
         ];
