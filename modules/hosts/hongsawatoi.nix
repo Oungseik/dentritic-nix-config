@@ -4,6 +4,7 @@
   flake.nixosConfigurations.hongsawatoi = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.hongsawatoi
+      self.nixosModules.sharedHost
       self.nixosModules.desktop
       self.nixosModules.sddm
       # self.nixosModules.gdm
@@ -28,33 +29,6 @@
       system.stateVersion = "26.11";
       networking.hostName = "hongsawatoi";
       networking.firewall.interfaces.wlp1s0.allowedTCPPorts = [ 22 ];
-      time.timeZone = "Asia/Yangon";
-
-      nix = {
-        gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 1w";
-        };
-        settings.auto-optimise-store = true;
-        settings.experimental-features = [
-          "pipe-operators"
-          "nix-command"
-          "flakes"
-        ];
-      };
-
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.tmp.cleanOnBoot = true;
-
-      environment.systemPackages = with pkgs; [
-        curl
-        clang
-        gcc
-        git
-        wget
-      ];
 
       users.users.oung = {
         isNormalUser = true;
@@ -65,30 +39,6 @@
           "wheel"
           "docker"
         ];
-      };
-
-      programs.nix-ld.enable = true;
-      programs.zsh.enable = true;
-
-      services = {
-        fstrim.enable = true;
-        openssh = {
-          enable = true;
-          openFirewall = false;
-          settings.PasswordAuthentication = true;
-          settings.KbdInteractiveAuthentication = false;
-          settings.PermitRootLogin = "no";
-        };
-        fwupd.enable = true;
-        power-profiles-daemon.enable = true;
-      };
-
-      hardware.bluetooth = {
-        enable = true;
-        powerOnBoot = true;
-        settings = {
-          General.Experimental = true;
-        };
       };
 
       fileSystems."/home/oung/extra-storage" = {

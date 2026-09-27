@@ -8,7 +8,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 
 - `flake-parts.nix` defines shared flake-parts systems and the `flake.homeModules` option.
 - `home/` composes Home Manager profiles and owns per-user base settings.
-- `hosts/` composes NixOS systems and owns hardware, filesystems, users, and state versions.
+- `hosts/` composes NixOS systems: `shared.nix` owns reusable host settings, while each host owns its hostname, user accounts, hardware, filesystems, interface-specific firewall rules, and state version.
 - `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, its Waydroid feature enables containerized Android apps with nftables networking for current kernels, and its gaming feature requires the `nix-cachyos-kernel` input to add a `game-time` boot specialization using the CachyOS BORE ThinLTO x86-64-v3 kernel while leaving the default kernel unchanged.
 - `packages/` owns custom package outputs, including Airmux, Wrangler, Claude Desktop, the OpenCode Desktop and Hiddify deb packages, the Outline Manager AppImage wrapper, the gruvbox-plus icon pack, and the locally bundled four-face ZedBrains Mono font family. Airmux builds from the `Oungseik/airmux` fork at a pinned rev, because upstream has no release carrying the fork's `init` and `clean` commands; update the rev, version stamp, and both hashes together when rebasing on upstream.
 - `homeModules/` is delegated to its child DOX.
