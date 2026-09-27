@@ -88,6 +88,7 @@ Default section order:
 
 - Keep the current single-user, single-host design direct. Generalize only when another real user or host requires it.
 - Prefer the smallest declarative Nix change and reuse existing modules before adding files or dependencies.
+- `just remove-generations <number>...` removes NixOS system generations; `just remove-hm-generations <number>...` removes standalone Home Manager generations. Neither runs garbage collection.
 - Treat hardware identifiers, state versions, and destructive migration steps as machine-specific safety boundaries.
 
 ## Verification
