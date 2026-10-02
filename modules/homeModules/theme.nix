@@ -7,13 +7,19 @@
 
     fonts.fontconfig = {
       enable = true;
-      defaultFonts.sansSerif = [ "Roboto" "Noto Sans Thai" ];
+      defaultFonts.sansSerif = [ "Roboto" "Noto Sans Thai" "Noto Sans Myanmar" ];
       configFile.terminal-fallback = {
         enable = true;
         text = ''
           <?xml version="1.0"?>
           <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
           <fontconfig>
+            <alias binding="strong">
+              <family>Roboto</family>
+              <accept>
+                <family>Noto Sans Myanmar</family>
+              </accept>
+            </alias>
             <alias binding="strong">
               <family>ZedBrainsMono Nerd Font</family>
               <accept>
