@@ -18,6 +18,8 @@
       initContent = ''
         # Graphical sessions can retain Home Manager's source guard after PATH is reset.
         path=(${lib.concatStringsSep " " config.home.sessionPath} $path)
+        # Keep local secrets and installer-managed exports outside the Nix store.
+        [[ -r "$HOME/.config/zsh/local.zsh" ]] && source "$HOME/.config/zsh/local.zsh"
 
         bindkey -e
         bindkey '^P' history-beginning-search-backward
