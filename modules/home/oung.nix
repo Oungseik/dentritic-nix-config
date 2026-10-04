@@ -46,6 +46,8 @@
         homeDirectory = "/home/oung";
       };
 
+      desktop.noctalia.version = "v4";
+
       home.packages = with pkgs; [ neovim ];
       home.sessionPath = [ "$HOME/.local/bin" ];
 

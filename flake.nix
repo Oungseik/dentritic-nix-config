@@ -1,4 +1,5 @@
 {
+  description = "My personal NixOS configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -7,6 +8,10 @@
     };
     codex-desktop-linux = {
       url = "github:ilysenko/codex-desktop-linux";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/v5.2.1";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # CachyOS gaming kernel for the host's "game-time" boot specialisation.

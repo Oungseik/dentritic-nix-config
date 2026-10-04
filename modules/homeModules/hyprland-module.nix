@@ -2,7 +2,7 @@
 {
   flake.homeModules.hyprland = { config, ... }: {
     wayland.windowManager.hyprland = {
-      enable = true;
+      enable = (config.desktop.noctalia.version or "v4") == "v4";
       configType = "hyprlang";
       xwayland.enable = true;
       systemd.enableXdgAutostart = true;

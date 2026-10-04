@@ -13,7 +13,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
-- `hyprland-module.nix` owns the Hyprland compositor feature.
+- `hyprland-module.nix` owns the optional v4-only Hyprland compositor feature; the selected profile uses Niri.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling, per-user fontconfig, and the 24px Bibata Modern Ice pointer default; it installs Roboto and the Noto Sans Thai/Myanmar subsets, keeps Roboto as the primary sans-serif with Thai/Myanmar fallback, supplies Myanmar fallback for explicit Roboto requests (including Zed UI), and supplies Thai/Myanmar fallback for ZedBrainsMono requests. Qt 5/6 general fonts inherit GTK's font family and size.
@@ -56,8 +56,10 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Hyprland starts XDG autostart applications through its Home Manager systemd integration so login services such as GNOME Keyring complete startup.
 - Hyprland's `Mod+N` note scratchpad starts `$EDITOR` with `~/Notes` as its working directory.
 - Modules that expose mutable configuration still manage their packages, out-of-store links, and stable integration settings; their mutable content is owned by `config/`.
-- `noctalia-module.nix` intentionally links `config/noctalia` from the repository's current absolute location.
-- `screen-lock-module.nix` owns the screen-lock stack: hyprlock lock UI (blurring Noctalia's current `eDP-1` wallpaper so open windows stay out of the lock screen) and the hypridle daemon (5 min lock, 10 min `eDP-1` laptop-display power-off while external displays stay on, 60 min suspend, lock before sleep); hypridle runs through `services.hypridle`, whose unit binds to `graphical-session.target` — SDDM's `niri-session` already activates that target, so compositors must not launch hypridle via `spawn-at-startup`.
+- `noctalia-module.nix` declares `desktop.noctalia.version` as `"v4"` (default) or `"v5"` and installs only the selected shell: `pkgs.noctalia-shell` or the upstream `inputs.noctalia` default package. Both modes retain the out-of-store `config/noctalia` directory link and the v5 `${xdg.stateHome}/noctalia/settings.toml` link to `config/noctalia/state/settings.toml`; switching versions must preserve both UI-managed mirrors. Adopt existing state files with Home Manager's `-b` backup option rather than forcing replacement.
+- The v4 package locally drops `noctalia-qs`'s unused Breakpad build input because it fails to link under the pinned toolchain; the fork's crash handler is already disabled by default. Remove this override when nixpkgs corrects the dependency list.
+- `screen-lock-module.nix` enables the previous Hyprlock appearance and Hypridle 15-minute lock timeout only for v4, including lock-before-sleep and Niri monitor restoration after waking. Hypridle runs through `services.hypridle`; compositors must not also autostart it. V5 installs neither Hyprlock nor Hypridle and uses Noctalia's native lock and idle behavior, configured through its UI.
+- Niri selects the shell startup, launcher, and `Mod+Shift+Delete` lock command at build time. V4 retains its previous audio, brightness, screenshot, and monitor-power behavior; v5 routes these through native Noctalia IPC, while `Alt+Print` retains Niri's window screenshot. V5 uses native Polkit and clipboard persistence, disabling the desktop's GNOME agent and `wl-clip-persist` defaults. Enable Noctalia's Polkit agent and native idle lock in its UI before testing v5; keep the daily 15-minute lock timeout and preserve the user's clipboard-history preference. Re-enter the graphical session after activating a version change so only the selected shell runs.
 
 ## Work Guidance
 
@@ -74,6 +76,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 ## Verification
 
 - Run `just check oung`.
+- Build both versions when changing Noctalia integration, leaving the daily profile value on `"v4"`; an `extendModules` override can verify v5 without editing the profile.
 
 ## Child DOX Index
 

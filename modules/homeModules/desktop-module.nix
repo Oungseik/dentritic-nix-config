@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.homeModules.desktop = { pkgs, ... }: {
+  flake.homeModules.desktop = { pkgs, lib, ... }: {
     home.packages = with pkgs; [
       brightnessctl
       ddcutil
@@ -10,8 +10,8 @@
     ];
 
     services = {
-      polkit-gnome.enable = true;
-      wl-clip-persist.enable = true;
+      polkit-gnome.enable = lib.mkDefault true;
+      wl-clip-persist.enable = lib.mkDefault true;
     };
   };
 }
