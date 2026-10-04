@@ -9,6 +9,8 @@
     programs = {
       throne = {
         enable = true;
+        # Retained GitHub release override; uncomment to use instead of nixpkgs.
+        /*
         package = pkgs.throne.overrideAttrs (
           finalAttrs: previousAttrs: {
             version = "1.3.1";
@@ -45,6 +47,7 @@
             };
           }
         );
+        */
         tunMode.enable = true;
       };
     };
