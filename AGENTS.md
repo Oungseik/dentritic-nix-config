@@ -76,8 +76,8 @@ Default section order:
 
 ## Project Contract
 
-- This is a personal dendritic Nix flake for the `hongsawatoi` NixOS host (an MSI Modern 15 A5M) and the `oung` Home Manager profile.
-- Deployment is intentionally two-phase: switch NixOS first, then switch the standalone Home Manager profile.
+- This is a personal dendritic Nix flake for the `hongsawatoi` (MSI Modern 15 A5M) and pending `suvannabhumi` NixOS hosts. `oung` is an independent Home Manager profile, not an account shared across hosts.
+- Where the `oung` profile is used, deployment is two-phase: switch NixOS first, then switch standalone Home Manager.
 - Home Manager-only changes must remain switchable without rebuilding or switching NixOS.
 - `flake.nix` stays a thin `flake-parts`/`import-tree` entry point; implementation belongs under `modules/`.
 - `flake.lock` is generated dependency state; update it through Nix rather than hand-editing it.
@@ -86,14 +86,15 @@ Default section order:
 
 ## Work Guidance
 
-- Keep the current single-user, single-host design direct. Generalize only when another real user or host requires it.
+- Keep the current two-host design direct; register users per host rather than in the shared system module. Generalize only when another real user or host requires it.
 - Prefer the smallest declarative Nix change and reuse existing modules before adding files or dependencies.
 - `just remove-generations <number>...` removes NixOS system generations; `just remove-hm-generations <number>...` removes standalone Home Manager generations. Neither runs garbage collection.
 - Treat hardware identifiers, state versions, and destructive migration steps as machine-specific safety boundaries.
+- `modules/hosts/suvannabhumi.nix` holds a fail-closed inline hardware placeholder until replaced with that machine's generated hardware attributes; do not copy hongsawatoi's device IDs. Set suvannabhumi's initial `system.stateVersion` from its installation release.
 
 ## Verification
 
-- `just check-nixos` evaluates the flake without building.
+- `just check-nixos` evaluates the full flake without building; it will fail on the pending suvannabhumi hardware placeholder until the real configuration is supplied.
 - `just check oung` dry-runs the Home Manager activation build.
 
 ## Child DOX Index
