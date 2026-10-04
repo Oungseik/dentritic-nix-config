@@ -34,6 +34,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Put runtime dependencies in the same scope as their consumer: `home.packages` for user features and `environment.systemPackages` for system features.
 - Keep `nixosModules.desktop` focused on shared system services and `homeModules.desktop` focused on shared user tools and services; both desktop bases must remain compositor- and display-manager-independent.
 - `nixosModules.desktop` enables I²C devices with native NixOS group/seat udev permissions for DDC/CI monitor control, independently of the desktop shell.
+- `hosts/hongsawatoi.nix` adds `oung` to `i2c` for DDC/CI access without sudo; activate the NixOS configuration and start a fresh login session after changing membership.
 - `nixosModules.desktop` provides both lockers' PAM stacks (`hyprlock` for v4 and `login` for v5). The shell version remains a Home Manager choice; the dormant PAM entry installs no locker or idle service.
 - Compose graphical hosts with one display-manager module and whichever compositor features the profile needs.
 - Keep compositor-specific behavior in separate feature modules so adding or replacing a compositor does not duplicate or disturb shared desktop behavior.
