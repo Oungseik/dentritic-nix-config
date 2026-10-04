@@ -3,6 +3,7 @@
   flake.homeModules.desktop = { pkgs, ... }: {
     home.packages = with pkgs; [
       brightnessctl
+      ddcutil
       grim
       slurp
       wl-clipboard

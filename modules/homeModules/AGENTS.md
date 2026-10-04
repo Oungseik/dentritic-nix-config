@@ -9,7 +9,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Each top-level Nix file owns one named Home Manager feature.
 - `communication-module.nix` owns team and company communication clients.
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
-- `desktop-module.nix` owns user tools and services shared across compositors, including Wayland clipboard persistence.
+- `desktop-module.nix` owns user tools and services shared across compositors, including external-monitor brightness control and Wayland clipboard persistence.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
@@ -30,6 +30,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - A feature module must export a unique `flake.homeModules.<name>` value and must not enable itself in a profile.
 - Features must work through the standalone `flake.homeConfigurations.oung` profile and must not depend on Home Manager being embedded into NixOS.
 - `homeModules.desktop` must remain compositor-independent and compose with the shared `nixosModules.desktop` system base.
+- `homeModules.desktop` installs `ddcutil` for DDC/CI external-monitor control independently of the desktop shell; `nixosModules.desktop` supplies I²C device access.
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.

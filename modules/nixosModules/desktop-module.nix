@@ -14,6 +14,8 @@
     security.pam.services.login.enableGnomeKeyring = true;
     security.pam.services.hyprlock = { };
 
+    hardware.i2c.enable = true;
+
     security.polkit.enable = true;
     security.rtkit.enable = true;
     services.pulseaudio.enable = false;
