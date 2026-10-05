@@ -457,6 +457,14 @@
               };
             }
             {
+              # Playwright launches its own Chrome for Testing build, which reports
+              # app-id "chromium-browser" and is left on the focused workspace.
+              "window-rule" = {
+                match._props."app-id" = "^google-chrome(-stable)?$";
+                "open-on-workspace" = "browser";
+              };
+            }
+            {
               "window-rule" = {
                 match._props = {
                   "app-id" = "^google-chrome(-stable)?$";
