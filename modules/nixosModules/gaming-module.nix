@@ -17,12 +17,12 @@
         enable32Bit = true;
       };
 
-      # "game-time" boot entry: CachyOS kernel with BORE scheduler, Clang ThinLTO, x86-64-v3 codegen.
-      # Appears in systemd-boot alongside the default generation; default kernel stays untouched.
-      specialisation.game-time.configuration = {
-        boot.kernelPackages =
-          inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-bore-lto-x86_64-v3;
-      };
+      # Optional "game-time" boot entry: CachyOS BORE ThinLTO x86-64-v3 kernel.
+      # Uncomment when needed; the default kernel stays unchanged.
+      # specialisation.game-time.configuration = {
+      #   boot.kernelPackages =
+      #     inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-bore-lto-x86_64-v3;
+      # };
 
       # Nvidia GPU
       # services.xserver.videoDrivers = [ "nvidia" ];
