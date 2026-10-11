@@ -8,6 +8,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 
 - Each top-level Nix file owns one named Home Manager feature.
 - `communication-module.nix` owns team and company communication clients.
+- `cli-utils-module.nix` owns CLI utilities and Atuin's command-recording filters.
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
 - `desktop-module.nix` owns user tools and services shared across compositors, including external-monitor brightness control and Wayland clipboard persistence.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
@@ -35,6 +36,8 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
 - Interactive Zsh sources `~/.config/zsh/local.zsh` at startup when readable; keep local secrets and installer-managed exports there, outside the Nix store.
+- Keep Atuin history slim by excluding simple navigation/listing, screen/session noise, bare editor/UI launches, and bare Git inspections. Preserve argument-bearing editor/UI calls, compound commands, Git mutations, and rare meaningful commands; frequency alone is not an exclusion criterion.
+- Atuin filters match whole commands, never arbitrary command-name prefixes. Filter changes affect future recordings; pruning existing history requires explicit approval.
 - Tmux resolves `default-shell` from the current user's passwd entry so dev shells cannot replace it through `$SHELL`.
 - Tmux snapshots are per server: `tmux-resurrect` writes under `~/.local/state/tmux/resurrect/<socket>` and restores all pane processes with `@resurrect-processes ':all:'`; pane contents are not captured.
 - Tmux save and restore stay manual on the plugin's `prefix C-s` / `prefix C-r` bindings, and snapshot retention deliberately stays at the plugin default (age-based cleanup, never below five files).

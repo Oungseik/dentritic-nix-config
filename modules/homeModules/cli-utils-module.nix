@@ -24,12 +24,14 @@
         enter_accept = true;
         sync_frequency = "15m";
         history_filter = [
-          "^z"
-          "^ls"
-          "^vi"
-          "^clear"
-          "^claer"
-          "^git mv"
+          # Simple navigation/listing only; preserve compound commands.
+          "^[[:blank:]]*(cd|z|zi|ls|la|ll|eza)([[:blank:]]+[^;&|<>$`()\\r\\n]*)?[[:blank:]]*$"
+          # Screen/session noise and observed clear typos.
+          "^[[:blank:]]*(clear|claer|clar|cler|cleasr|pwd|exit)[[:blank:]]*$"
+          # Bare launches add no reusable arguments; keep parameterized calls.
+          "^[[:blank:]]*(vi|vim|nvim|lvim|btop|htop|top|fastfetch|yazi|lazygit|tmux|codex|pi|omp|opencode)[[:blank:]]*$"
+          # Keep Git mutations and inspections with explicit arguments.
+          "^[[:blank:]]*git[[:blank:]]+(status|diff|log|branch)[[:blank:]]*$"
         ];
       };
     };
