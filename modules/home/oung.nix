@@ -17,6 +17,7 @@
       self.homeModules.gaming
       self.homeModules.guiDevTools
       self.homeModules.git
+      self.homeModules.hermesAgent
       # self.homeModules.hyprland
       self.homeModules.screenLock
       # self.homeModules.music
@@ -48,6 +49,7 @@
       };
 
       desktop.noctalia.version = "v4";
+      programs.hermes-agent.enable = true;
 
       home.packages = with pkgs; [ neovim ];
       home.sessionPath = [ "$HOME/.local/bin" ];
