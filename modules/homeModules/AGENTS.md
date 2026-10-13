@@ -14,6 +14,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
+- `gaming-module.nix` owns Lutris through Home Manager's `programs.lutris` module, registers stable WoW64 Wine as its default runner, and exposes Winetricks inside Lutris's runtime environment.
 - `hyprland-module.nix` owns the optional v4-only Hyprland compositor feature; the selected profile uses Niri.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
@@ -34,6 +35,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `homeModules.desktop` installs `ddcutil` for DDC/CI external-monitor control independently of the desktop shell; `nixosModules.desktop` supplies I²C device access.
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
+- Lutris's default Wine selection and packaged runner links are Nix-managed; installed games, Wine prefixes, and per-game settings remain mutable and managed through Lutris. Do not declaratively replace its game database or import game installers into the Nix store.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
 - Interactive Zsh sources `~/.config/zsh/local.zsh` at startup when readable; keep local secrets and installer-managed exports there, outside the Nix store.
 - Keep Atuin history slim by excluding simple navigation/listing, screen/session noise, bare editor/UI launches, and bare Git inspections. Preserve argument-bearing editor/UI calls, compound commands, Git mutations, and rare meaningful commands; frequency alone is not an exclusion criterion.

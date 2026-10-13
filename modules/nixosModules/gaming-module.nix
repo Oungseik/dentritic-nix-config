@@ -48,7 +48,6 @@
         pcsx2
         ppsspp
         # mangohud # overlay monitoring program
-        # lutris
         # heoric
         # bottles
       ];
