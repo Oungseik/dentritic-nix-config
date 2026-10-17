@@ -23,6 +23,7 @@ Keep frequently changed application configuration outside the Nix store so edits
 
 ## Work Guidance
 
+- Leave incidental small configuration diffs uncommitted when committing other work; these mutable files change frequently.
 - Edit hand-maintained program sources here and let the out-of-store link expose changes immediately.
 - Keep both Noctalia mirrors available: v4 is the daily shell, while v5 is configured for optional testing. A Home Manager version change must not migrate, reset, or overwrite either mirror.
 - Keep the v5 bar close to the v4 layout: a floating transparent top bar with 37px height, 4px margins, 8px widget spacing, and widget capsules; system monitoring, workspaces, and media on the left, the clock centered, and tray/system controls on the right. Use v5-native widget equivalents while preserving the current font and theme.
