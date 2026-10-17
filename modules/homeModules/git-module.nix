@@ -1,8 +1,18 @@
 { ... }: {
-  flake.homeModules.git = { ... }: {
+  flake.homeModules.git = { config, ... }: {
     programs = {
       gh.enable = true;
       lazygit.enable = true;
+
+      jujutsu = {
+        enable = true;
+        settings = {
+          user = {
+            inherit (config.programs.git.settings.user) name email;
+          };
+          git.colocate = true;
+        };
+      };
 
       git = {
         enable = true;
