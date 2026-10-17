@@ -10,11 +10,11 @@
         outline-manager =
           let
             pname = "outline-manager";
-            version = "1.21.0";
+            version = "1.22.0";
             src = pkgs.fetchurl {
               # Upstream's stable URL is mutable; update version and hash together.
               url = "https://s3.amazonaws.com/outline-releases/manager/linux/stable/Outline-Manager.AppImage";
-              hash = "sha256-qvPR7nyLm6Dzh24XQTPVtB7eCukQ7eXtUo0XPdSpz74=";
+              hash = "sha256-gx0qYqTNI+qgIjRWFLiAf6N18TmwXNjddtS2lKcPW/g=";
             };
             appimageContents = pkgs.appimageTools.extract {
               inherit pname version src;
