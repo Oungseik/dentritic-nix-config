@@ -15,7 +15,6 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
-- `hermes-agent-module.nix` owns the optional Hermes CLI, its native Python extras, and the catalog-pinned JEV skill router; `hermes-manual-gateway.patch` supplies the upstream setup/import service opt-out.
 - `gaming-module.nix` owns Lutris through Home Manager's `programs.lutris` module, registers stable WoW64 Wine as its default runner, and exposes Winetricks inside Lutris's runtime environment.
 - `hyprland-module.nix` owns the optional v4-only Hyprland compositor feature; the selected profile uses Niri.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
@@ -38,11 +37,6 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
 - Lutris's default Wine selection and packaged runner links are Nix-managed; installed games, Wine prefixes, and per-game settings remain mutable and managed through Lutris. Do not declaratively replace its game database or import game installers into the Nix store.
-- `hermesAgent` installs the upstream program-only Home Manager package with Anthropic and DuckDuckGo search dependencies. Keep its version stamp aligned with the `hermes-agent` release input and keep `hermes-jev` pinned to a reviewed catalog revision.
-- Keep Hermes services, gateway, backend, and desktop disabled. Patch only the sealed virtual environment's gateway service policy; `gateway.auto_install_service = false` must prevent setup/import from implicitly installing or starting services, including when the managed overlay is absent. Explicit foreground launch remains available.
-- Hermes launchers supply default `HERMES_HOME` and `HERMES_MANAGED_DIR` directly, without relying on shell session-variable refresh. The latter points to `hermes/nix/config.yaml` under `xdg.configHome`, which owns only the stable plugin allow-list/settings, memory enablement, manual-service policy, and disabled cronjob toolset. Do not enable `services.hermes-agent` just for configuration: its `.managed` marker blocks mutable setup and model selection.
-- Hermes credentials, models, sessions, memories, and learned skills stay writable under `~/.hermes`; never mirror them into `config/` or the Nix store. JEV's direct backend reads `TYPESAFE_API_KEY` at runtime; a main reasoning provider still needs its own authentication. Only the standalone `jev-skill-router` plugin is enabled declaratively; bundled backend plugins remain available.
-- Disabling `programs.hermes-agent.enable` removes the CLI, JEV link, managed overlay, and Home Manager environment settings without deleting runtime state. Removing `~/.hermes` is a separate, explicit data-deletion decision.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
 - Interactive Zsh sources `~/.config/zsh/local.zsh` at startup when readable; keep local secrets and installer-managed exports there, outside the Nix store.
 - Keep Atuin history slim by excluding simple navigation/listing, screen/session noise, bare editor/UI launches, and bare Git inspections. Preserve argument-bearing editor/UI calls, compound commands, Git mutations, and rare meaningful commands; frequency alone is not an exclusion criterion.
@@ -90,7 +84,6 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 
 - Run `just check oung`.
 - Build both versions when changing Noctalia integration, leaving the daily profile value on `"v4"`; an `extendModules` override can verify v5 without editing the profile.
-- After Hermes changes, build `.#homeConfigurations.oung.config.programs.hermes-agent.package` and smoke the CLI, plugin doctor, skill seeding, mutable configuration, and disabled implicit-service path with temporary state and no real API credentials.
 
 ## Child DOX Index
 

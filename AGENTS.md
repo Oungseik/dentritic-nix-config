@@ -79,7 +79,6 @@ Default section order:
 - This is a personal dendritic Nix flake for the `hongsawatoi` (MSI Modern 15 A5M) and pending `suvannabhumi` NixOS hosts. `oung` is an independent Home Manager profile, not an account shared across hosts.
 - Where the `oung` profile is used, deployment is two-phase: switch NixOS first, then switch standalone Home Manager.
 - Home Manager-only changes must remain switchable without rebuilding or switching NixOS.
-- Hermes is an optional, manually launched Home Manager tool for career research. Do not autostart it or install background services; keep credentials and learned state outside the repository. Career-ops integration is separate.
 - `flake.nix` stays a thin `flake-parts`/`import-tree` entry point; implementation belongs under `modules/`.
 - `flake.lock` is generated dependency state; update it through Nix rather than hand-editing it.
 - Home Manager selects Noctalia at build time through `desktop.noctalia.version`: `v4` is the daily default; `v5` is for testing. V4 uses `pkgs.noctalia-shell`; the `noctalia` input pins the upstream v5 release and follows the shared `nixpkgs`.
