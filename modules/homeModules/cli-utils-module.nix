@@ -6,6 +6,7 @@
       file
       gnupg
       just
+      jq
       lsof
       gnumake
       nix-prefetch-git
