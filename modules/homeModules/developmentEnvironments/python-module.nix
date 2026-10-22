@@ -2,9 +2,9 @@
   flake.homeModules.pythonDevelopmentEnvironment =
     { pkgs, ... }:
     {
-      # Add libraries here from nixpkgs (python3Packages.<name>); no pip, no venv, no
-      # user site-packages state — removing this module removes every package with it.
+      # Keep script libraries declarative; pipx manages isolated user applications.
       home.packages = [
+        pkgs.pipx
         (pkgs.python3.withPackages (
           ps: with ps; [
             requests
