@@ -27,6 +27,7 @@ Keep frequently changed application configuration outside the Nix store so edits
 - Edit hand-maintained program sources here and let the out-of-store link expose changes immediately.
 - Preserve the existing v5 bar, fonts, theme, wallpaper, and clipboard-history preference during integration changes.
 - The bar uses Taskbar grouped by workspace with workspace labels hidden and one icon per open window; include inactive workspaces.
+- Show privacy indicators only during capture. New notification toasts follow the focused monitor, with at most three visible at once.
 - Keep Noctalia screenshots aligned with Niri: in Settings → Screenshot, use Save Folder `~/Pictures/Screenshots` and Filename Pattern `Screenshot from %Y-%m-%d %H-%M-%S` (without `.png`). Enable Save to File; the output format is PNG.
 - Keep automatic idle actions disabled; locking is manual.
 - Enable Noctalia's native Polkit agent in Settings → Security → Polkit Agent; the Noctalia Home Manager module disables the external GNOME agent.

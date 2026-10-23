@@ -9,7 +9,7 @@ enable_sounds = false
 [bar.default]
 capsule = true
 capsule_group = []
-end = ["tray", "notifications", "network", "volume", "brightness", "battery", "control-center", "session"]
+end = ["privacy", "tray", "notifications", "network", "volume", "brightness", "battery", "control-center", "session"]
 font_family = "Roboto Condensed"
 font_weight = 400
 margin_ends = 12
@@ -125,6 +125,10 @@ show_session_buttons = true
 show_unlock_hint = true
 show_weather = true
 
+[notification]
+follow_focused_output = true
+max_visible = 3
+
 [shell]
 clipboard_enabled = false
 font_family = "Roboto Condensed"
@@ -179,6 +183,9 @@ visualization = "none"
 
 [widget.media]
 hide_when_no_media = true
+
+[widget.privacy]
+hide_inactive = true
 
 [widget.ram]
 visualization = "none"
