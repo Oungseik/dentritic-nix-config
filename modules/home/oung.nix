@@ -18,7 +18,6 @@
       self.homeModules.guiDevTools
       self.homeModules.git
       # self.homeModules.hyprland
-      self.homeModules.screenLock
       # self.homeModules.music
       self.homeModules.neovim
       self.homeModules.niri
@@ -46,8 +45,6 @@
         username = "oung";
         homeDirectory = "/home/oung";
       };
-
-      desktop.noctalia.version = "v4";
 
       home.packages = with pkgs; [ neovim ];
       home.sessionPath = [ "$HOME/.local/bin" ];
