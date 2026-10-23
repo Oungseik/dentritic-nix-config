@@ -9,7 +9,7 @@ enable_sounds = false
 [bar.default]
 capsule = true
 capsule_group = []
-end = ["privacy", "tray", "notifications", "network", "volume", "brightness", "battery", "control-center", "session"]
+end = ["privacy", "tray", "notifications", "network", "volume", "battery", "control-center", "session"]
 font_family = "Roboto Condensed"
 font_weight = 400
 margin_ends = 12
@@ -177,6 +177,9 @@ path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png
 
 [weather]
 enabled = false
+
+[widget.clock]
+format = "{:%d %b %Y %I:%M %p}"
 
 [widget.cpu]
 visualization = "none"
