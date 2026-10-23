@@ -16,7 +16,7 @@ Keep frequently changed application configuration outside the Nix store so edits
 - Link each program through its Home Manager module with `config.lib.file.mkOutOfStoreSymlink`; the module still owns packages, the link, and stable integration settings.
 - Keep stable configuration in its Home Manager module. Move it here only when frequent edits make rebuilds an actual burden.
 - Out-of-store links are intentionally mutable and path-dependent; do not describe their contents as Nix-store reproducible.
-- Never edit files under `noctalia/` by hand; configure Noctalia only through its UI and retain the generated result.
+- Configure Noctalia through its UI by default and retain the generated result; direct TOML edits are allowed when explicitly requested by the user.
 - Noctalia UI changes must write through the state-file link without rebuilding Home Manager.
 - Install, update, configure, and remove Noctalia plugins only through the UI and plugin registry; do not patch registry snapshots locally.
 - Review mutable or UI-generated diffs for credentials and unintended machine-local data before committing.
@@ -26,10 +26,11 @@ Keep frequently changed application configuration outside the Nix store so edits
 - Leave incidental small configuration diffs uncommitted when committing other work; these mutable files change frequently.
 - Edit hand-maintained program sources here and let the out-of-store link expose changes immediately.
 - Preserve the existing v5 bar, fonts, theme, wallpaper, and clipboard-history preference during integration changes.
+- The bar uses Taskbar grouped by workspace with workspace labels hidden and one icon per open window; include inactive workspaces.
 - Keep Noctalia screenshots aligned with Niri: in Settings → Screenshot, use Save Folder `~/Pictures/Screenshots` and Filename Pattern `Screenshot from %Y-%m-%d %H-%M-%S` (without `.png`). Enable Save to File; the output format is PNG.
 - Keep automatic idle actions disabled; locking is manual.
 - Enable Noctalia's native Polkit agent in Settings → Security → Polkit Agent; the Noctalia Home Manager module disables the external GNOME agent.
-- If a requested Noctalia change cannot be performed through the available UI, leave its mirror unchanged and report the required UI action.
+- If a requested Noctalia change cannot be performed through the available UI, leave its mirror unchanged and report the required UI action unless the user explicitly requests direct TOML editing.
 - Create a child DOX when a program directory gains its own durable workflow or constraints.
 
 ## Verification

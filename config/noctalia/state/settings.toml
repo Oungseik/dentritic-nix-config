@@ -9,10 +9,10 @@ enable_sounds = false
 [bar.default]
 capsule = true
 capsule_group = []
-end = [ "tray", "notifications", "network", "volume", "brightness", "battery", "control-center", "session" ]
+end = ["tray", "notifications", "network", "volume", "brightness", "battery", "control-center", "session"]
 font_family = "JetBrainsMono NFM"
 margin_ends = 12
-start = [ "workspaces", "cpu", "ram", "media" ]
+start = ["cpu", "ram", "taskbar", "media"]
 thickness = 40
 
 [battery]
@@ -22,30 +22,30 @@ warning_threshold = 15
 enable_ddcutil = true
 
 [control_center]
-hidden_tabs = [ "weather", "screen-time" ]
+hidden_tabs = ["weather", "screen-time"]
 
-    [[control_center.shortcuts]]
-    type = "wifi"
+[[control_center.shortcuts]]
+type = "wifi"
 
-    [[control_center.shortcuts]]
-    type = "bluetooth"
+[[control_center.shortcuts]]
+type = "bluetooth"
 
-    [[control_center.shortcuts]]
-    type = "nightlight"
+[[control_center.shortcuts]]
+type = "nightlight"
 
-    [[control_center.shortcuts]]
-    type = "notification"
+[[control_center.shortcuts]]
+type = "notification"
 
 [desktop_widgets]
 schema_version = 2
 widget_order = []
 
-    [desktop_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
+[desktop_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
 
-    [desktop_widgets.widget]
+[desktop_widgets.widget]
 
 [dock]
 enabled = true
@@ -57,72 +57,72 @@ smart_auto_hide = true
 
 [lockscreen]
 edge_smoothness = 0.19999999552965164
-transition = [ "disc" ]
+transition = ["disc"]
 
 [lockscreen_widgets]
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+widget_order = ["lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1"]
 
-    [lockscreen_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HDMI-A-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+box_height = 196.0
+box_width = 810.0
+cx = 960.0
+cy = 898.0
+output = "HDMI-A-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 906.0
-    output = "eDP-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 196.0
+box_width = 810.0
+cx = 960.0
+cy = 906.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
 
-        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
 [shell]
 clipboard_enabled = false
@@ -130,18 +130,18 @@ font_family = "Roboto Condensed"
 lang = "en"
 polkit_agent = true
 
-    [shell.launcher]
-    fetch_exchange_rates = false
+[shell.launcher]
+fetch_exchange_rates = false
 
-    [shell.panel]
-    open_near_click_control_center = true
+[shell.panel]
+open_near_click_control_center = true
 
-    [shell.screenshot]
-    directory = "/home/oung/Pictures/Screenshots"
-    filename_pattern = "Screenshot from %Y-%m-%d %H-%M-%S"
+[shell.screenshot]
+directory = "/home/oung/Pictures/Screenshots"
+filename_pattern = "Screenshot from %Y-%m-%d %H-%M-%S"
 
-    [shell.session]
-    show_shortcuts = false
+[shell.session]
+show_shortcuts = false
 
 [system.monitor]
 network_poll_seconds = 5
@@ -158,17 +158,17 @@ directory = "~/Pictures/Wallpapers"
 directory_dark = "~/Pictures/Wallpapers"
 directory_light = "~/Pictures/Wallpapers"
 
-    [wallpaper.default]
-    path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+[wallpaper.default]
+path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
 
-    [wallpaper.last]
-    path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+[wallpaper.last]
+path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
 
-    [wallpaper.monitors.HDMI-A-1]
-    path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+[wallpaper.monitors.HDMI-A-1]
+path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
 
-    [wallpaper.monitors.eDP-1]
-    path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+[wallpaper.monitors.eDP-1]
+path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
 
 [weather]
 enabled = false
@@ -184,6 +184,14 @@ visualization = "none"
 
 [widget.sysmon]
 visualization = "none"
+
+[widget.taskbar]
+group_by_workspace = true
+group_single_icon_per_app = false
+minimal = true
+only_active_workspace = false
+show_workspace_label = false
+workspace_label_placement = "inside"
 
 [widget.workspaces]
 label_source = "name"
