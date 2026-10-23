@@ -24,7 +24,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Change `system.stateVersion` or `home.stateVersion` only as part of an explicit migration.
 - The `hongsawatoi` host enables SSH with password or key login for `oung`, denies root login, and exposes port 22 through the firewall only on its `wlp1s0` Wi-Fi interface. Keep optional tablet public keys in `~oung/.ssh/authorized_keys` outside the Nix store.
 - `suvannabhumi` composes the same system features as `hongsawatoi` but registers no user until an owner is chosen. Its inline hardware placeholder fails evaluation until replaced with generated attributes; its SSH firewall remains closed until the trusted interface is identified.
-- The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and selects `desktop.noctalia.version = "v4"`; change that value to `"v5"` to build the experimental native shell integration.
+- The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and composes Noctalia v5 with Niri; there is no shell-version selector.
 - `packages.hiddify` repackages the pinned x86-64 Debian release without running maintainer scripts or granting TUN privileges. Keep the Flutter bundle together, expose its library directory for runtime loading, and patch the bundled CLI's relative core dependency. Upstream's noncommercial license restrictions require unfree metadata.
 - `packages.outline-manager` wraps the x86-64 AppImage with its desktop launcher and icon. The upstream stable URL is mutable; update the package version and fixed hash together.
 - `nixosModules.vpn` installs the custom Hiddify and Outline Manager packages alongside sshuttle and enables nixpkgs Throne with TUN mode; it does not grant Hiddify additional privileges. Keep the commented GitHub release override available for switching away from nixpkgs; its source and core vendor hashes belong to the pinned release.
@@ -35,7 +35,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Keep `nixosModules.desktop` focused on shared system services and `homeModules.desktop` focused on shared user tools and services; both desktop bases must remain compositor- and display-manager-independent.
 - `nixosModules.desktop` enables I²C devices with native NixOS group/seat udev permissions for DDC/CI monitor control, independently of the desktop shell.
 - `hosts/hongsawatoi.nix` adds `oung` to `i2c` for DDC/CI access without sudo; activate the NixOS configuration and start a fresh login session after changing membership.
-- `nixosModules.desktop` provides both lockers' PAM stacks (`hyprlock` for v4 and `login` for v5). The shell version remains a Home Manager choice; the dormant PAM entry installs no locker or idle service.
+- Noctalia v5 authenticates through the system's `login` PAM stack. Keep `security.pam.services.login.enableGnomeKeyring`; no Hyprlock PAM service is needed.
 - Compose graphical hosts with one display-manager module and whichever compositor features the profile needs.
 - Keep compositor-specific behavior in separate feature modules so adding or replacing a compositor does not duplicate or disturb shared desktop behavior.
 

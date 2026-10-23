@@ -1,10 +1,7 @@
 { ... }:
 {
   flake.homeModules.niri =
-    { pkgs, config, ... }:
-    let
-      isV5 = (config.desktop.noctalia.version or "v4") == "v5";
-    in
+    { pkgs, ... }:
     {
       wayland.windowManager.niri = {
         enable = true;
@@ -13,7 +10,7 @@
         portalPackage = null;
 
         settings = {
-          "screenshot-path" = "~/Pictures/Screenshots from %Y-%m-%d %H-%M-%S.png";
+          "screenshot-path" = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
           "prefer-no-csd" = { };
 
           input = {
@@ -46,22 +43,12 @@
             };
             "Mod+P" = {
               _props."hotkey-overlay-title" = "Toggle launcher";
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "panel-toggle"
-                    "launcher"
-                  ]
-                else
-                  [
-                    "noctalia-shell"
-                    "ipc"
-                    "call"
-                    "launcher"
-                    "toggle"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "panel-toggle"
+                "launcher"
+              ];
             };
             "Mod+E" = {
               _props."hotkey-overlay-title" = "Open file manager: yazi";
@@ -93,103 +80,51 @@
 
             "XF86AudioRaiseVolume" = {
               _props."allow-when-locked" = true;
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "volume-up"
-                  ]
-                else
-                  [
-                    "wpctl"
-                    "set-volume"
-                    "@DEFAULT_AUDIO_SINK@"
-                    "5%+"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "volume-up"
+              ];
             };
             "XF86AudioLowerVolume" = {
               _props."allow-when-locked" = true;
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "volume-down"
-                  ]
-                else
-                  [
-                    "wpctl"
-                    "set-volume"
-                    "@DEFAULT_AUDIO_SINK@"
-                    "5%-"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "volume-down"
+              ];
             };
             "XF86AudioMute" = {
               _props."allow-when-locked" = true;
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "volume-mute"
-                  ]
-                else
-                  [
-                    "wpctl"
-                    "set-mute"
-                    "@DEFAULT_AUDIO_SINK@"
-                    "toggle"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "volume-mute"
+              ];
             };
             "XF86AudioMicMute" = {
               _props."allow-when-locked" = true;
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "mic-mute"
-                  ]
-                else
-                  [
-                    "wpctl"
-                    "set-mute"
-                    "@DEFAULT_AUDIO_SOURCE@"
-                    "toggle"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "mic-mute"
+              ];
             };
             "XF86MonBrightnessUp" = {
               _props."allow-when-locked" = true;
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "brightness-up"
-                  ]
-                else
-                  [
-                    "brightnessctl"
-                    "set"
-                    "5%+"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "brightness-up"
+              ];
             };
             "XF86MonBrightnessDown" = {
               _props."allow-when-locked" = true;
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "brightness-down"
-                  ]
-                else
-                  [
-                    "brightnessctl"
-                    "set"
-                    "5%-"
-                  ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "brightness-down"
+              ];
             };
 
             "Mod+O" = {
@@ -304,42 +239,30 @@
             "Mod+Shift+V"."switch-focus-between-floating-and-tiling" = { };
             "Mod+W"."toggle-column-tabbed-display" = { };
 
-            Print =
-              if isV5 then
-                {
-                  spawn = [
-                    "noctalia"
-                    "msg"
-                    "screenshot-region"
-                  ];
-                }
-              else
-                { screenshot = { }; };
-            "Ctrl+Print" =
-              if isV5 then
-                {
-                  spawn = [
-                    "noctalia"
-                    "msg"
-                    "screenshot-fullscreen"
-                  ];
-                }
-              else
-                { "screenshot-screen" = { }; };
+            Print = {
+              spawn = [
+                "noctalia"
+                "msg"
+                "screenshot-region"
+              ];
+            };
+            "Ctrl+Print" = {
+              spawn = [
+                "noctalia"
+                "msg"
+                "screenshot-fullscreen"
+              ];
+            };
             "Alt+Print"."screenshot-window" = { };
 
             "Mod+Shift+Delete" = {
               _props."hotkey-overlay-title" = "Lock screen";
-              spawn =
-                if isV5 then
-                  [
-                    "noctalia"
-                    "msg"
-                    "session"
-                    "lock"
-                  ]
-                else
-                  [ "hyprlock" ];
+              spawn = [
+                "noctalia"
+                "msg"
+                "session"
+                "lock"
+              ];
             };
             "Mod+Escape" = {
               _props."allow-inhibiting" = false;
@@ -348,17 +271,13 @@
             "Mod+Shift+E".quit = { };
             "Mod+Shift+X".quit = { };
             "Ctrl+Alt+Delete".quit = { };
-            "Mod+Shift+P" =
-              if isV5 then
-                {
-                  spawn = [
-                    "noctalia"
-                    "msg"
-                    "dpms-off"
-                  ];
-                }
-              else
-                { "power-off-monitors" = { }; };
+            "Mod+Shift+P" = {
+              spawn = [
+                "noctalia"
+                "msg"
+                "dpms-off"
+              ];
+            };
           };
 
           layout = {
@@ -400,7 +319,7 @@
           };
 
           _children = [
-            { "spawn-at-startup"._args = [ (if isV5 then "noctalia" else "noctalia-shell") ]; }
+            { "spawn-at-startup"._args = [ "noctalia" ]; }
             {
               workspace = {
                 _args = [ "codespace" ];

@@ -26,7 +26,9 @@ Keep frequently changed application configuration outside the Nix store so edits
 - Leave incidental small configuration diffs uncommitted when committing other work; these mutable files change frequently.
 - Edit hand-maintained program sources here and let the out-of-store link expose changes immediately.
 - Preserve the existing v5 bar, fonts, theme, wallpaper, and clipboard-history preference during integration changes.
-- Keep automatic idle actions disabled; locking is manual. The GNOME Polkit agent supplies authentication while Noctalia's native agent remains disabled in the UI settings.
+- Keep Noctalia screenshots aligned with Niri: in Settings → Screenshot, use Save Folder `~/Pictures/Screenshots` and Filename Pattern `Screenshot from %Y-%m-%d %H-%M-%S` (without `.png`). Enable Save to File; the output format is PNG.
+- Keep automatic idle actions disabled; locking is manual.
+- Enable Noctalia's native Polkit agent in Settings → Security → Polkit Agent; the Noctalia Home Manager module disables the external GNOME agent.
 - If a requested Noctalia change cannot be performed through the available UI, leave its mirror unchanged and report the required UI action.
 - Create a child DOX when a program directory gains its own durable workflow or constraints.
 

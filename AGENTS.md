@@ -81,7 +81,7 @@ Default section order:
 - Home Manager-only changes must remain switchable without rebuilding or switching NixOS.
 - `flake.nix` stays a thin `flake-parts`/`import-tree` entry point; implementation belongs under `modules/`.
 - `flake.lock` is generated dependency state; update it through Nix rather than hand-editing it.
-- Home Manager selects Noctalia at build time through `desktop.noctalia.version`: `v4` is the daily default; `v5` is for testing. V4 uses `pkgs.noctalia-shell`; the `noctalia` input pins the upstream v5 release and follows the shared `nixpkgs`.
+- Home Manager installs only Noctalia v5 from the pinned upstream `noctalia` input, which follows the shared `nixpkgs`. Keep the existing v5 UI settings; do not restore v4, Hyprlock, Hypridle, or automatic idle locking.
 - `assets/` contains root-owned static inputs, including wallpapers and locally packaged font files. Preserve referenced paths and avoid rewriting binary assets unnecessarily.
 - Do not commit new credentials or secrets.
 

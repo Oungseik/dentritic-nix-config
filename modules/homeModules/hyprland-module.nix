@@ -2,7 +2,7 @@
 {
   flake.homeModules.hyprland = { config, ... }: {
     wayland.windowManager.hyprland = {
-      enable = (config.desktop.noctalia.version or "v4") == "v4";
+      enable = true;
       configType = "hyprlang";
       xwayland.enable = true;
       systemd.enableXdgAutostart = true;
@@ -11,7 +11,7 @@
         "$mod" = "SUPER";
 
         monitor = ", preferred, auto, 1";
-        "exec-once" = "noctalia-shell";
+        "exec-once" = "noctalia";
         env = "TERMINAL, kitty";
 
         input = {
@@ -81,14 +81,14 @@
           "$mod, E, exec, kitty -e yazi"
           "$mod SHIFT, Q, killactive"
           "$mod SHIFT, X, exit"
-          "$mod, P, exec, noctalia-shell ipc call launcher toggle"
+          "$mod, P, exec, noctalia msg panel-toggle launcher"
 
           "$mod, M, fullscreen, 1"
           "$mod, F, fullscreen, 0"
-          "$mod SHIFT, DELETE, exec, hyprlock"
+          "$mod SHIFT, DELETE, exec, noctalia msg session lock"
 
-          '', PRINT, exec, mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -o "$(hyprctl activeworkspace -j | jq -r '.monitor')" "$IMG" && wl-copy < "$IMG"''
-          ''$mod, PRINT, exec, mkdir -p "$HOME/Pictures/Screenshots" && IMG="$HOME/Pictures/Screenshots/$(date +'%s_grim.png')" && grim -c -g "$(slurp)" "$IMG" && wl-copy < "$IMG"''
+          ", PRINT, exec, noctalia msg screenshot-fullscreen"
+          "$mod, PRINT, exec, noctalia msg screenshot-region"
 
           "$mod, H, cyclenext, prev"
           "$mod, L, cyclenext"
@@ -155,15 +155,15 @@
         ];
 
         bindel = [
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-          ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+          ", XF86AudioRaiseVolume, exec, noctalia msg volume-up"
+          ", XF86AudioLowerVolume, exec, noctalia msg volume-down"
+          ", XF86MonBrightnessUp, exec, noctalia msg brightness-up"
+          ", XF86MonBrightnessDown, exec, noctalia msg brightness-down"
         ];
 
         bindl = [
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          ", XF86AudioMute, exec, noctalia msg volume-mute"
+          ", XF86AudioMicMute, exec, noctalia msg mic-mute"
         ];
 
         bindm = [

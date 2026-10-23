@@ -11,12 +11,12 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `cli-utils-module.nix` owns CLI utilities and Atuin's command-recording filters.
 - `git-module.nix` owns Git, GitHub CLI, Lazygit, and Jujutsu. Jujutsu shares Git's name and email and defaults to colocated Git repositories; repository initialization remains manual.
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
-- `desktop-module.nix` owns user tools and services shared across compositors, including external-monitor brightness control and Wayland clipboard persistence.
+- `desktop-module.nix` owns user tools and services shared across compositors, including `ddcutil`, `wl-clipboard`, and the fallback GNOME Polkit agent; `noctalia-module.nix` disables that agent when Noctalia is composed.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, Codex Desktop from the `codex-desktop-linux` input with the nixpkgs Codex CLI exposed through `CODEX_CLI_PATH`, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
 - `gaming-module.nix` owns Lutris through Home Manager's `programs.lutris` module, registers stable WoW64 Wine as its default runner, and exposes Winetricks inside Lutris's runtime environment.
-- `hyprland-module.nix` owns the optional v4-only Hyprland compositor feature; the selected profile uses Niri.
+- `hyprland-module.nix` owns the optional Hyprland compositor feature with native Noctalia v5 commands; the selected profile uses Niri.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling, per-user fontconfig, and the 24px Bibata Modern Ice pointer default; it installs Roboto and the Noto Sans Thai/Myanmar subsets, keeps Roboto as the primary sans-serif with Thai/Myanmar fallback, supplies Myanmar fallback for explicit Roboto requests (including Zed UI), and supplies Thai/Myanmar fallback for ZedBrainsMono requests. Qt 5/6 general fonts inherit GTK's font family and size.
@@ -50,6 +50,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
 - Niri's `wayland.windowManager.niri.settings.binds` is the default source of truth for window, workspace, and monitor navigation; Hyprland mirrors supported semantic equivalents except for explicit Hyprland-specific bindings documented here.
 - Home Manager generates and build-validates Niri's `config.kdl`; do not also link or hand-maintain that path.
+- Niri screenshots save to `~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png`; keep this aligned with Noctalia's UI-managed output policy in `../../config/AGENTS.md`.
 - `shellScripts` supplies launcher dependencies through each `writeShellApplication`; do not add those dependencies to `desktop-module.nix` solely for a launcher.
 - `launch-notes` opens or focuses one dedicated Neovide instance in `~/Notes`; Niri's `Mod+N` binds it and places it on `stash`.
 - `launch-rmpc` opens or focuses one rmpc Kitty window; Niri's `Mod+Shift+M` binds it and floats it at 60% width and 80% height.
@@ -63,10 +64,10 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Hyprland starts XDG autostart applications through its Home Manager systemd integration so login services such as GNOME Keyring complete startup.
 - Hyprland's `Mod+N` note scratchpad starts `$EDITOR` with `~/Notes` as its working directory.
 - Modules that expose mutable configuration still manage their packages, out-of-store links, and stable integration settings; their mutable content is owned by `config/`.
-- `noctalia-module.nix` declares `desktop.noctalia.version` as `"v4"` (default) or `"v5"` and installs only the selected shell: `pkgs.noctalia-shell` or the upstream `inputs.noctalia` default package. Both modes retain the out-of-store `config/noctalia` directory link and the v5 `${xdg.stateHome}/noctalia/settings.toml` link to `config/noctalia/state/settings.toml`; switching versions must preserve both UI-managed mirrors. Adopt existing state files with Home Manager's `-b` backup option rather than forcing replacement.
-- The v4 package locally drops `noctalia-qs`'s unused Breakpad build input because it fails to link under the pinned toolchain; the fork's crash handler is already disabled by default. Remove this override when nixpkgs corrects the dependency list.
-- `screen-lock-module.nix` enables the previous Hyprlock appearance and Hypridle 15-minute lock timeout only for v4, including lock-before-sleep and Niri monitor restoration after waking. Hypridle runs through `services.hypridle`; compositors must not also autostart it. V5 installs neither Hyprlock nor Hypridle and uses Noctalia's native lock and idle behavior, configured through its UI.
-- Niri selects the shell startup, launcher, and `Mod+Shift+Delete` lock command at build time. V4 retains its previous audio, brightness, screenshot, and monitor-power behavior; v5 routes these through native Noctalia IPC, while `Alt+Print` retains Niri's window screenshot. V5 uses native Polkit and clipboard persistence, disabling the desktop's GNOME agent and `wl-clip-persist` defaults. Enable Noctalia's Polkit agent and native idle lock in its UI before testing v5; keep the daily 15-minute lock timeout and preserve the user's clipboard-history preference. Re-enter the graphical session after activating a version change so only the selected shell runs.
+- `noctalia-module.nix` installs the pinned upstream Noctalia v5 package, links `config/noctalia` as its config directory, and links `${xdg.stateHome}/noctalia/settings.toml` to the existing `config/noctalia/state/settings.toml` mirror. Adopt existing state files with Home Manager's `-b` backup option rather than forcing replacement.
+- Noctalia owns native locking and clipboard persistence; do not install Hyprlock, Hypridle, or `wl-clip-persist`. Automatic idle locking stays disabled by user preference; `Mod+Shift+Delete` locks manually with `noctalia msg session lock`. Keep Noctalia's existing lock-before-suspend behavior.
+- Noctalia owns Polkit authentication prompts: keep `shell.polkit_agent` enabled through its UI and `services.polkit-gnome.enable = false` in `noctalia-module.nix`. Keep the system's `security.polkit.enable` enabled.
+- Niri and optional Hyprland use native Noctalia startup, launcher, audio, brightness, screenshot, and lock commands. Niri also uses native monitor-power commands; its `Alt+Print` retains the window screenshot. Re-enter the graphical session after activating the migration so the old shell and idle services are no longer running.
 
 ## Work Guidance
 
@@ -83,7 +84,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 ## Verification
 
 - Run `just check oung`.
-- Build both versions when changing Noctalia integration, leaving the daily profile value on `"v4"`; an `extendModules` override can verify v5 without editing the profile.
+- Build `homeConfigurations.oung.activationPackage` after Noctalia integration changes; verify native IPC bindings and absence of the retired shell, locker, and idle services.
 
 ## Child DOX Index
 
