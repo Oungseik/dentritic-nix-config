@@ -2,7 +2,6 @@
   flake.nixosModules.vpn = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       sshuttle
-      self.packages.${stdenv.hostPlatform.system}.hiddify
       self.packages.${stdenv.hostPlatform.system}.outline-manager
     ];
 

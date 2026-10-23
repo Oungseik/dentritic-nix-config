@@ -10,7 +10,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - `home/` composes Home Manager profiles and owns per-user base settings.
 - `hosts/` composes NixOS systems: `shared.nix` owns reusable host settings, while each host owns its hostname, user accounts, hardware, filesystems, interface-specific firewall rules, and state version.
 - `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, its Waydroid feature enables containerized Android apps with nftables networking for current kernels, and its gaming feature enables 32-bit graphics, GameMode, PCSX2, and PPSSPP using the standard host kernel. Lutris belongs to the standalone Home Manager gaming feature.
-- `packages/` owns custom package outputs, including Airmux, Claude Desktop, the OpenCode Desktop and Hiddify deb packages, the Outline Manager AppImage wrapper, the soulseek-rs static musl binary, the gruvbox-plus icon pack, and the locally bundled four-face ZedBrains Mono font family. Airmux builds from the `Oungseik/airmux` fork at a pinned rev, because upstream has no release carrying the fork's `init` and `clean` commands; update the rev, version stamp, and both hashes together when rebasing on upstream.
+- `packages/` owns custom package outputs, including Airmux, Claude Desktop, the OpenCode Desktop deb package, the Outline Manager AppImage wrapper, the soulseek-rs static musl binary, the gruvbox-plus icon pack, and the locally bundled four-face ZedBrains Mono font family. Airmux builds from the `Oungseik/airmux` fork at a pinned rev, because upstream has no release carrying the fork's `init` and `clean` commands; update the rev, version stamp, and both hashes together when rebasing on upstream.
 - `homeModules/` is delegated to its child DOX.
 
 ## Local Contracts
@@ -25,9 +25,8 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - The `hongsawatoi` host enables SSH with password or key login for `oung`, denies root login, and exposes port 22 through the firewall only on its `wlp1s0` Wi-Fi interface. Keep optional tablet public keys in `~oung/.ssh/authorized_keys` outside the Nix store.
 - `suvannabhumi` composes the same system features as `hongsawatoi` but registers no user until an owner is chosen. Its inline hardware placeholder fails evaluation until replaced with generated attributes; its SSH firewall remains closed until the trusted interface is identified.
 - The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and composes Noctalia v5 with Niri; there is no shell-version selector.
-- `packages.hiddify` repackages the pinned x86-64 Debian release without running maintainer scripts or granting TUN privileges. Keep the Flutter bundle together, expose its library directory for runtime loading, and patch the bundled CLI's relative core dependency. Upstream's noncommercial license restrictions require unfree metadata.
 - `packages.outline-manager` wraps the x86-64 AppImage with its desktop launcher and icon. The upstream stable URL is mutable; update the package version and fixed hash together.
-- `nixosModules.vpn` installs the custom Hiddify and Outline Manager packages alongside sshuttle and enables nixpkgs Throne with TUN mode; it does not grant Hiddify additional privileges. Keep the commented GitHub release override available for switching away from nixpkgs; its source and core vendor hashes belong to the pinned release.
+- `nixosModules.vpn` installs the custom Outline Manager package alongside sshuttle and enables nixpkgs Throne with TUN mode. Keep the commented GitHub release override available for switching away from nixpkgs; its source and core vendor hashes belong to the pinned release.
 
 ## Work Guidance
 
