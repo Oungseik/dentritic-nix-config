@@ -57,7 +57,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Niri spawns Discord and Slack at startup; its window rule opens every new window with app-id `discord` or `slack` on the `communication` workspace, including later launches.
 - Niri opens Google Chrome windows on the `browser` workspace by app-id `google-chrome` or `google-chrome-stable`; Playwright drives Chrome for Testing, which reports app-id `chromium-browser` and is intentionally left on the focused workspace.
 - `qr-read` selects a screen region with `slurp`, pipes a `grim` capture into `zbarimg`, prints every decoded code to stdout, and copies them to the clipboard; without a QR code it exits nonzero and leaves the clipboard untouched.
-- Niri's `Mod+Shift+Insert` opens Television's `pass` channel in a dedicated Kitty window floating at 40% width and 80% height.
+- Niri's `Mod+Shift+Insert` opens Television's `pass` channel in a dedicated Kitty window floating at 60% width and 80% height. This window uses `close_on_child_death=yes` so clipboard background processes cannot hold it open after the copy action exits; retain the channel's `execute` actions and one-second clipboard delay.
 - `Mod+Ctrl+Shift+H/L` moves the current workspace between horizontal monitors; `Mod+Alt+H/L` moves the focused window.
 - Keep the GNOME portal in the Home Manager portal set so Niri screen sharing remains available when Hyprland is composed in the same profile.
 - Hide Google Meet's screen-sharing status popup in both Niri and Hyprland while retaining a 3px compositor indicator.

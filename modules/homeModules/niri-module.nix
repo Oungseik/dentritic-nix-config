@@ -72,6 +72,8 @@
                 "kitty"
                 "--class"
                 "tv-pass"
+                "-o"
+                "close_on_child_death=yes"
                 "-e"
                 "tv"
                 "pass"
