@@ -75,8 +75,8 @@
         plugins-repo = pkgs.fetchFromGitHub {
           owner = "yazi-rs";
           repo = "plugins";
-          rev = "6229767f7fef39a2a78f5cee9122cc4dfb43f327";
-          hash = "sha256-/BNGoWziHIZ9i+RoTWGq/q3ZowNCyHGBOWiz8v2/vOE=";
+          rev = "896fa5aec1db0163e2f65d07a130d064de53b0b2";
+          hash = "sha256-0nD3jSkUt7mcsfPnJ3yBwdJYRY6JVSxVAj4eXEgBWus=";
         };
         starship = pkgs.fetchFromGitHub {
           owner = "Rolv-Apneseth";
@@ -101,8 +101,8 @@
         initLua = ''
           require("starship"):setup()
           require("full-border"):setup {
-            -- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
-            type = ui.Border.ROUNDED,
+            -- Available values: "plain", "rounded"
+            set = "rounded",
           }
         '';
       };

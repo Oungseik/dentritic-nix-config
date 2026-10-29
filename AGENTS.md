@@ -88,6 +88,7 @@ Default section order:
 ## Work Guidance
 
 - Keep commits small and focused, grouping each logical change with its owning DOX updates.
+- Keep `README.md`'s individually pinned package and plugin reference synchronized when their versions or revisions change.
 - Keep the current two-host design direct; register users per host rather than in the shared system module. Generalize only when another real user or host requires it.
 - Prefer the smallest declarative Nix change and reuse existing modules before adding files or dependencies.
 - `just remove-generations <number>...` removes NixOS system generations; `just remove-hm-generations <number>...` removes standalone Home Manager generations. Neither runs garbage collection.

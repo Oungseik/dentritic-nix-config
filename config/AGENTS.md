@@ -18,6 +18,7 @@ Keep frequently changed application configuration outside the Nix store so edits
 - Out-of-store links are intentionally mutable and path-dependent; do not describe their contents as Nix-store reproducible.
 - Configure Noctalia through its UI by default and retain the generated result; direct TOML edits are allowed when explicitly requested by the user.
 - Noctalia UI changes must write through the state-file link without rebuilding Home Manager.
+- When needed, Noctalia migrates the UI-managed state file on startup and writes through the same link; upgrades can change the tracked mirror.
 - Install, update, configure, and remove Noctalia plugins only through the UI and plugin registry; do not patch registry snapshots locally.
 - Review mutable or UI-generated diffs for credentials and unintended machine-local data before committing.
 
