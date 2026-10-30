@@ -32,13 +32,13 @@ the linked Nix files and lock file are the source of truth.
 | Package or plugin | Current pin | Where to update it |
 | --- | --- | --- |
 | Noctalia | `v5.4.0` | [`flake.nix`](flake.nix) and `flake.lock`; keep v5 |
-| Claude Desktop | `4.29.0` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
+| Claude Desktop | `4.4212.0` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
 | Airmux | `0.2.3-unstable-2026-09-12`, commit `77832c6` | [`airmux.nix`](modules/packages/airmux.nix); personal fork |
 | Outline Manager | `1.22.0` | [`outline-manager.nix`](modules/packages/outline-manager.nix); mutable download URL |
 | Gruvbox Plus icons | `6.6.0` | [`gruvybox-plus.nix`](modules/packages/gruvybox-plus.nix) |
 | ZedBrains Mono | `1.0` label | [`zedbrains-mono.nix`](modules/packages/zedbrains-mono.nix); font files are bundled locally |
 | soulseek-rs | `19.1.0` | [`soulseek-rs.nix`](modules/packages/soulseek-rs.nix); available, not selected for installation |
-| Codex Desktop | commit `8594584` | [`flake.lock`](flake.lock), input `codex-desktop-linux` |
+| Codex Desktop | commit `f9b973b` | [`flake.lock`](flake.lock), input `codex-desktop-linux` |
 | Yazi full-border plugin | commit `896fa5a` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 | Yazi Starship plugin | commit `ea92cf4` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 
