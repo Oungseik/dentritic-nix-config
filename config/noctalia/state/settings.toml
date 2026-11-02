@@ -7,14 +7,18 @@ ui_scale = 1.0
 enable_sounds = false
 
 [bar.default]
+background_opacity = 0.19999999552965164
 capsule = true
 capsule_group = []
+capsule_padding = 10.0
+capsule_thickness = 0.69999998807907104
 end = ["privacy", "tray", "notifications", "network", "volume", "battery", "control-center", "session"]
 font_family = "Roboto Condensed"
 font_weight = 400
 margin_ends = 12
 start = ["cpu", "ram", "taskbar", "media"]
 thickness = 40
+widget_spacing = 4
 
 [battery]
 warning_threshold = 15
@@ -164,16 +168,16 @@ directory_dark = "~/Pictures/Wallpapers"
 directory_light = "~/Pictures/Wallpapers"
 
 [wallpaper.default]
-path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+path = "/home/oung/Pictures/Wallpapers/wallhaven_l85omq.jpg"
 
 [wallpaper.last]
-path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+path = "/home/oung/Pictures/Wallpapers/wallhaven_l85omq.jpg"
 
 [wallpaper.monitors.HDMI-A-1]
-path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+path = "/home/oung/Pictures/Wallpapers/wallhaven_l85omq.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/home/oung/Pictures/Wallpapers/Rainy Mountain Programmer’s Retreat.png"
+path = "/home/oung/Pictures/Wallpapers/wallhaven_l85omq.jpg"
 
 [weather]
 enabled = false
