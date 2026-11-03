@@ -10,6 +10,7 @@
 
         hurl
         sleek
+        sqruff
 
         lua-language-server
         markdown-oxide
