@@ -10,6 +10,7 @@ enable_sounds = false
 background_opacity = 0.19999999552965164
 capsule = true
 capsule_group = []
+capsule_opacity = 0.79999998211860657
 capsule_padding = 10.0
 capsule_thickness = 0.69999998807907104
 end = ["privacy", "tray", "notifications", "network", "volume", "battery", "control-center", "session"]
@@ -202,11 +203,9 @@ visualization = "none"
 
 [widget.taskbar]
 group_by_workspace = true
-group_single_icon_per_app = false
+hide_empty_workspaces = true
 minimal = true
-only_active_workspace = false
 show_workspace_label = false
-workspace_label_placement = "inside"
 
 [widget.workspaces]
 label_source = "name"
