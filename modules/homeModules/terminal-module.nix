@@ -3,7 +3,7 @@
     home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono ];
 
     programs.ghostty = {
-      # enable = true;
+      enable = false;
       settings = {
         theme = "Kanagawa Wave";
         font-family = [
@@ -16,6 +16,8 @@
         cursor-style-blink = false;
         gtk-titlebar = false;
         window-show-tab-bar = "never";
+        # Ghostty has no scroll animation; keep mouse-wheel jumps small.
+        mouse-scroll-multiplier = "discrete:1";
         keybind = [
           "ctrl+shift+h=unbind"
           "ctrl+shift+l=unbind"

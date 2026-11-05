@@ -10,7 +10,7 @@
       url = "github:ilysenko/codex-desktop-linux";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia/v5.4.0";
+      url = "github:noctalia-dev/noctalia/v5.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
