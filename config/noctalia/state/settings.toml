@@ -189,6 +189,9 @@ format = "{:%d %b %Y %I:%M %p}"
 [widget.cpu]
 visualization = "none"
 
+[widget.cpu.actions]
+right = "exec kitty -e btop"
+
 [widget.media]
 hide_when_no_media = true
 
