@@ -18,6 +18,7 @@ Provide independently selectable Home Manager bundles for platform-specific tool
 - JavaScript global package directories and Rustup toolchains are intentionally user-writable.
 - JavaScript runtimes and global package managers come from nixpkgs; do not pin them in the module.
 - Rust activation must remain safe during Home Manager dry runs and idempotent on repeated activation.
+- Rust activation stays limited to ordinary Rustup install, component, and default commands through Home Manager's dry-run-aware `run` helper; existing toolchain repairs remain manual.
 - Debug adapter source paths must come from packages installed by the same module.
 
 ## Work Guidance
