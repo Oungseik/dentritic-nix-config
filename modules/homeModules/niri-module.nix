@@ -28,7 +28,7 @@
           };
 
           "hotkey-overlay"."skip-at-startup" = { };
-          "recent-windows".binds."Mod+Tab"."next-window"._props.scope = "workspace";
+          "recent-windows".binds = { };
 
           binds = {
             "Mod+Shift+Slash"."show-hotkey-overlay" = { };
@@ -219,6 +219,7 @@
             "Mod+Shift+A"."move-column-to-workspace" = "stash";
             "Mod+Shift+S"."move-column-to-workspace" = "stash";
 
+            "Mod+Tab"."focus-column-right-or-first" = { };
             "Mod+Shift+Tab"."focus-workspace-previous" = { };
 
             "Mod+BracketLeft"."consume-or-expel-window-left" = { };

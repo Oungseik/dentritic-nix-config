@@ -75,7 +75,8 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Group Niri bindings by purpose inside `settings.binds` and keep hotkey-overlay titles concise.
 - Preserve existing Hyprland bindings when they already behave like their Niri counterparts; change only missing, conflicting, or explicitly Hyprland-specific navigation.
 - In Hyprland, `Mod+H/L` cycles backward/forward through windows on the current workspace; other directional window and monitor bindings use only `H/L` because this profile treats Hyprland topology as horizontal and leaves `J/K` unbound.
-- In both compositors, `Mod+Tab` cycles through windows on the current workspace and `Mod+Shift+Tab` toggles the current and previous workspace.
+- In Niri, `Mod+Tab` cycles right through columns on the current workspace and wraps to the first, independently of focus history. Stacked/tabbed windows use `Mod+J/K`; floating and tiled layouts use `Mod+Shift+V` to switch focus.
+- In Hyprland, `Mod+Tab` cycles through windows on the current workspace. Both compositors use `Mod+Shift+Tab` to toggle the current and previous workspace.
 - Put a desktop tool in `homeModules.desktop` only when it is compositor-independent and intended across desktop profiles.
 - Add each new compositor as its own feature and reuse the shared desktop module instead of copying common tools.
 - Keep packages, session variables, and stable configuration together when they form one feature; split out only configuration that changes frequently.
