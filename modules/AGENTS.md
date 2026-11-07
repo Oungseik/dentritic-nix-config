@@ -6,7 +6,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 
 ## Ownership
 
-- `flake-parts.nix` defines shared flake-parts systems and the `flake.homeModules` option.
+- `flake-parts.nix` defines shared flake-parts systems and the mergeable `flake.homeModules` and `flake.homeConfigurations` options.
 - `home/` composes Home Manager profiles and owns per-user base settings.
 - `hosts/` composes NixOS systems: `shared.nix` owns reusable host settings, while each host owns its hostname, user accounts, hardware, filesystems, interface-specific firewall rules, and state version.
 - `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, its Waydroid feature enables containerized Android apps with nftables networking for current kernels, and its gaming feature enables 32-bit graphics, GameMode, PCSX2, and PPSSPP using the standard host kernel. Lutris belongs to the standalone Home Manager gaming feature.
@@ -17,7 +17,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 
 - Every Nix file below this directory is auto-imported; each must be a valid flake-parts module without manual import wiring.
 - Export stable, unique names through `flake.homeModules`, `flake.nixosModules`, `flake.homeConfigurations`, `flake.nixosConfigurations`, or `perSystem.packages`.
-- Defining a module does not enable it. Compose Home Manager features in `home/oung.nix` and NixOS features in the applicable file under `hosts/`.
+- Defining a module does not enable it. Compose Home Manager features in the applicable profile under `home/` and NixOS features in the applicable file under `hosts/`.
 - Organize reusable modules by feature rather than building monolithic host or desktop modules; profiles gain behavior by composing the required features.
 - Keep `flake.nixosConfigurations` and `flake.homeConfigurations` independent; do not embed Home Manager into the NixOS configuration.
 - Keep machine and system settings in `hosts/` or `nixosModules/`; keep user programs and settings in `home/` or `homeModules/` so they can switch without rebuilding NixOS.
@@ -25,6 +25,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - The `hongsawatoi` host enables SSH with password or key login for `oung`, denies root login, and exposes port 22 through the firewall only on its `wlp1s0` Wi-Fi interface. Keep optional tablet public keys in `~oung/.ssh/authorized_keys` outside the Nix store.
 - `suvannabhumi` composes the same system features as `hongsawatoi` but registers no user until an owner is chosen. Its inline hardware placeholder fails evaluation until replaced with generated attributes; its SSH firewall remains closed until the trusted interface is identified.
 - The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and composes Noctalia v5 with Niri; there is no shell-version selector.
+- The `khinlapyaewon` profile targets `aarch64-darwin` and `/Users/khinlapyaewon`; it composes the shared CLI tools and Zsh features and installs Neovim for the shared `vi` alias.
 - `packages.outline-manager` wraps the x86-64 AppImage with its desktop launcher and icon. The upstream stable URL is mutable; update the package version and fixed hash together.
 - `nixosModules.vpn` installs the custom Outline Manager package alongside sshuttle and enables nixpkgs Throne with TUN mode. Keep the commented GitHub release override available for switching away from nixpkgs; its source and core vendor hashes belong to the pinned release.
 
@@ -42,6 +43,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 
 - Run `just check-nixos` for system or package changes.
 - Run `just check oung` for Home Manager changes.
+- Run `just check khinlapyaewon` on macOS for changes to that profile.
 
 ## Child DOX Index
 

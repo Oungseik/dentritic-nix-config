@@ -1,23 +1,40 @@
 # dendritic-nix-config
 
-Personal NixOS flake for `hongsawatoi` and a pending `suvannabhumi` host.
-The standalone `oung` Home Manager profile is available only where that user exists.
+Personal Nix flake for the `hongsawatoi` and pending `suvannabhumi` NixOS hosts,
+with standalone Home Manager profiles for `oung` and `khinlapyaewon`.
 
 ## Apply
 
-Switch NixOS first, then Home Manager:
+For `oung`, switch NixOS first, then Home Manager:
 
 ```sh
 sudo nixos-rebuild switch --flake .#hongsawatoi
 home-manager switch --flake .#oung
 ```
 
+On `khinlapyaewon`'s MacBook Neo, install Nix with flakes enabled and run the
+following from the repository. In a Git checkout, Nix includes only tracked files.
+
+```sh
+nix run .#homeConfigurations.khinlapyaewon.config.programs.home-manager.package -- switch --flake .#khinlapyaewon
+```
+
+The new profile assumes the macOS account is `khinlapyaewon` with home directory
+`/Users/khinlapyaewon`; adjust both in `modules/home/khinlapyaewon.nix` if needed.
+The profile includes the shared CLI tools and Zsh configuration, plus Neovim for
+the `vi` alias. If the account already uses Home Manager, keep its original
+`home.stateVersion`.
+
+Home Manager manages `~/.zshenv`, `~/.zprofile`, and `~/.zshrc`. If it reports
+conflicts on the first switch, move the existing files aside and put any
+interactive settings to keep in `~/.config/zsh/local.zsh`.
+
 Before installing `suvannabhumi`:
 
 1. On the new machine, generate its hardware configuration with `nixos-generate-config --root /mnt` after mounting its root and boot partitions.
 2. In `modules/hosts/suvannabhumi.nix`, replace the placeholder `imports` line with the attributes inside the generated `/mnt/etc/nixos/hardware-configuration.nix` (omit its outer function and braces), as in `hongsawatoi.nix`. Do not reuse the old machine's disk UUIDs or CPU settings.
 3. Declare the intended user's account in `modules/hosts/suvannabhumi.nix` before installing: `sharedHost` creates no users, and root SSH login is disabled. Set `system.stateVersion` to the installation release. Identify its trusted network interface and add an interface-scoped SSH firewall rule only if remote login is wanted.
-4. Run `just check-nixos`, then install with `sudo nixos-install --flake .#suvannabhumi` from the mounted installation. After boot, switch NixOS with `sudo nixos-rebuild switch --flake .#suvannabhumi`. Run `home-manager switch --flake .#oung` only if `oung` is the chosen user; otherwise configure that person's own Home Manager profile.
+4. Run `just check-nixos`, then install with `sudo nixos-install --flake .#suvannabhumi` from the mounted installation. After boot, switch NixOS with `sudo nixos-rebuild switch --flake .#suvannabhumi`. Run `home-manager switch --flake .#oung` only if `oung` is the chosen user; otherwise configure a Home Manager profile for that person's Linux account.
 
 Until the inline hardware block is replaced, `suvannabhumi` deliberately fails evaluation;
 `just check-nixos` also fails. To check only the existing host in the meantime,
@@ -31,14 +48,14 @@ the linked Nix files and lock file are the source of truth.
 
 | Package or plugin | Current pin | Where to update it |
 | --- | --- | --- |
-| Noctalia | `v5.4.0` | [`flake.nix`](flake.nix) and `flake.lock`; keep v5 |
+| Noctalia | `v5.4.1` | [`flake.nix`](flake.nix) and `flake.lock`; keep v5 |
 | Claude Desktop | `4.4212.0` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
 | Airmux | `0.2.3-unstable-2026-09-12`, commit `77832c6` | [`airmux.nix`](modules/packages/airmux.nix); personal fork |
 | Outline Manager | `1.22.0` | [`outline-manager.nix`](modules/packages/outline-manager.nix); mutable download URL |
 | Gruvbox Plus icons | `6.6.0` | [`gruvybox-plus.nix`](modules/packages/gruvybox-plus.nix) |
 | ZedBrains Mono | `1.0` label | [`zedbrains-mono.nix`](modules/packages/zedbrains-mono.nix); font files are bundled locally |
 | soulseek-rs | `19.1.0` | [`soulseek-rs.nix`](modules/packages/soulseek-rs.nix); available, not selected for installation |
-| Codex Desktop | `26.1027.51404`, commit `e81573f` | [`flake.lock`](flake.lock), input `codex-desktop-linux` |
+| Codex Desktop | `26.1029.61003`, commit `183314d` | [`flake.lock`](flake.lock), input `codex-desktop-linux` |
 | Yazi full-border plugin | commit `896fa5a` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 | Yazi Starship plugin | commit `ea92cf4` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 
@@ -68,4 +85,5 @@ untrusted Wi-Fi while this service is enabled.
 ```sh
 just check-nixos  # after suvannabhumi's hardware configuration is available
 just check oung
+just check khinlapyaewon  # on the MacBook Neo
 ```

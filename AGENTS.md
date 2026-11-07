@@ -76,7 +76,7 @@ Default section order:
 
 ## Project Contract
 
-- This is a personal dendritic Nix flake for the `hongsawatoi` (MSI Modern 15 A5M) and pending `suvannabhumi` NixOS hosts. `oung` is an independent Home Manager profile, not an account shared across hosts.
+- This is a personal dendritic Nix flake for the `hongsawatoi` (MSI Modern 15 A5M) and pending `suvannabhumi` NixOS hosts, with independent Home Manager profiles for `oung` and `khinlapyaewon` (MacBook Neo). A profile does not create or share an account across hosts.
 - Where the `oung` profile is used, deployment is two-phase: switch NixOS first, then switch standalone Home Manager.
 - Home Manager-only changes must remain switchable without rebuilding or switching NixOS.
 - `flake.nix` stays a thin `flake-parts`/`import-tree` entry point; implementation belongs under `modules/`.
@@ -99,6 +99,7 @@ Default section order:
 
 - `just check-nixos` evaluates the full flake without building; it will fail on the pending suvannabhumi hardware placeholder until the real configuration is supplied.
 - `just check oung` dry-runs the Home Manager activation build.
+- `just check khinlapyaewon` dry-runs the MacBook Neo Home Manager activation build on macOS.
 
 ## Child DOX Index
 
