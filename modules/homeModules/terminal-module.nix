@@ -1,60 +1,6 @@
 { self, ... }: {
-  flake.homeModules.terminals = { pkgs, lib, ... }: {
+  flake.homeModules.terminals = { pkgs, ... }: {
     home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono ];
-
-    programs.ghostty = {
-      enable = false;
-      settings = {
-        theme = "Kanagawa Wave";
-        font-family = [
-          "ZedBrainsMono Nerd Font"
-          "Noto Sans Thai"
-          "Noto Sans Myanmar"
-        ];
-        font-size = 14;
-        background-opacity = 0.9;
-        cursor-style-blink = false;
-        gtk-titlebar = false;
-        window-show-tab-bar = "never";
-        # Ghostty has no scroll animation; keep mouse-wheel jumps small.
-        mouse-scroll-multiplier = "discrete:1";
-        keybind = [
-          "ctrl+shift+h=unbind"
-          "ctrl+shift+l=unbind"
-          "ctrl+shift+x=unbind"
-          "ctrl+shift+z=unbind"
-          "ctrl+shift+g=unbind"
-        ];
-      };
-    };
-
-    programs.alacritty = {
-      enable = true;
-      theme = "kanagawa_wave";
-      settings = {
-        font = {
-          size = 14;
-          normal = {
-            family = "ZedBrainsMono Nerd Font";
-            style = "Regular";
-          };
-        };
-
-        keyboard.bindings = [
-          {
-            action = "CreateNewWindow";
-            key = "N";
-            mods = "Shift|Control";
-          }
-        ];
-
-        window = {
-          opacity = 0.95;
-        };
-
-      };
-
-    };
 
     programs.kitty = {
       enable = true;
@@ -89,17 +35,6 @@
         input_delay = 3;
         sync_to_monitor = "yes";
         disable_ligatures = "never";
-      };
-    };
-
-    programs.wezterm = {
-      # enable = true;
-
-      settings = {
-        color_scheme = "Kanagawa (Gogh)";
-        enable_tab_bar = false;
-        font = lib.generators.mkLuaInline ''wezterm.font_with_fallback({ "ZedBrainsMono Nerd Font", "Noto Sans Thai", "Noto Sans Myanmar" })'';
-        font_size = 14;
       };
     };
   };

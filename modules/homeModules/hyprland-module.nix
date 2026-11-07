@@ -77,7 +77,7 @@
 
         bind = [
           "$mod, RETURN, exec, kitty"
-          "$mod, T, exec, alacritty"
+          "$mod, T, exec, kitty"
           "$mod, E, exec, kitty -e yazi"
           "$mod SHIFT, Q, killactive"
           "$mod SHIFT, X, exit"

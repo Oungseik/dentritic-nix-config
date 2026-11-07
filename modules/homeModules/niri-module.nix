@@ -38,8 +38,8 @@
               spawn = [ "kitty" ];
             };
             "Mod+T" = {
-              _props."hotkey-overlay-title" = "Open terminal: alacritty";
-              spawn = [ "alacritty" ];
+              _props."hotkey-overlay-title" = "Open terminal: kitty";
+              spawn = [ "kitty" ];
             };
             "Mod+P" = {
               _props."hotkey-overlay-title" = "Toggle launcher";

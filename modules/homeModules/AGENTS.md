@@ -20,13 +20,11 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling, per-user fontconfig, and the 24px Bibata Modern Ice pointer default; it installs Roboto and the Noto Sans Thai/Myanmar subsets, keeps Roboto as the primary sans-serif with Thai/Myanmar fallback, supplies Myanmar fallback for explicit Roboto requests (including Zed UI), and supplies Thai/Myanmar fallback for ZedBrainsMono requests. Qt 5/6 general fonts inherit GTK's font family and size.
-- `terminal-module.nix` owns Alacritty, Kitty, WezTerm, and Ghostty and installs the local ZedBrains Mono package. Kitty maps the Thai and Myanmar (including Extended-A/B) Unicode blocks to their Noto Sans families without a cell-height override; WezTerm and Ghostty explicitly include those fallbacks, while Alacritty uses shared Fontconfig. WezTerm and Ghostty share the Kanagawa palette and 14pt font and hide their tab bars because Tmux owns multiplexing.
-- Ghostty is enabled with 90% background opacity, a non-blinking cursor, and no GTK titlebar; its `Ctrl+Shift+H/L/X/Z/G` bindings are unbound to pass through to terminal applications. Keep its discrete mouse-wheel multiplier at `1` for smaller jumps and precision scrolling at its default; upstream has no Neovide-style scroll animation setting.
-- Keep programming ligatures enabled wherever supported: Kitty uses `disable_ligatures = "never"`; Ghostty and WezTerm retain their enabled defaults. Stock Alacritty does not support ligatures.
+- `terminal-module.nix` owns Kitty and installs the local ZedBrains Mono package. Kitty maps the Thai and Myanmar (including Extended-A/B) Unicode blocks to their Noto Sans families without a cell-height override and keeps programming ligatures enabled.
 - `television-module.nix` owns the Television fuzzy finder; it ships no shell integration because Atuin owns shell history and search.
 - `tmux-module.nix` owns Tmux configuration and installs the local Airmux session manager package.
 - `developmentEnvironments/` is delegated to its child DOX.
-- Enablement and ordering remain owned by `../home/oung.nix`.
+- Enablement and ordering remain owned by the profiles under `../home/`.
 
 ## Local Contracts
 
@@ -36,6 +34,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `homeModules.desktop` installs `ddcutil` for DDC/CI external-monitor control independently of the desktop shell; `nixosModules.desktop` supplies I²C device access.
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
+- Kitty is the sole managed terminal; Niri and Hyprland open it with `Mod+Return` and `Mod+T`.
 - Lutris's default Wine selection and packaged runner links are Nix-managed; installed games, Wine prefixes, and per-game settings remain mutable and managed through Lutris. Do not declaratively replace its game database or import game installers into the Nix store.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
 - Interactive Zsh sources `~/.config/zsh/local.zsh` at startup when readable; keep local secrets and installer-managed exports there, outside the Nix store.
