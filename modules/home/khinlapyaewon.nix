@@ -5,6 +5,8 @@
     modules = [
       self.homeModules.khinlapyaewon
       self.homeModules.cliUtils
+      self.homeModules.terminals
+      self.homeModules.tmux
       self.homeModules.zsh
     ];
   };
@@ -17,6 +19,10 @@
     };
 
     home.packages = [ pkgs.neovim ];
+    programs.ghostty = {
+      enable = true;
+      package = pkgs.ghostty-bin;
+    };
     programs.home-manager.enable = true;
   };
 }

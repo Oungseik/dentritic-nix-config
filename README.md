@@ -21,13 +21,16 @@ nix run .#homeConfigurations.khinlapyaewon.config.programs.home-manager.package 
 
 The new profile assumes the macOS account is `khinlapyaewon` with home directory
 `/Users/khinlapyaewon`; adjust both in `modules/home/khinlapyaewon.nix` if needed.
-The profile includes the shared CLI tools and Zsh configuration, plus Neovim for
-the `vi` alias. If the account already uses Home Manager, keep its original
-`home.stateVersion`.
+The profile includes Ghostty, Tmux, Neovim, Starship, and the shared CLI tools
+and Zsh configuration. Ghostty appears in `~/Applications/Home Manager Apps`.
+If the account already uses Home Manager, keep its original `home.stateVersion`.
 
-Home Manager manages `~/.zshenv`, `~/.zprofile`, and `~/.zshrc`. If it reports
-conflicts on the first switch, move the existing files aside and put any
-interactive settings to keep in `~/.config/zsh/local.zsh`.
+Home Manager manages `~/.zshenv`, `~/.zprofile`, `~/.zshrc`,
+`~/.config/tmux/tmux.conf`, and `~/.config/ghostty/config`. If it reports
+conflicts on the first switch, move the existing files aside. Put interactive
+Zsh settings to keep in `~/.config/zsh/local.zsh`. On macOS, Ghostty also loads
+files in `~/Library/Application Support/com.mitchellh.ghostty` after the
+Home Manager configuration, so existing settings there can override it.
 
 Before installing `suvannabhumi`:
 

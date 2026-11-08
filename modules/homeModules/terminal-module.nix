@@ -2,8 +2,23 @@
   flake.homeModules.terminals = { pkgs, ... }: {
     home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zedbrains-mono ];
 
+    programs.ghostty.settings = {
+      theme = "Kanagawa Wave";
+      font-family = "ZedBrainsMono Nerd Font";
+      font-size = 14;
+      background-opacity = 0.9;
+      cursor-style-blink = false;
+      mouse-scroll-multiplier = "discrete:1";
+      keybind = [
+        "ctrl+shift+h=unbind"
+        "ctrl+shift+l=unbind"
+        "ctrl+shift+x=unbind"
+        "ctrl+shift+z=unbind"
+        "ctrl+shift+g=unbind"
+      ];
+    };
+
     programs.kitty = {
-      enable = true;
       font.name = "ZedBrainsMono Nerd Font";
       font.size = 14;
 

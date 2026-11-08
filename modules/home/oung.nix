@@ -54,6 +54,7 @@
       };
 
       home.stateVersion = "26.11";
+      programs.kitty.enable = true;
       programs.home-manager.enable = true;
     };
 }

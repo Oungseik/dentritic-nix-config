@@ -20,7 +20,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
 - `niri-module.nix` owns declarative Niri settings, generated KDL validation, keybindings, window rules, layout, and GNOME/GTK/GNOME Keyring portal routing.
 - `theme.nix` owns shared GTK/Qt styling, per-user fontconfig, and the 24px Bibata Modern Ice pointer default; it installs Roboto and the Noto Sans Thai/Myanmar subsets, keeps Roboto as the primary sans-serif with Thai/Myanmar fallback, supplies Myanmar fallback for explicit Roboto requests (including Zed UI), and supplies Thai/Myanmar fallback for ZedBrainsMono requests. Qt 5/6 general fonts inherit GTK's font family and size.
-- `terminal-module.nix` owns Kitty and installs the local ZedBrains Mono package. Kitty maps the Thai and Myanmar (including Extended-A/B) Unicode blocks to their Noto Sans families without a cell-height override and keeps programming ligatures enabled.
+- `terminal-module.nix` owns Kitty and Ghostty settings and installs the local ZedBrains Mono package. Kitty maps the Thai and Myanmar (including Extended-A/B) Unicode blocks to their Noto Sans families without a cell-height override and keeps programming ligatures enabled. Ghostty uses Kanagawa Wave, 14pt ZedBrains Mono, 90% background opacity, a non-blinking cursor, and a discrete mouse-wheel multiplier of `1`; it unbinds `Ctrl+Shift+H/L/X/Z/G` for terminal applications.
 - `television-module.nix` owns the Television fuzzy finder; it ships no shell integration because Atuin owns shell history and search.
 - `tmux-module.nix` owns Tmux configuration and installs the local Airmux session manager package.
 - `developmentEnvironments/` is delegated to its child DOX.
@@ -34,13 +34,13 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `homeModules.desktop` installs `ddcutil` for DDC/CI external-monitor control independently of the desktop shell; `nixosModules.desktop` supplies I²C device access.
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
 - Keep binaries invoked by generated configuration or keybindings available from the same profile.
-- Kitty is the sole managed terminal; Niri and Hyprland open it with `Mod+Return` and `Mod+T`.
+- Profiles compose `homeModules.terminals` and enable the chosen terminal through its Home Manager `programs.<name>.enable` option. `oung` uses Kitty; Niri and Hyprland open it with `Mod+Return` and `Mod+T`. The macOS `khinlapyaewon` profile uses Ghostty.
 - Lutris's default Wine selection and packaged runner links are Nix-managed; installed games, Wine prefixes, and per-game settings remain mutable and managed through Lutris. Do not declaratively replace its game database or import game installers into the Nix store.
 - Zsh reapplies every merged `home.sessionPath` entry for interactive shells when a graphical session carries stale Home Manager source guards.
 - Interactive Zsh sources `~/.config/zsh/local.zsh` at startup when readable; keep local secrets and installer-managed exports there, outside the Nix store.
 - Keep Atuin history slim by excluding simple navigation/listing, screen/session noise, bare editor/UI launches, and bare Git inspections. Preserve argument-bearing editor/UI calls, compound commands, Git mutations, and rare meaningful commands; frequency alone is not an exclusion criterion.
 - Atuin filters match whole commands, never arbitrary command-name prefixes. Filter changes affect future recordings; pruning existing history requires explicit approval.
-- Tmux resolves `default-shell` from the current user's passwd entry so dev shells cannot replace it through `$SHELL`.
+- Tmux resolves `default-shell` from the current user's passwd entry and clears tmux-sensible's `default-command` after plugin loading so dev shells cannot replace it through `$SHELL`.
 - Tmux snapshots are per server: `tmux-resurrect` writes under `~/.local/state/tmux/resurrect/<socket>` and restores all pane processes with `@resurrect-processes ':all:'`; pane contents are not captured.
 - Tmux save and restore stay manual on the plugin's `prefix C-s` / `prefix C-r` bindings, and snapshot retention deliberately stays at the plugin default (age-based cleanup, never below five files).
 - Tmux owns pane navigation and keeps 50,000 lines of history; preserve Kitty's disabled `Ctrl+Shift+H/L/X/Z/G` bindings for the Tmux/Vim workflow.
