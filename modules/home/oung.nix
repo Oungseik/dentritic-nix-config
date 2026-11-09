@@ -5,6 +5,23 @@
     pkgs = import inputs.nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
+      overlays = [
+        (_final: prev: {
+          # shortcut: pinned until nixpkgs has a working release, then remove this override
+          neovide = prev.neovide.overrideAttrs (
+            finalAttrs: _previousAttrs: {
+              version = "0.17.2";
+              src = prev.fetchFromGitHub {
+                owner = "neovide";
+                repo = "neovide";
+                tag = finalAttrs.version;
+                hash = "sha256-y8lq7zlul47sEZMfVJ54OwM5XJmnZmLlRN/ENVbG6Oc=";
+              };
+              cargoHash = "sha256-QPk6wmU3W/OOEhEFSX1T07jTK9dkkzIDoIfPXCSqlOI=";
+            }
+          );
+        })
+      ];
     };
     modules = [
       self.homeModules.oung

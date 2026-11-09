@@ -52,6 +52,7 @@ the linked Nix files and lock file are the source of truth.
 | Package or plugin | Current pin | Where to update it |
 | --- | --- | --- |
 | Noctalia | `v5.4.1` | [`flake.nix`](flake.nix) and `flake.lock`; keep v5 |
+| Neovide | `0.17.2` | [`oung.nix`](modules/home/oung.nix); source and Cargo hashes |
 | Claude Desktop | `4.4212.0` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
 | Airmux | `0.2.3-unstable-2026-09-12`, commit `77832c6` | [`airmux.nix`](modules/packages/airmux.nix); personal fork |
 | Outline Manager | `1.22.0` | [`outline-manager.nix`](modules/packages/outline-manager.nix); mutable download URL |
