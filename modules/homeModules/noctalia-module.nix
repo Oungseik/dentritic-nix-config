@@ -6,7 +6,7 @@
       ...
     }:
     let
-      configPath = "${config.home.homeDirectory}/Projects/dendritic-nix-config/config/noctalia";
+      configPath = "${config.home.homeDirectory}/Nix/config/noctalia";
     in
     {
       home.packages = [
