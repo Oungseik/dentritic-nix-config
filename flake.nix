@@ -6,9 +6,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-desktop-linux = {
-      url = "github:ilysenko/codex-desktop-linux";
-    };
     noctalia = {
       url = "github:noctalia-dev/noctalia/v5.4.1";
       inputs.nixpkgs.follows = "nixpkgs";

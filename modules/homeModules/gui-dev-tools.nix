@@ -1,13 +1,11 @@
-{ inputs, self, ... }:
+{ self, ... }:
 {
   flake.homeModules.guiDevTools =
     { pkgs, ... }:
     {
-      imports = [ inputs.codex-desktop-linux.homeManagerModules.default ];
-
       home.packages = with pkgs; [
         self.packages.${stdenv.hostPlatform.system}.claude-desktop
-        codex
+        self.packages.${stdenv.hostPlatform.system}.codex-desktop
         # vscode-fhs
         # code-cursor-fhs
       ];
@@ -16,8 +14,5 @@
         enable = true;
         userSettings.vim_mode = true;
       };
-
-      home.sessionVariables.CODEX_CLI_PATH = "${pkgs.codex}/bin/codex";
-      programs.codexDesktopLinux.enable = true;
     };
 }

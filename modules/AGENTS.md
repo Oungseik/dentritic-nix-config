@@ -10,7 +10,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - `home/` composes Home Manager profiles and owns per-user base settings.
 - `hosts/` composes NixOS systems: `shared.nix` owns reusable host settings, while each host owns its hostname, user accounts, hardware, filesystems, interface-specific firewall rules, and state version.
 - `nixosModules/` owns reusable system features; its Niri feature provides `xwayland-satellite` for Niri's on-demand X11 compatibility, its Waydroid feature enables containerized Android apps with nftables networking for current kernels, and its gaming feature enables 32-bit graphics, GameMode, PCSX2, and PPSSPP using the standard host kernel. Lutris belongs to the standalone Home Manager gaming feature.
-- `packages/` owns custom package outputs, including Airmux, Claude Desktop, the Outline Manager AppImage wrapper, the soulseek-rs static musl binary, the gruvbox-plus icon pack, and the locally bundled four-face ZedBrains Mono font family. Airmux builds from the `Oungseik/airmux` fork at a pinned rev, because upstream has no release carrying the fork's `init` and `clean` commands; update the rev, version stamp, and both hashes together when rebasing on upstream.
+- `packages/` owns custom package outputs, including Airmux, Claude Desktop, Codex / ChatGPT Desktop, the Outline Manager AppImage wrapper, the soulseek-rs static musl binary, the gruvbox-plus icon pack, and the locally bundled four-face ZedBrains Mono font family. Airmux builds from the `Oungseik/airmux` fork at a pinned rev, because upstream has no release carrying the fork's `init` and `clean` commands; update the rev, version stamp, and both hashes together when rebasing on upstream.
 - `homeModules/` is delegated to its child DOX.
 
 ## Local Contracts
@@ -28,6 +28,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - The `oung` profile overrides Neovide for both the editor and notes launcher; keep its source and Cargo hashes aligned and remove the override when nixpkgs has a working release.
 - The `khinlapyaewon` profile targets `aarch64-darwin` and `/Users/khinlapyaewon`; it composes the shared CLI tools, terminal, Tmux, and Zsh features, installs Neovim, and enables the macOS Ghostty binary.
 - `packages.outline-manager` wraps the x86-64 AppImage with its desktop launcher and icon. The upstream stable URL is mutable; update the package version and fixed hash together.
+- `packages.codex-desktop` repackages the official x86-64 Linux ChatGPT `.deb` through the nixpkgs recipe, with a versioned URL and fixed hash. Keep `codex = null` to retain the matching bundled backend, and preserve the recipe's Electron fixes, writable plugin cache, launcher, and desktop integration. Its local Tectonic override supplies the missing `aws-lc` build input; remove it when nixpkgs includes that dependency.
 - `nixosModules.vpn` installs the custom Outline Manager package alongside sshuttle and enables nixpkgs Throne with TUN mode. Keep the commented GitHub release override available for switching away from nixpkgs; its source and core vendor hashes belong to the pinned release.
 
 ## Work Guidance

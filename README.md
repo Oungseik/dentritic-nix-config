@@ -54,21 +54,26 @@ the linked Nix files and lock file are the source of truth.
 | Noctalia | `v5.4.1` | [`flake.nix`](flake.nix) and `flake.lock`; keep v5 |
 | Neovide | `0.17.2` | [`oung.nix`](modules/home/oung.nix); source and Cargo hashes |
 | Claude Desktop | `4.4212.0` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
+| Codex / ChatGPT Desktop | `26.1106.51428` | [`codex-desktop.nix`](modules/packages/codex-desktop.nix); official Linux `.deb` with bundled Codex backend |
 | Airmux | `0.2.3-unstable-2026-09-12`, commit `77832c6` | [`airmux.nix`](modules/packages/airmux.nix); personal fork |
 | Outline Manager | `1.22.0` | [`outline-manager.nix`](modules/packages/outline-manager.nix); mutable download URL |
 | Gruvbox Plus icons | `6.6.0` | [`gruvybox-plus.nix`](modules/packages/gruvybox-plus.nix) |
 | ZedBrains Mono | `1.0` label | [`zedbrains-mono.nix`](modules/packages/zedbrains-mono.nix); font files are bundled locally |
 | soulseek-rs | `19.1.0` | [`soulseek-rs.nix`](modules/packages/soulseek-rs.nix); available, not selected for installation |
-| Codex Desktop | `26.1029.61003`, commit `183314d` | [`flake.lock`](flake.lock), input `codex-desktop-linux` |
 | Yazi full-border plugin | commit `896fa5a` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 | Yazi Starship plugin | commit `ea92cf4` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
+
+The local `codex-desktop` package pins the versioned official Linux `.deb` behind
+the latest download URL and reuses Nixpkgs' ChatGPT packaging recipe. Launch it
+with `nix run .#codex-desktop`, or `chatgpt` after switching Home Manager. It uses
+its bundled Codex backend independently of any separately installed terminal CLI.
+After removing an old `CODEX_CLI_PATH` session override, start a fresh graphical
+login before launching ChatGPT.
 
 To update pins:
 
 - Update shared Nixpkgs and Home Manager with `nix flake update nixpkgs home-manager`.
-  Codex Desktop has a separate Nixpkgs pin, which this command does not update.
 - Change Noctalia's v5 tag in `flake.nix`, then run `nix flake update noctalia`.
-  Update Codex Desktop with `nix flake update codex-desktop-linux`.
 - For the other fetched packages and plugins, update the version or commit and
   the corresponding source hash in the linked file. Airmux also needs its
   `cargoHash` updated. Outline's mutable URL may stop matching its pinned hash.
