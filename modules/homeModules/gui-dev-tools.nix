@@ -1,11 +1,11 @@
-{ self, ... }:
+{ inputs, self, ... }:
 {
   flake.homeModules.guiDevTools =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
         self.packages.${stdenv.hostPlatform.system}.claude-desktop
-        self.packages.${stdenv.hostPlatform.system}.codex-desktop
+        inputs.codex-desktop-linux.packages.${stdenv.hostPlatform.system}.default
         # vscode-fhs
         # code-cursor-fhs
       ];

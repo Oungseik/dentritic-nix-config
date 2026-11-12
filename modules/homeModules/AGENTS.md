@@ -14,7 +14,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `desktop-module.nix` owns user tools and services shared across compositors, including `ddcutil`, `wl-clipboard`, and the fallback GNOME Polkit agent; `noctalia-module.nix` disables that agent when Noctalia is composed.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
 - `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
-- `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop and Codex / ChatGPT Desktop packages, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
+- `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, the pinned upstream Codex Desktop package installed directly, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
 - `gaming-module.nix` owns Lutris through Home Manager's `programs.lutris` module, registers stable WoW64 Wine as its default runner, and exposes Winetricks inside Lutris's runtime environment.
 - `hyprland-module.nix` owns the optional Hyprland compositor feature with native Noctalia v5 commands; the selected profile uses Niri.
 - `music-module.nix` owns the local-music stack: MPD, mpd-mpris, and rmpc.
@@ -30,7 +30,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 
 - A feature module must export a unique `flake.homeModules.<name>` value and must not enable itself in a profile.
 - Features must work through the standalone `flake.homeConfigurations.oung` profile and must not depend on Home Manager being embedded into NixOS.
-- Install ChatGPT through `self.packages.<system>.codex-desktop`; its packaging belongs to `../packages/codex-desktop.nix`, without a third-party Home Manager module. Do not set `CODEX_CLI_PATH`; its bundled backend remains independent of any separately installed terminal CLI. Start a fresh graphical login after removing an old session override.
+- `gui-dev-tools.nix` installs `inputs.codex-desktop-linux.packages.<system>.default` directly, without a local package wrapper or third-party Home Manager module. Keep the input's upstream dependency pins to match the tested standalone flake; update it with `nix flake update codex-desktop-linux`. Launch it with `codex-desktop` or the ChatGPT Community desktop entry. Do not set `CODEX_CLI_PATH`; its bundled backend remains independent of any separately installed terminal CLI.
 - `homeModules.desktop` must remain compositor-independent and compose with the shared `nixosModules.desktop` system base.
 - `homeModules.desktop` installs `ddcutil` for DDC/CI external-monitor control independently of the desktop shell; `nixosModules.desktop` supplies I²C device access.
 - Keep compositor modules strictly compositor-specific and composable with the shared desktop modules.
