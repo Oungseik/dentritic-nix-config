@@ -31,7 +31,7 @@
       self.homeModules.desktop
       self.homeModules.shellScripts
       self.homeModules.eReader
-      self.homeModules.gaming
+      # self.homeModules.gaming
       self.homeModules.guiDevTools
       self.homeModules.git
       # self.homeModules.hyprland

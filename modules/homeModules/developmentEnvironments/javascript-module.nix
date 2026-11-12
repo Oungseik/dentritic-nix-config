@@ -33,7 +33,7 @@
         bun
         deno
         pnpm
-        turbo
+        # turbo
         prettier
         svelte-language-server
         vscode-langservers-extracted
