@@ -45,6 +45,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - Tmux snapshots are per server: `tmux-resurrect` writes under `~/.local/state/tmux/resurrect/<socket>` and restores all pane processes with `@resurrect-processes ':all:'`; pane contents are not captured.
 - Tmux save and restore stay manual on the plugin's `prefix C-s` / `prefix C-r` bindings, and snapshot retention deliberately stays at the plugin default (age-based cleanup, never below five files).
 - Tmux owns pane navigation and keeps 50,000 lines of history; preserve Kitty's disabled `Ctrl+Shift+H/L/X/Z/G` bindings for the Tmux/Vim workflow.
+- Tmux marks the active window by color, without underlining its name.
 - Kitty keeps 10,000 scrollback lines, uses the default repaint delay, and leaves remote control disabled.
 - Frequently changed application configuration belongs under `config/<program>` and is linked by its module with `config.lib.file.mkOutOfStoreSymlink` so edits do not require a Home Manager rebuild.
 - Stable application configuration remains declarative in its module; `hyprland-module.nix` uses Home Manager's classic Hyprlang output, not Lua.
