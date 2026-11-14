@@ -10,14 +10,14 @@
         soulseek-rs =
           let
             pname = "soulseek-rs";
-            version = "19.1.0";
+            version = "20.0.0";
           in
           pkgs.stdenvNoCC.mkDerivation {
             inherit pname version;
 
             src = pkgs.fetchurl {
               url = "https://github.com/michel/soulseek-rs/releases/download/v${version}/soulseek-rs-v${version}-x86_64-unknown-linux-musl.tar.gz";
-              hash = "sha256-y3vpSsRm/JUD6VRwflef39ZucXVp2zqmf4RpstpalPw=";
+              hash = "sha256-Vuxq9t5Tk+K6bNmHnHcI0LT9uCU1h66fVXFXH3CClrw=";
             };
 
             # The archive contains bare files, no top-level directory.

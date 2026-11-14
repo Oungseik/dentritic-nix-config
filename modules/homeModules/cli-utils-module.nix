@@ -75,8 +75,8 @@
         plugins-repo = pkgs.fetchFromGitHub {
           owner = "yazi-rs";
           repo = "plugins";
-          rev = "896fa5aec1db0163e2f65d07a130d064de53b0b2";
-          hash = "sha256-0nD3jSkUt7mcsfPnJ3yBwdJYRY6JVSxVAj4eXEgBWus=";
+          rev = "1ef5fe02a6122f8f3bb47a41056aab3f4b8598bf";
+          hash = "sha256-Nz6AvWAiwdmH2HJ2vA3rMfbDDHSkXG20Ml6vc5yrjRM=";
         };
         starship = pkgs.fetchFromGitHub {
           owner = "Rolv-Apneseth";
