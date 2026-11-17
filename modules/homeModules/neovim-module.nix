@@ -38,7 +38,7 @@
       };
 
       home.sessionVariables = {
-        EDITOR = "neovide";
+        EDITOR = "nvim";
       };
     };
 }
