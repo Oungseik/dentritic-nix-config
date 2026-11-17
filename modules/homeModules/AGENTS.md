@@ -10,6 +10,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `communication-module.nix` owns team and company communication clients.
 - `cli-utils-module.nix` owns CLI utilities and Atuin's command-recording filters.
 - `git-module.nix` owns Git, GitHub CLI.
+- `neovim-module.nix` owns editor tools, sets `EDITOR=nvim`, and clones `https://github.com/oungseik/neovim-config` into `${xdg.configHome}/nvim` during activation only when the path is absent. The checkout stays writable and updates are manual; existing paths are never overwritten or pulled, and paths without Git metadata produce a warning. Initial cloning requires network access; failure stops activation.
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
 - `desktop-module.nix` owns user tools and services shared across compositors, including `ddcutil`, `wl-clipboard`, and the fallback GNOME Polkit agent; `noctalia-module.nix` disables that agent when Noctalia is composed.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
