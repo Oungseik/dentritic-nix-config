@@ -14,7 +14,7 @@
             src = pkgs.fetchurl {
               # Upstream's stable URL is mutable; update version and hash together.
               url = "https://s3.amazonaws.com/outline-releases/manager/linux/stable/Outline-Manager.AppImage";
-              hash = "sha256-gx0qYqTNI+qgIjRWFLiAf6N18TmwXNjddtS2lKcPW/g=";
+              hash = "sha256-q7E83wq94wJomjf2IvlNY398d9gpVHOFx3ehZN8nRsc=";
             };
             appimageContents = pkgs.appimageTools.extract {
               inherit pname version src;
