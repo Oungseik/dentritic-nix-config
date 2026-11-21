@@ -10,14 +10,14 @@
           # shortcut: pinned until nixpkgs has a working release, then remove this override
           neovide = prev.neovide.overrideAttrs (
             finalAttrs: _previousAttrs: {
-              version = "0.17.2";
+              version = "0.17.3";
               src = prev.fetchFromGitHub {
                 owner = "neovide";
                 repo = "neovide";
                 tag = finalAttrs.version;
-                hash = "sha256-y8lq7zlul47sEZMfVJ54OwM5XJmnZmLlRN/ENVbG6Oc=";
+                hash = "sha256-F2Z3NsbEaDyfIH27XsI62AgYKsySJUgcx4wtSP0RCKw=";
               };
-              cargoHash = "sha256-QPk6wmU3W/OOEhEFSX1T07jTK9dkkzIDoIfPXCSqlOI=";
+              cargoHash = "sha256-AplCrgM4iVZr/7rsy425weroxywgptl5nIFr6zS39vk=";
             }
           );
         })
@@ -63,7 +63,10 @@
         homeDirectory = "/home/oung";
       };
 
-      home.packages = with pkgs; [ neovim ];
+      home.packages = [
+        pkgs.neovim
+        self.packages.${pkgs.stdenv.hostPlatform.system}.soulseek-rs
+      ];
       home.sessionPath = [ "$HOME/.local/bin" ];
 
       home.sessionVariables = {

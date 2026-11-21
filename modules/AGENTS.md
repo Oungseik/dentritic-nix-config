@@ -24,11 +24,11 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Change `system.stateVersion` or `home.stateVersion` only as part of an explicit migration.
 - The `hongsawatoi` host enables SSH with password or key login for `oung`, denies root login, and exposes port 22 through the firewall only on its `wlp1s0` Wi-Fi interface. Keep optional tablet public keys in `~oung/.ssh/authorized_keys` outside the Nix store.
 - `suvannabhumi` composes the same system features as `hongsawatoi` but registers no user until an owner is chosen. Its inline hardware placeholder fails evaluation until replaced with generated attributes; its SSH firewall remains closed until the trusted interface is identified.
-- The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and composes Noctalia v5 with Niri; there is no shell-version selector.
+- The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and composes Noctalia v5 with Niri, and installs the local `soulseek-rs` package; there is no shell-version selector.
 - The `oung` profile overrides Neovide for both the editor and notes launcher; keep its source and Cargo hashes aligned and remove the override when nixpkgs has a working release.
 - The `khinlapyaewon` profile targets `aarch64-darwin` and `/Users/khinlapyaewon`; it composes the shared CLI tools, terminal, Tmux, and Zsh features, installs Neovim, and enables the macOS Ghostty binary.
 - `packages.outline-manager` wraps the x86-64 AppImage with its desktop launcher and icon. The upstream stable URL is mutable; update the package version and fixed hash together.
-- `nixosModules.vpn` installs the custom Outline Manager package alongside sshuttle and enables nixpkgs Throne with TUN mode. Keep the commented GitHub release override available for switching away from nixpkgs; its source and core vendor hashes belong to the pinned release.
+- `nixosModules.vpn` installs the custom Outline Manager package alongside sshuttle and enables nixpkgs Throne with TUN mode.
 
 ## Work Guidance
 

@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{
   flake.homeModules.noctalia =
     {
       pkgs,
@@ -9,9 +9,7 @@
       configPath = "${config.home.homeDirectory}/Nix/config/noctalia";
     in
     {
-      home.packages = [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
+      home.packages = [ pkgs.noctalia ];
 
       services.polkit-gnome.enable = false;
 

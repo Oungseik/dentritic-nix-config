@@ -51,15 +51,14 @@ the linked Nix files and lock file are the source of truth.
 
 | Package or plugin | Current pin | Where to update it |
 | --- | --- | --- |
-| Noctalia | `v5.5.0` | [`flake.nix`](flake.nix) and `flake.lock`; keep v5 |
-| Neovide | `0.17.2` | [`oung.nix`](modules/home/oung.nix); source and Cargo hashes |
-| Claude Desktop | `5.11492.5` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
-| Codex Desktop | `26.1111.21308`, flake commit `952d165` | `codex-desktop-linux` in [`flake.lock`](flake.lock), installed by [`gui-dev-tools.nix`](modules/homeModules/gui-dev-tools.nix) |
+| Neovide | `0.17.3` | [`oung.nix`](modules/home/oung.nix); source and Cargo hashes |
+| Claude Desktop | `6.28899.2` | [`claude-desktop.nix`](modules/packages/claude-desktop.nix) |
+| Codex Desktop | `26.1111.71704`, flake commit `04840e9` | `codex-desktop-linux` in [`flake.lock`](flake.lock), installed by [`gui-dev-tools.nix`](modules/homeModules/gui-dev-tools.nix) |
 | Airmux | `0.2.3-unstable-2026-09-12`, commit `77832c6` | [`airmux.nix`](modules/packages/airmux.nix); personal fork |
 | Outline Manager | `1.22.0` | [`outline-manager.nix`](modules/packages/outline-manager.nix); mutable download URL |
 | Gruvbox Plus icons | `6.7.0` | [`gruvybox-plus.nix`](modules/packages/gruvybox-plus.nix) |
 | ZedBrains Mono | `1.0` label | [`zedbrains-mono.nix`](modules/packages/zedbrains-mono.nix); font files are bundled locally |
-| soulseek-rs | `20.0.0` | [`soulseek-rs.nix`](modules/packages/soulseek-rs.nix); available, not selected for installation |
+| soulseek-rs | `20.0.0` | [`soulseek-rs.nix`](modules/packages/soulseek-rs.nix); installed by the `oung` Home Manager profile |
 | Yazi full-border plugin | commit `1ef5fe0` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 | Yazi Starship plugin | commit `ea92cf4` | [`cli-utils-module.nix`](modules/homeModules/cli-utils-module.nix) |
 
@@ -74,7 +73,7 @@ Codex user profile, so fully exit the official ChatGPT app before launching it.
 To update pins:
 
 - Update shared Nixpkgs and Home Manager with `nix flake update nixpkgs home-manager`.
-- Change Noctalia's v5 tag in `flake.nix`, then run `nix flake update noctalia`.
+- Noctalia comes from shared Nixpkgs (currently `5.5.0`); keep it on v5.
 - Update Codex Desktop with `nix flake update codex-desktop-linux`, then switch
   Home Manager; no NixOS rebuild is needed for this package.
 - For the other fetched packages and plugins, update the version or commit and
