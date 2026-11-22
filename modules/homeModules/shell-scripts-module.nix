@@ -35,8 +35,8 @@
         '';
       };
 
-      qrRead = pkgs.writeShellApplication {
-        name = "qr-read";
+      qrScan = pkgs.writeShellApplication {
+        name = "qr-scan";
         runtimeInputs = with pkgs; [
           grim
           slurp
@@ -57,7 +57,16 @@
       home.packages = [
         launchNotes
         launchRmpc
-        qrRead
+        qrScan
       ];
+
+      xdg.desktopEntries.qr-scan = {
+        name = "QR Scan";
+        comment = "Scan a QR code on screen and copy its contents to the clipboard";
+        exec = "${qrScan}/bin/qr-scan";
+        icon = "qrcode";
+        categories = [ "Utility" ];
+        terminal = false;
+      };
     };
 }

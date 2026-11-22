@@ -14,7 +14,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `password-managers-module.nix` owns Proton Pass and the legacy `pass` CLI setup during migration, including the Television `pass` channel that copies passwords and OTP codes to the clipboard.
 - `desktop-module.nix` owns user tools and services shared across compositors, including `ddcutil`, `wl-clipboard`, and the fallback GNOME Polkit agent; `noctalia-module.nix` disables that agent when Noctalia is composed.
 - `e-reader-module.nix` owns the document readers Evince and Zathura and installs the local ZedBrains Mono package for the girara UI font; Zathura carries the Kanagawa Lotus light palette inline (values from rebelot/kanagawa.nvim), rerenders pages as lotus paper with image hues kept, and renders UI text in the configured ZedBrains Mono size.
-- `shell-scripts-module.nix` owns generated launcher scripts, the `qr-read` QR-to-clipboard script, and their runtime dependencies.
+- `shell-scripts-module.nix` owns generated launcher scripts, the QR Scan desktop entry, and the scripts' runtime dependencies.
 - `gui-dev-tools.nix` owns graphical coding clients: the local Claude Desktop package, the pinned upstream Codex Desktop package installed directly, and Zed with declarative vim mode and mutable user settings; VS Code and Cursor stay commented out.
 - `gaming-module.nix` owns Lutris through Home Manager's `programs.lutris` module, registers stable WoW64 Wine as its default runner, and exposes Winetricks inside Lutris's runtime environment.
 - `hyprland-module.nix` owns the optional Hyprland compositor feature with native Noctalia v5 commands; the selected profile uses Niri.
@@ -58,7 +58,7 @@ Define reusable user-level applications, desktop behavior, themes, shells, and t
 - `launch-rmpc` opens or focuses one rmpc Kitty window; Niri's `Mod+Shift+M` binds it and floats it at 60% width and 80% height.
 - Niri spawns Discord and Slack at startup; its window rule opens every new window with app-id `discord` or `slack` on the `communication` workspace, including later launches.
 - Niri opens Google Chrome windows on the `browser` workspace by app-id `google-chrome` or `google-chrome-stable`; Playwright drives Chrome for Testing, which reports app-id `chromium-browser` and is intentionally left on the focused workspace.
-- `qr-read` selects a screen region with `slurp`, pipes a `grim` capture into `zbarimg`, prints every decoded code to stdout, and copies them to the clipboard; without a QR code it exits nonzero and leaves the clipboard untouched.
+- Run `qr-scan` from the shell or choose **QR Scan** in the launcher to select a screen region with `slurp`. The script pipes a `grim` capture into `zbarimg`, prints decoded codes to stdout, and copies them to the clipboard. If decoding fails, it exits nonzero and preserves the clipboard.
 - Niri's `Mod+Shift+Insert` opens Television's `pass` channel in a dedicated Kitty window floating at 60% width and 80% height. This window uses `close_on_child_death=yes` so clipboard background processes cannot hold it open after the copy action exits; retain the channel's `execute` actions and one-second clipboard delay.
 - `Mod+Ctrl+Shift+H/L` moves the current workspace between horizontal monitors; `Mod+Alt+H/L` moves the focused window.
 - Keep the GNOME portal in the Home Manager portal set so Niri screen sharing remains available when Hyprland is composed in the same profile.
