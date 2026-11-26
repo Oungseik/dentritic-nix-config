@@ -17,7 +17,7 @@ end = ["privacy", "tray", "notifications", "network", "volume", "battery", "cont
 font_family = "Roboto Condensed"
 font_weight = 400
 margin_ends = 12
-start = ["cpu", "ram", "taskbar", "media"]
+start = ["cpu", "ram", "temp", "taskbar", "media"]
 thickness = 40
 widget_spacing = 4
 
