@@ -30,6 +30,32 @@
       networking.hostName = "hongsawatoi";
       networking.firewall.interfaces.wlp1s0.allowedTCPPorts = [ 22 ];
 
+      services.udev.extraRules = ''
+        ACTION=="change", SUBSYSTEM=="power_supply", KERNEL=="ADP1", RUN+="${pkgs.systemd}/bin/systemctl --no-block restart ac-power-profile.service"
+      '';
+
+      # Start outside the boot target's ordering chain: the daemon starts after multi-user.target.
+      systemd.timers.ac-power-profile = {
+        wantedBy = [ "timers.target" ];
+        timerConfig.OnBootSec = "1s";
+      };
+
+      systemd.services.ac-power-profile = {
+        description = "Select power profile from the charger state";
+        requires = [ "power-profiles-daemon.service" ];
+        after = [ "power-profiles-daemon.service" ];
+        serviceConfig.Type = "oneshot";
+        script = ''
+          read -r online < /sys/class/power_supply/ADP1/online
+          case "$online" in
+            1) profile=performance ;;
+            0) profile=power-saver ;;
+            *) echo "Unexpected charger state: $online" >&2; exit 1 ;;
+          esac
+          exec ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set "$profile"
+        '';
+      };
+
       users.users.oung = {
         isNormalUser = true;
         description = "Oung Seik Nyan";
