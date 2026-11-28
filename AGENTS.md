@@ -93,11 +93,11 @@ Default section order:
 - Prefer the smallest declarative Nix change and reuse existing modules before adding files or dependencies.
 - `just remove-generations <number>...` removes NixOS system generations; `just remove-hm-generations <number>...` removes standalone Home Manager generations. Neither runs garbage collection.
 - Treat hardware identifiers, state versions, and destructive migration steps as machine-specific safety boundaries.
-- `modules/hosts/suvannabhumi.nix` holds a fail-closed inline hardware placeholder until replaced with that machine's generated hardware attributes; do not copy hongsawatoi's device IDs. Set suvannabhumi's initial `system.stateVersion` from its installation release.
+- Keep each host's generated hardware attributes inline in its host module. Set suvannabhumi's initial `system.stateVersion` from its installation release.
 
 ## Verification
 
-- `just check-nixos` evaluates the full flake without building; it will fail on the pending suvannabhumi hardware placeholder until the real configuration is supplied.
+- `just check-nixos` evaluates both NixOS hosts without building.
 - `just check oung` dry-runs the Home Manager activation build.
 - `just check khinlapyaewon` dry-runs the MacBook Neo Home Manager activation build on macOS.
 

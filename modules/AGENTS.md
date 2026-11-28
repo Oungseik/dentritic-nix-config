@@ -24,7 +24,7 @@ Implement flake outputs as composable feature modules discovered recursively by 
 - Change `system.stateVersion` or `home.stateVersion` only as part of an explicit migration.
 - The `hongsawatoi` host enables SSH with password or key login for `oung`, denies root login, and exposes port 22 through the firewall only on its `wlp1s0` Wi-Fi interface. Keep optional tablet public keys in `~oung/.ssh/authorized_keys` outside the Nix store.
 - `hongsawatoi` selects Performance on AC and Power Saver on battery at startup and on `ADP1` charger events, using `power-profiles-daemon`.
-- `suvannabhumi` composes the same system features as `hongsawatoi` but registers no user until an owner is chosen. Its inline hardware placeholder fails evaluation until replaced with generated attributes; its SSH firewall remains closed until the trusted interface is identified.
+- `hosts/suvannabhumi.nix` contains the machine's generated ext4 root, VFAT boot, and swap configuration. User registration awaits the choice of owner. Open SSH through the firewall only on an identified trusted interface.
 - The `oung` base profile exposes `~/.local/bin` on the shell path for user-installed executables and composes Noctalia v5 with Niri, and installs the local `soulseek-rs` package; there is no shell-version selector.
 - The `oung` profile overrides Neovide for both the editor and notes launcher; keep its source and Cargo hashes aligned and remove the override when nixpkgs has a working release.
 - The `khinlapyaewon` profile targets `aarch64-darwin` and `/Users/khinlapyaewon`; it composes the shared CLI tools, terminal, Tmux, and Zsh features, installs Neovim, and enables the macOS Ghostty binary.
